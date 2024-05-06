@@ -37,6 +37,7 @@ MultipleChoiceStrategy = Enum("MultipleChoiceStrategy", [
 
 class Model:
     CACHE_DIR = "/workspaces/emergent-capabilities/datax"
+    DEFAULT_SOFTMAX = torch.nn.Softmax(dim=-1)
 
     @staticmethod
     def clean_cache_dir(confirm=False):
@@ -60,7 +61,7 @@ class Model:
         return prob
 
     
-    def __init__(self, name, cache_dir=None, device_name=None, verbose=True):
+    def __init__(self, name, cache_dir=None, device_name=None, verbose=True, softmax=None):
         self.verbose = verbose
         self.name = name
         self.tokenizer = None
@@ -68,6 +69,7 @@ class Model:
         self.cache_dir = cache_dir or Model.CACHE_DIR
         self.device_name = device_name
         self.device = None
+        self.softmax = softmax or Model.DEFAULT_SOFTMAX
 
     
     def yap(self, *args, **kwargs):
@@ -321,7 +323,7 @@ class Model:
                 best_option_idx = idx
         
         return best_option_idx
-
+        
     def _multiple_choice_prompts_multiply(self, input_tokens, target_tokens, time=False):
         """
         Private helper function.
@@ -357,24 +359,23 @@ class Model:
                 
                 output = self.model_no_grad(input_ids=running_inputs)
                 next_logits = output.logits[:, -1, :]
+                # self.yap("NEXT LOGITS:", next_logits)
 
-                # NOTE: The probabilities do not sum to 1 (in fact, much larger); should we rescale?
-                # how can we rescale?
-                self.yap("P Sum:", sum(Model.prob_from_logit(logit) for logit in list(next_logits[0])))
-                
+                distribution = self.softmax(next_logits)
+                # self.yap("SOFTMAX:", distribution)
+
                 logit_score = next_logits[:, token].item()
-                prob = Model.prob_from_logit(logit_score)
+                prob = distribution[:, token].item()
                 self.yap(f"Token {j}: P={prob}, logit={logit_score}")
                 total_prob *= prob
-                self.yap("Running P:", total_prob)
-    
-            # todo: normalize, somehow?
+                # self.yap("Running P:", total_prob)
+            
             score = total_prob
             
             if best_option_idx is None or score > best_score:
                 best_score = score
                 best_option_idx = idx
-            self.yap()
+            # self.yap()
             
         return idx
     
@@ -420,6 +421,9 @@ class Model:
         elif strategy == MultipleChoiceStrategy.FIRST_BRANCH:
             idx = self._multiple_choice_prompts_first_branch(inputs, target_tokens, time=time)
 
+        else:
+            assert False, f"Unknown/unhandled multiple choice strategy {strategy}"
+        
         return idx
 
     
