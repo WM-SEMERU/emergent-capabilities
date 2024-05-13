@@ -51,6 +51,7 @@ class Model:
     
     @staticmethod
     def prob_from_logit(logit):
+        assert false, "Do not use this function"
         # TODO: check if this is the correct way to scale CodeGen logits;
         # it stands to reason that the falloff could be steeper or less steep
 
@@ -143,7 +144,7 @@ class Model:
         prompt_tokens = prompt_tokens.to(self.device)
         if time:
             time_end()
-        self.yap("Token count in input:", prompt_tokens["input_ids"].shape[1])
+        # self.yap("Token count in input:", prompt_tokens["input_ids"].shape[1])
         return prompt_tokens
 
     
@@ -156,7 +157,7 @@ class Model:
 
     def generate(self, inputs, time=False, *args, **kwargs):
         if isinstance(inputs, str):
-            self.yap("Tokenizing input prompt...")
+            # self.yap("Tokenizing input prompt...")
             inputs = self.tokenize(inputs, time=time)
 
         self.yap("Generating...")
@@ -174,7 +175,7 @@ class Model:
     def multiple_choice_token(self, inputs, targets, time=False):
         assert len(targets) >= 2, "Expected at least 2 targets" 
         if isinstance(inputs, str):
-            self.yap("Tokenizing input prompt...")
+            # self.yap("Tokenizing input prompt...")
             inputs = self.tokenize(inputs, time=time)
 
         if time:
@@ -345,9 +346,13 @@ class Model:
         #   P(A|H) = P(a0|H) * P(a1|H.a0) * ... * P(aN|H.a0.a1...a(N-1))
         for idx, tokens in target_tokens:
             # goal: calculate P(tokens|H) = 𝚷 P(aj|H.∑ak 0<=k<j) 0<=j<=N
-            logit_score = base_logits[:, tokens[0, 0]].item()
+            first_token = tokens[0, 0]
+            # logit_score = base_logits[:, tokens[0, 0]].item()
             # P(a0|H)
-            total_prob = Model.prob_from_logit(logit_score)
+            # total_prob = Model.prob_from_logit(logit_score)
+            initial_distribution = self.softmax(base_logits)
+            total_prob = initial_distribution[:, first_token].item()
+            print(f"init = {total_prob * 100:.4f}%")
             # H
             running_inputs = input_tokens["input_ids"]
 
@@ -364,13 +369,15 @@ class Model:
                 distribution = self.softmax(next_logits)
                 # self.yap("SOFTMAX:", distribution)
 
-                logit_score = next_logits[:, token].item()
+                # logit_score = next_logits[:, token].item()
                 prob = distribution[:, token].item()
-                self.yap(f"Token {j}: P={prob}, logit={logit_score}")
+                # self.yap(f"Token {j}: P={prob}, logit={logit_score}")
+                print(f"prob = {prob * 100:.4f}%")
                 total_prob *= prob
                 # self.yap("Running P:", total_prob)
             
             score = total_prob
+            print(f"overall = {total_prob * 100:.120f}%")
             
             if best_option_idx is None or score > best_score:
                 best_score = score
@@ -396,7 +403,7 @@ class Model:
          - idx corresponding to the most likely prompt
         """
         if isinstance(inputs, str):
-            self.yap("Tokenizing input prompt...")
+            # self.yap("Tokenizing input prompt...")
             inputs = self.tokenize(inputs, time=time)
 
         # TODO: deduplicate testing for input target tokens
