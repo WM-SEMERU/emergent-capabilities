@@ -35,6 +35,28 @@ MultipleChoiceStrategy = Enum("MultipleChoiceStrategy", [
     "FIRST_BRANCH",
 ])
 
+def abbreviate_string(s, start=30, end=30):
+    if len(s) <= start + end:
+        return s
+    return s[:start] + f" [ ... {len(s) - start - end} bytes abbreviated ... ] " + s[-end:]
+
+def find_contiguous_subtensor_index(a, b):
+    if b.numel() == 0:  # An empty tensor is always a sublist
+        return 0
+    if b.numel() > a.numel():
+        return None
+    if b.numel() == 1:  # Special case when b has only one element
+        indices = torch.nonzero(a == b.item(), as_tuple=False)
+        if indices.numel() > 0:
+            return indices[0].item()
+        else:
+            return None
+    
+    for i in range(a.numel() - b.numel() + 1):
+        if torch.equal(a[i:i + b.numel()], b):
+            return i
+    return None
+
 class Model:
     CACHE_DIR = "/workspaces/emergent-capabilities/datax"
     DEFAULT_SOFTMAX = torch.nn.Softmax(dim=-1)
@@ -120,6 +142,8 @@ class Model:
             self.yap("Forcing model on requested device", use_device, "...")
             self.model = self.model.to(use_device)
 
+        self.model.generation_config.pad_token_id = self.tokenizer.eos_token_id
+
     
     def configure(self, time=False):
         if time:
@@ -155,10 +179,12 @@ class Model:
             value = self.model(*args, **kwargs)
         return value
 
+    # e.g., max_length=128
     def generate(self, inputs, time=False, *args, **kwargs):
         if isinstance(inputs, str):
             # self.yap("Tokenizing input prompt...")
             inputs = self.tokenize(inputs, time=time)
+        self.inputs = inputs
 
         self.yap("Generating...")
         if time:
@@ -171,6 +197,76 @@ class Model:
         
         return sample
 
+    # max_size default set comfortably below model max (2048)
+    def generate_until(self, inputs, stops=[], per_step=50, max_size=1000, time=False, truncate=True, *args, **kwargs):
+        if isinstance(inputs, str):
+            # self.yap("Tokenizing input prompt...")
+            inputs = self.tokenize(inputs, time=time)
+        original_inputs = inputs
+        
+        if self.tokenizer.eos_token not in stops:
+            stops.append(self.tokenizer.eos_token)
+
+        stops = [
+            self.tokenize(stop)["input_ids"] if isinstance(stop, str)
+            else stop
+            for stop in stops
+        ]
+
+        base_size = inputs["input_ids"].size(dim=1)
+        
+        tokens = None
+        while True:
+            # print("Step...")
+            # print(inputs)
+            next_size = inputs["input_ids"].size(dim=1) + per_step
+            if next_size > max_size:
+                print("!! max size might be exceeded !!")
+                print("inputs so far:", abbreviate_string(
+                    self.decode(inputs["input_ids"]),
+                    start=400,
+                    end=100
+                ))
+                print("next outputs:", self.decode(output))
+                break
+                
+            output = self.generate(inputs, max_new_tokens=per_step)
+            # remove input given so far from output 
+            output = output[:, inputs["input_ids"].size(dim=1):]
+            
+            if tokens is None:
+                tokens = output
+            else:
+                tokens = torch.cat((tokens, output), dim=1)
+
+            stop_index = next(
+                (
+                    inner_index
+                    for stop in stops
+                    if (inner_index := find_contiguous_subtensor_index(tokens[0], stop)) is not None
+                ),
+                None
+            )
+            
+            # print("STOP_INDEX:", stop_index, stop_found)
+            # print(tokens)
+            if stop_index is not None:
+                # truncate to stop index
+                # print("TRUNC")
+                tokens = tokens[:, :stop_index]
+                # print(tokens)
+                break
+            
+            inputs = self.concatenate_tokens(inputs, output)
+
+        # free running input; we don't need it anymore
+        del inputs
+
+        self.inputs = original_inputs
+        if truncate:
+            return tokens
+        else:
+            return torch.cat((original_inputs["input_ids"], tokens), dim=1)
     
     def multiple_choice_token(self, inputs, targets, time=False):
         assert len(targets) >= 2, "Expected at least 2 targets" 
@@ -215,6 +311,19 @@ class Model:
             "attention_mask": torch.cat((attention_mask, extra_attention), dim=1),
         }
 
+    
+    def concatenate_tokens(self, source, extra):
+        """Non-mutating. Combines an object-formatted token listing with 2D tensor of extra tokens"""
+        input_ids = source["input_ids"]
+        attention_mask = source["attention_mask"]
+        
+        extra_attention = torch.tensor([[1] * extra.size(dim=1)], device=self.device)
+        
+        return {
+            "input_ids": torch.cat((input_ids, extra), dim=1),
+            "attention_mask": torch.cat((attention_mask, extra_attention), dim=1),
+        }
+        
     
     def _multiple_choice_prompts_first_branch(self, input_tokens, target_tokens, time=False):
         """
@@ -385,13 +494,27 @@ class Model:
             # self.yap()
             
         return idx
-    
+
+
+    def _tokenize_label(self, targets, time=False):
+        """
+        Tokenizes the strings in the list of targets given.
+        Pairs each list of tokens with a corresponding index.
+        """
+        return [
+            (
+                idx,
+                self.tokenize(target, time=time)["input_ids"] if isinstance(target, str)
+                else target
+            )
+            for idx, target in enumerate(targets)
+        ]
     
     def multiple_choice_prompts(self, inputs, targets, time=False, strategy=MultipleChoiceStrategy.MULTIPLY):
         """
         Given a prompt context, computes which of the provided targets is most likely.
         Inputs:
-         - inputs, either a string or list of tokens.
+         - inputs, either a string or list of tokens, representing the context given for the prompt.
             NOTE: strings will be tokenized using the model's tokenizer.
          - targets, either a list of strings or list of list of tokens.
             NOTE: there should be no duplicate target options
@@ -406,19 +529,11 @@ class Model:
             # self.yap("Tokenizing input prompt...")
             inputs = self.tokenize(inputs, time=time)
 
-        # TODO: deduplicate testing for input target tokens
-        assert len({*inputs}) == len(inputs), "Cannot have duplicate targets"
+        # # TODO: deduplicate testing for target tokens
+        # assert len({*targets}) == len(targets), "Cannot have duplicate targets"
     
-        # tokenize each of the targets if necessary
-        target_tokens = [
-            (
-                idx,
-                self.tokenize(target, time=time)["input_ids"] if isinstance(target, str)
-                else target
-            )
-            for idx, target in enumerate(targets)
-        ]
-
+        target_tokens = self._tokenize_label(targets, time=time)
+        
         if strategy == MultipleChoiceStrategy.MULTIPLY:
             idx = self._multiple_choice_prompts_multiply(inputs, target_tokens, time=time)
             
