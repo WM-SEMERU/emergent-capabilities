@@ -1,0 +1,95 @@
+35,7 +35,7 @@ public class HttpRequestEncoder extends HttpObjectEncoder<HttpRequest> {
+77,7 +77,9
+77,9 +77,9
+39,6 +348,8 = 347
+add a new field to the class
+added a comment
+add a new class
+add a new method to the interface
+80 lines of code added
+add a new method to the class
+Removed the 'private' modifier
+38,7 +38,7 @@ public class ClockwiseRotate implements LayoutBuilder {
+add a new method
+1,7 +1,7 @@
+43,7 +43,7 @@
+the first line is the same
+
+32,8 +32,8 @@ public class JSONPropertySupport {
+2362 lines changed
+add header id
+added the "initiator" constants
+435,7 + 435,11 = 435
+453,7 +453,7 @@ public abstract class LoadBalancerContext<T extends ClientRequest, S extends IRe
+5,6 +5,9
+64,9 +64,7 = -1
+added a new constructor
+added a comment
+if the filename contains a slash, the username is not included in the config file name
+717,7 + 717,12 - 717,7 + 717,12 = +1
+289 lines
+remove 'XDebuggerUtil'
+rename the class
+add a method to AbstractEntityManagerImpl
+311,7 +311,9 @@ public class FirstUsageWizardFragment extends Fragment implements OsmAndLocation
+Removed the import of org.jivesoftware.openfire.roster.Roster;
+56,8 +56,8
+a91de4b00f..e6dac0d284 100644
+added new method to the class
+added a new method to DispatcherTest
+"@private" is removed
+added a new line
+1:1 +1:1
+26,6 +26,7 @@ import org.gradle.internal.classloader.ClassLoaderHierarchy;
+821,7 +821,7 @@ public abstract class NanoHTTPD {
+66,6 +66,8 @@ public class LexicalizedParserServer {
+22,7 +22,7 @@ public class BinaryBlockWriter<M> {
+90,8 +90,8
+if the index meta data didn't change, no need check for refreshed settings
+49,7 +49,18 @@ public class Ls extends NeoApp
+Removed the 'protected' keyword from the interface
+removed the "in"
+307 lines changed
+410,14 +410,15 @@ public abstract class DBCollection {
+remove all the XML-specific stuff
+add a new method onResolveInfoResult()
+diff of changes
+
+96,7 +96,7 @@ public class AddColumnGenerator extends AbstractSqlGenerator<AddColumnStatement>
+5126,6 +5126,11 = +5126
+131,8 +131,7 @@ public class TaskController extends AbstractController {
+426,8 +426,7 @@ public class SimpleTcpCluster extends LifecycleMBeanBase
+diff of changes in the file
+112,6 +112,21
+1575,6 +1575,14 @@ public class Intent implements Parcelable, Cloneable {
+the first line is the old code
+451,7 +451,10
+73 chars
+added the "if (packet.getSubject() == null || "".equals(packet.getSubject().trim()))"
+248,9 +248,11 -248,9 +248,11
+34,7 +34,7 @@ import java.sql.Connection;
+80,9 + 80,17
+9,14 +9,14 @@
+the date pattern is not used in the repository
+
+345,7 +345,7 @@ public class WXSDKEngine {
+28,8+28,8
+add a new field to the class
+Removed the commented out code
+removed the package name
+added a new method to get the y coordinate of the point to navigate to
+added a new enum
+java_major: 1.6.0 -> 1.7.0
+add a new abstract class
+62 chars changed
+89,6 +89,7 @@ public class FocusWatcher implements ContainerListener,FocusListener{
+346,7 +346,7 @@ public final class SugarDataSource<T> {
+add a new method to the class
+356,6 +356,26 @@ public class VCard extends IQ {
+479,7 +479,8 @@ public class TaskVcsTest extends CodeInsightFixtureTestCase {
+21,6 +21,7 -69,6 +70,7
+1,6 +1,7 = -61,7 +62,11 = -1,7 +1,11
+26,9 +26,13 @@
+added a constructor with a ConsumerManager
+add the idempotent check
+added a check for material.getMaterial(type)!= null

@@ -1,0 +1,3 @@
+
+
+private void METHOD_2 ( android.content.Intent intent ) { android.content.Intent intent = new android.content.Intent ( this, VAR_1 ) ; }

@@ -1,0 +1,43 @@
+public static void main ( String[] args )
+public TYPE_2 METHOD_2 ( TYPE_1 input ) { TYPE_2 output = VAR_2 [ VAR_1 ] ; if ( ( VAR_1 ) > 0 ) { VAR_1 = ( VAR_1 ) - 1 ; } else { } return output ;
+private void METHOD_2 ( android.content.Intent intent ) {
+public void METHOD_2 ( ) { }
+public void METHOD_2 ( ) { TYPE_1. METHOD_3 ( ). METHOD_4 ( ). getString ( VAR_1 ). show ( ) ; }
+public TYPE_1 METHOD_2 ( TYPE_1 VAR_1 ) { TYPE_1 VAR_2 [ ( ( VAR_1. position ) + 1 ) ] = isEmpty ( ) ; VAR_1. position += 1 ; return VAR_1 ; }
+public static boolean METHOD_2 ( final byte status ) { return status == ( VAR_2 ) ; }
+public void METHOD_2 ( TYPE_2 VAR_1, TYPE_2 VAR_2 ) { this. VAR_3. add ( VAR_1, VAR_2 ) ; VAR_4. add ( this ) ; }
+public static void main ( String[] args ) throws java.io.IOException { java.lang.System.out.println ( "Hello World" ) ; }
+public void METHOD_2 ( ) { }
+public void METHOD_2 ( TYPE_2 VAR_1 ) { VAR_2 = 0 ; VAR_3 = ( ( double ) ( VAR_2 ) ) / FLOAT_1 ; VAR_4 = new java.lang.Double ( VAR_3 ). toString ( ) ; VAR_5. setText ( VAR_4 ) ; }
+public boolean METHOD_2 ( TYPE_2 item ) { switch ( item. METHOD_3 ( ) ) { case VAR_3 : return true ; case VAR_4 : return true ; default : return super. METHOD_2 ( item ) ; } }
+public void METHOD_2 ( TYPE_2 VAR_2 ) { this. VAR_2 = VAR_2 ; }
+public java.lang.Boolean METHOD_2 ( java.lang.String id ) { return VAR_2. METHOD_2 ( id ) ; }
+public void METHOD_2 ( TYPE_2 VAR_2 ) { super. METHOD_2 ( VAR_2 ) ; VAR_3. METHOD_3 ( VAR_2 ) ; VAR_4. METHOD_4 ( VAR_2 ) ; VAR_5. METHOD_4 ( VAR_2 ) ; METHOD_5 ( VAR_2 ) ; }
+private static native void METHOD_2 ( long set ) ;
+public java.lang.Boolean METHOD_2 ( TYPE_1 VAR_1 ) { return VAR_2. METHOD_1 ( VAR_1 ) ; }
+public void METHOD_2 ( ) { VAR_2 = true ; }
+public < TYPE_1 > TYPE_1 METHOD_1 ( final java.lang.Object VAR_1, final java.lang.Class < TYPE_1 > VAR_2, final java.lang.Object VAR_3 ) { return METHOD_1 ( VAR_1, VAR_2, VAR_3 ) ; }
+public void METHOD_2 ( TYPE_2 VAR_2, STRING_2 STRING_1 ) { TYPE_3. METHOD_3 ( this, STRING_1, VAR_3 ). show ( ) ; }
+public void METHOD_2 ( TYPE_2 VAR_2 ) { if ( VAR_3. getText ( ). equals ( TYPE_3. METHOD_3 ( ( TYPE_3 ) ( VAR_3. getContext ( ) ) ) ) ) { VAR_3. setText ( TYPE_3. METHOD_3 ( ( ( TYPE_3 ) ( VAR_3. getContext ( ) ) ) ) ) ; } VAR_2 =! ( VAR_2 ) ; }
+private void METHOD_2 ( TYPE_2 VAR_2 ) { METHOD_3 ( ) ; }
+public void METHOD_2 ( TYPE_2 VAR_1, TYPE_2 VAR_2, boolean VAR_3 ) { this. METHOD_2 ( VAR_1, VAR_2, VAR_3, VAR_3 ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( TYPE_2 arg ) { VAR_2. METHOD_3 ( ) ; }
+public void METHOD_2 ( ) { if (! ( VAR_1 ) ) { VAR_2. update ( ) ; } VAR_3. METHOD_2 ( ) ; }
+public TYPE_1 METHOD_2 ( TYPE_1 VAR_1 ) throws TYPE_2, TYPE_3 { if ( VAR_1 == null ) return null ; if (! ( METHOD_3 ( ) ) ) return null ; TYPE_1 response = VAR_2. METHOD_2 ( VAR_1 ) ; return response ; }
+public void METHOD_2 ( String STRING_1, String STRING_2 ) { }
+public void METHOD_2 ( int i ) { }
+public static void main ( String[] args ) {
+public void METHOD_2 ( java.lang.String STRING_1, java.lang.Throwable VAR_1 ) { }
+public int METHOD_2 ( ) { return this. VAR_2 ; }
+public float op ( float VAR_1, float VAR_2 ) { return TYPE_2. METHOD_1 ( VAR_1, VAR_2 ) ; }
+public void METHOD_2 ( ) { super. METHOD_2 ( ) ; VAR_2 = this ; METHOD_3 ( ) ; }
+public void METHOD_2 ( ) { VAR_1 = true ; }
+public TYPE_2 METHOD_2 ( java.lang.Integer id ) { return VAR_2. METHOD_3 ( id ) ; }
+public static void main ( String[] args ) {
+public void METHOD_2 ( TYPE_1 VAR_1 ) { TYPE_2 VAR_2 = new TYPE_2 ( ) ; }
+// Output:
+public String getName ( ) { return VAR_1. name ; }
+public void METHOD_2 ( TYPE_1 VAR_1, TYPE_2 VAR_2 ) { TYPE_3. METHOD_2 ( VAR_3, ( STRING_1 + path ) ) ; }
+public static void main ( String[] args ) {
+public long METHOD_2 ( int i ) { return i * i ; }

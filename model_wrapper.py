@@ -1,8 +1,9 @@
 import torch
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from timehelp import time_start, time_end
+from timehelp import time_start, time_end, display_header, with_progress
 import re
 import gc
+import os
 from math import exp
 from enum import Enum
 
@@ -40,22 +41,64 @@ def abbreviate_string(s, start=30, end=30):
         return s
     return s[:start] + f" [ ... {len(s) - start - end} bytes abbreviated ... ] " + s[-end:]
 
+
+# Note: Aggressive use of `del` to try and coax CUDA memory back to be freed.
+# Note: This is probably not necessary. I think I was just running out of memory
+# because my max_size for generate_until was too large to prevent CUDA memory overflow
+# for larger models - presumably cuz the tensors are larger? I have no idea tbh.
+# max=1000 worked fine for 2B but not 6B; likewise the max=500 might not work for
+# 16B, but I will cross that bridge when I get there.
+
+# MAJOR TODO: truncate all existing output files to 500 tokens for consistency in grading!
+
 def find_contiguous_subtensor_index(a, b):
-    if b.numel() == 0:  # An empty tensor is always a sublist
+    if b.numel() == 0:
         return 0
     if b.numel() > a.numel():
         return None
-    if b.numel() == 1:  # Special case when b has only one element
+    if b.numel() == 1:
         indices = torch.nonzero(a == b.item(), as_tuple=False)
         if indices.numel() > 0:
-            return indices[0].item()
+            item = indices[0].item()
         else:
+            item = None
+        del indices
+        return item
+    
+    for i in range(start, a.numel() - b.numel() + 1):
+        tensor_slice = a[i:i + b.numel()]
+        if torch.equal(tensor_slice, b):
+            del tensor_slice
+            return i
+        del tensor_slice
+        
+    return None
+
+def find_contiguous_subtensor_index_after_content(a, b):
+    if b.numel() == 0:
+        return 0
+    if b.numel() > a.numel():
+        return None
+    if b.numel() == 1:
+        indices = torch.nonzero(a == b.item(), as_tuple=False)
+        if indices.numel() > 0:
+            index_pointer = 0
+            # ignore found instances at the head of the search range
+            while index_pointer < indices.numel() and indices[index_pointer].item() == index_pointer:
+                index_pointer += 1
+            
+            if index_pointer >= indices.numel():
+                item = None
+            else:
+                item = indices[index_pointer].item()
+            
+            del indices
+            return item
+        else:
+            del indices
             return None
     
-    for i in range(a.numel() - b.numel() + 1):
-        if torch.equal(a[i:i + b.numel()], b):
-            return i
-    return None
+    assert False, "Have not yet handled multi-token needle for find_contiguous_subtensor_index_after_content"
 
 class Model:
     CACHE_DIR = "/workspaces/emergent-capabilities/datax"
@@ -74,15 +117,50 @@ class Model:
     @staticmethod
     def prob_from_logit(logit):
         assert false, "Do not use this function"
-        # TODO: check if this is the correct way to scale CodeGen logits;
-        # it stands to reason that the falloff could be steeper or less steep
 
-        # code from
-        # https://sebastiansauer.github.io/convert_logit2prob/
-        odds = exp(logit)
-        prob = odds / (1 + odds)
-        return prob
+    
+    @staticmethod
+    def test_battery(family, family_name, battery, prompt, output_dir, meta_count=None, *args, **kwargs):
+        # e.g. family=ModelFamily.CodeGen1.multi
+        for key, model_name in family.items():
+            display_header(f"Loading {key} ({model_name})")
+            torch.cuda.empty_cache()
+            model = Model(model_name)
+            model.configure(time=True)
+            model.verbose = False
 
+            @with_progress(len(battery))
+            def iterate(output_file, *, step=None):
+                test_case = battery[step]
+                specific_prompt = prompt.format(prompt=test_case)
+                output = model.generate_until(specific_prompt, stops=["\n"], **kwargs)
+                
+                if output is None:
+                    print("Warning: Model returned no output (prompt may have been too large)")
+                    decoded = ""
+                else:
+                    decoded = model.decode(output).strip()
+                
+                output_file.write(decoded + "\n")
+        
+                del model.inputs, output
+        
+            for i in range(meta_count or 1):
+                if meta_count is None:
+                    base_name = f"{family_name}-{key}.output"
+                else:
+                    base_name = f"{family_name}-{key}-mc{i}.output"
+                output_path = os.path.join(output_dir, base_name)
+                print(f"Opening {output_path}...")
+                with open(output_path, "a+") as output_file: 
+                    # iterate(output_file)
+                    output_file.seek(0)
+                    to_skip = len(output_file.readlines())
+                    if to_skip > 0:
+                        print(f"{to_skip} entries found already, skipping that many...")
+                    iterate(output_file, skip=to_skip)
+        
+            model.free()
     
     def __init__(self, name, cache_dir=None, device_name=None, verbose=True, softmax=None):
         self.verbose = verbose
@@ -93,7 +171,8 @@ class Model:
         self.device_name = device_name
         self.device = None
         self.softmax = softmax or Model.DEFAULT_SOFTMAX
-
+        self._tokenized_eos_token = None
+    
     
     def yap(self, *args, **kwargs):
         if not self.verbose:
@@ -117,12 +196,23 @@ class Model:
     
     def configure_tokenizer(self):
         assert self.tokenizer is None, "Tokenizer already exists, cannot re-configure"
-        self.tokenizer = AutoTokenizer.from_pretrained(self.name, cache_dir=self.cache_dir, device_map=self.device)
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            self.name,
+            cache_dir=self.cache_dir,
+            device_map=self.device,
+            # padding_side="left",
+        )
         # for padding; doesn't quite work, though
         self.tokenizer.pad_token = self.tokenizer.eos_token
         # alternative suggestion for padding:
         # tokenizer.add_special_tokens({'pad_token': '[PAD]'})
 
+    @property
+    def tokenized_eos_token(self):
+        if self._tokenized_eos_token is None:
+            self._tokenized_eos_token = self.tokenize(self.tokenizer.eos_token)["input_ids"]
+
+        return self._tokenized_eos_token
     
     def configure_model(self, force_device=False):
         assert self.model is None, "Model already exists, cannot re-configure"
@@ -180,9 +270,9 @@ class Model:
         return value
 
     # e.g., max_length=128
-    def generate(self, inputs, time=False, *args, **kwargs):
+    def generate(self, inputs, time=False, auto_tokenize=True, *args, **kwargs):
         if isinstance(inputs, str):
-            # self.yap("Tokenizing input prompt...")
+            assert auto_tokenize, "Cannot generate given string input prompt when auto_tokenize=False"
             inputs = self.tokenize(inputs, time=time)
         self.inputs = inputs
 
@@ -198,14 +288,23 @@ class Model:
         return sample
 
     # max_size default set comfortably below model max (2048)
-    def generate_until(self, inputs, stops=[], per_step=50, max_size=1000, time=False, truncate=True, *args, **kwargs):
+    def generate_until(
+        self,
+        inputs,
+        stops=[],
+        per_step=50,
+        # TODO: configure max_size based on model family?
+        max_size=500,
+        truncate=True,
+        auto_tokenize=True,
+        time=False,
+        *args, **kwargs
+    ):
         if isinstance(inputs, str):
-            # self.yap("Tokenizing input prompt...")
+            assert auto_tokenize, "Cannot generate given string input prompt when auto_tokenize=False"
             inputs = self.tokenize(inputs, time=time)
-        original_inputs = inputs
         
-        if self.tokenizer.eos_token not in stops:
-            stops.append(self.tokenizer.eos_token)
+        original_inputs = inputs
 
         stops = [
             self.tokenize(stop)["input_ids"] if isinstance(stop, str)
@@ -216,10 +315,12 @@ class Model:
         base_size = inputs["input_ids"].size(dim=1)
         
         tokens = None
+        # it = 0
         while True:
-            # print("Step...")
-            # print(inputs)
             next_size = inputs["input_ids"].size(dim=1) + per_step
+            # print("GEN ITER", it, next_size, "!!!!!!!!")
+            # it += 1
+            
             if next_size > max_size:
                 print("!! max size might be exceeded !!")
                 print("inputs so far:", abbreviate_string(
@@ -227,51 +328,76 @@ class Model:
                     start=400,
                     end=100
                 ))
-                print("next outputs:", self.decode(output))
                 break
                 
-            output = self.generate(inputs, max_new_tokens=per_step)
+            output = self.generate(inputs, max_new_tokens=per_step, auto_tokenize=False)
             # remove input given so far from output 
-            output = output[:, inputs["input_ids"].size(dim=1):]
+            output_trimmed = output[:, inputs["input_ids"].size(dim=1):]
+            del output
+            output = output_trimmed
             
             if tokens is None:
                 tokens = output
             else:
-                tokens = torch.cat((tokens, output), dim=1)
+                tokens_together = torch.cat((tokens, output), dim=1)
+                del tokens
+                tokens = tokens_together
 
+            # effectively left-strips the input of stop subsequences before searching
+            # for a stop index
             stop_index = next(
                 (
                     inner_index
                     for stop in stops
-                    if (inner_index := find_contiguous_subtensor_index(tokens[0], stop)) is not None
+                    if (inner_index :=
+                        find_contiguous_subtensor_index_after_content(
+                            tokens[0],
+                            stop,
+                        )
+                    ) is not None
                 ),
                 None
             )
+            ###print("Stop index (before eos search)", stop_index)
+
+            # if the stop was not found, look for the eos token to make sure we
+            # do not generate past it
+            if stop_index is None:
+                stop_index = find_contiguous_subtensor_index(
+                    tokens[0],
+                    self.tokenized_eos_token
+                )
+
+                ###print("Stop index (after eos search)", stop_index)
             
-            # print("STOP_INDEX:", stop_index, stop_found)
-            # print(tokens)
             if stop_index is not None:
                 # truncate to stop index
-                # print("TRUNC")
-                tokens = tokens[:, :stop_index]
-                # print(tokens)
+                ###print("Tokens before truncation", tokens)
+                tokens_truncated = tokens[:, :stop_index]
+                del tokens
+                tokens = tokens_truncated
                 break
             
-            inputs = self.concatenate_tokens(inputs, output)
+            next_inputs = self.concatenate_tokens(inputs, output)
+            del inputs, output
+            inputs = next_inputs
 
         # free running input; we don't need it anymore
         del inputs
+        for _ in range(len(stops)):
+            del stops[0]
 
         self.inputs = original_inputs
         if truncate:
             return tokens
         else:
-            return torch.cat((original_inputs["input_ids"], tokens), dim=1)
+            result = torch.cat((original_inputs["input_ids"], tokens), dim=1)
+            del tokens
+            return result
     
     def multiple_choice_token(self, inputs, targets, time=False):
         assert len(targets) >= 2, "Expected at least 2 targets" 
         if isinstance(inputs, str):
-            # self.yap("Tokenizing input prompt...")
             inputs = self.tokenize(inputs, time=time)
 
         if time:
@@ -306,10 +432,14 @@ class Model:
         extra_token = torch.tensor([[extra]], device=self.device)
         extra_attention = torch.tensor([[1]], device=self.device)
         
-        return {
+        result = {
             "input_ids": torch.cat((input_ids, extra_token), dim=1),
             "attention_mask": torch.cat((attention_mask, extra_attention), dim=1),
         }
+        
+        del extra_token, extra_attention
+
+        return result
 
     
     def concatenate_tokens(self, source, extra):
@@ -319,10 +449,14 @@ class Model:
         
         extra_attention = torch.tensor([[1] * extra.size(dim=1)], device=self.device)
         
-        return {
+        result = {
             "input_ids": torch.cat((input_ids, extra), dim=1),
             "attention_mask": torch.cat((attention_mask, extra_attention), dim=1),
         }
+
+        del extra_attention
+
+        return result
         
     
     def _multiple_choice_prompts_first_branch(self, input_tokens, target_tokens, time=False):

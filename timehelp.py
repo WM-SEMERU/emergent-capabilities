@@ -58,25 +58,36 @@ def time_end():
     display_now = datetime.today().strftime("%Y-%m-%d@%H:%M:%S")
     print(f"[{display_now}|{timer_label}] Time elapsed:", fmt_delta(elapsed))
 
-def with_progress(steps=None, label=None):
+def with_progress(steps=None, label="Progress"):
     assert steps is not None, "@with_progress: Missing required parameter steps"
-    label = label or "Progress"
     total_steps = steps
     def decorator(func):
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, skip=None, **kwargs):
             # Create widgets
-            progress = widgets.IntProgress(value=0, min=0, max=total_steps, description=f"{label}:")
+            progress = widgets.IntProgress(
+                value=0, min=0, max=total_steps,
+                **(
+                    dict(description=f"{label}:") if label
+                    else {}
+                )
+            )
             estimated_time = widgets.Label(value="Estimated time remaining: calculating...")
             
-            # Combine progress bar and estimated time in a horizontal box
-            hbox = widgets.HBox([progress, estimated_time])
+            hbox = widgets.VBox([progress, estimated_time])
             display(hbox)
             
-            # Start time
             start_time = time.time()
-            
-            for step in range(total_steps):
+
+            start = 0
+            if skip is not None:
+                assert skip >= 0, f"Cannot skip {skip} lines"
+                start = skip
+
+            my_total_steps = total_steps - start
+            result = None
+            progress.value = start
+            for step in range(start, start + my_total_steps):
                 # Call the wrapped function
                 result = func(*args, **kwargs, step=step)
                 
@@ -86,15 +97,24 @@ def with_progress(steps=None, label=None):
                 # Calculate and update estimated time remaining
                 elapsed_time = time.time() - start_time
                 remaining_steps = total_steps - (step + 1)
-                if step > 0:
-                    time_per_step = elapsed_time / (step + 1)
+                steps_so_far = step + 1 - start
+                if steps_so_far > 1:
+                    time_per_step = elapsed_time / steps_so_far
                     estimated_remaining_time = time_per_step * remaining_steps
-                    estimated_time.value = f"Estimated time remaining: {fmt_delta(estimated_remaining_time)}, {fmt_delta(elapsed_time)} elapsed..."
+                    estimated_time.value = f"[{step + 1}/{total_steps}] ETA: {fmt_delta(estimated_remaining_time)}, {fmt_delta(elapsed_time)} elapsed..."
                 else:
-                    estimated_time.value = f"Estimated time remaining: calculating, {fmt_delta(elapsed_time)} elapsed..."
-            
+                    estimated_time.value = f"[{step + 1}/{total_steps}] ETA: calculating, {fmt_delta(elapsed_time)} elapsed..."
+
+            progress.value = total_steps
             estimated_time.value = f"Done, {fmt_delta(time.time() - start_time)} elapsed."
+            print(estimated_time.value)
             return result
         
         return wrapper
     return decorator
+
+
+def display_header(text):
+    header = widgets.HTML(value=f"<h1 style='font-weight: bold;'>{text}</h1>")
+    display(header)
+    print(f"# {text}")

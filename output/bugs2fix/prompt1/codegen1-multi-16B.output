@@ -1,0 +1,95 @@
+private TYPE_2 getType ( TYPE_3 VAR_1 ) { TYPE_4 VAR_2 = new TYPE_4 ( STRING_1 ) ; return new TYPE_2 ( VAR_2, VAR_2 ) ;
+The input to your method will be a string of the form
+private void METHOD_2 ( android.content.Intent intent ) { android.content.Intent intent = new android.content.Intent ( this, VAR_1 ) ;
+The bug in the code is that the variable VAR_3 is not declared before the call to METHOD_3.
+public void METHOD_2 ( int a, int b, int c ) { }
+where TYPE_1 is a class/interface, METHOD_1 is a method, VAR_1 is a variable of type TYPE_1, VAR_2 is a variable of type TYPE_2, VAR_3 is a variable of type TYPE_3, and VAR_4 is a variable of type TYPE_4.
+private static boolean METHOD_2 ( final byte status ) { return status == ( VAR_2 ) ; }
+The bug is that the code is not correct. The method should be called as:
+The input to the method will be a string containing the buggy code. The output should be the corrected code.
+public void METHOD_2 ( ) { if ( VAR_1!= null ) format. METHOD_3 ( VAR_2, VAR_1 ) ; }
+where TYPE_1 is a class, and VAR_1, VAR_2, VAR_3, VAR_4, VAR_5 are variables of that class.
+// The bug is that the default case is missing.
+public void METHOD_2 ( TYPE_2 VAR_2 ) { this. VAR_2 = VAR_2 ; }
+public java.lang.Boolean METHOD_2 ( java.lang.String id ) { return VAR_1. METHOD_2 ( id ) ; }
+public void METHOD_2 ( TYPE_1 VAR_1 ) { super. METHOD_2 ( VAR_1 ) ; VAR_3. METHOD_3 ( VAR_1 ) ; VAR_4. METHOD_4 ( VAR_1 ) ; VAR_5. METHOD_4 ( VAR_1 ) ; METHOD_5 ( VAR_1 ) ; }
+private static native void METHOD_2 ( long set ) ;
+where TYPE_1 is a class, TYPE_2 is a class, VAR_1 is a class, VAR_2 is a class, VAR_3 is a class.
+public void METHOD_2 ( ) { if ( VAR_1. METHOD_5 ( ) ) { VAR_1. METHOD_6 ( ) ; } }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+where TYPE_1, TYPE_2, TYPE_3, STRING_1, STRING_2, VAR_1, VAR_2, VAR_3 are variables of types TYPE_1, TYPE_2, TYPE_3, STRING_1, STRING_2, TYPE_1, TYPE_2, TYPE_3.
+// The bug is that the method call is not properly indented.
+private void METHOD_2 ( ) { METHOD_4 ( ) ; METHOD_5 ( ) ; }
+public void METHOD_2 ( TYPE_1 VAR_1, boolean VAR_2, boolean VAR_3 ) { this. METHOD_1 ( VAR_1, VAR_2, VAR_3 ) ; }
+private void METHOD_2 ( ) { android.content.Intent intent = new android.content.Intent ( this, VAR_1 class ) ; int index = TYPE_1. METHOD_2 ( ). METHOD_3 ( ) ; intent. METHOD_4 ( STRING_1, index ) ; METHOD_5 ( intent ) ; }
+public void METHOD_2 ( TYPE_2 arg ) { VAR_3. METHOD_6 ( VAR_4. getId ( ), arg. METHOD_7 ( ), arg. METHOD_8 ( ) ) ; METHOD_9 ( ) ; }
+// The bug is that the code is not checking if the condition is true or false.
+where TYPE_1, TYPE_2, TYPE_3, METHOD_1, METHOD_2, VAR_1, VAR_2 are types, and METHOD_2 returns a boolean.
+// The bug in this code is that the method call is not properly closed.
+public void METHOD_2 ( ) { VAR_4. METHOD_3 ( VAR_5 ) ; VAR_6. METHOD_3 ( VAR_5 ) ; VAR_6. METHOD_4 ( VAR_7 ) ; }
+The input to the method is a single line of code. The method should be able to fix as many errors as possible. The output should be a single line of code representing the corrected code.
+public void METHOD_2 ( STRING_2 VAR_4, java.lang.Throwable VAR_5 ) { VAR_6. METHOD_4 ( VAR_4, VAR_5 ) ; }
+private int METHOD_2 ( ) { return this. VAR_2 ; }
+The input to your program is a single line of input: the number of test cases. Each test case consists of two lines of input: the number of variables and the number of operations. The number of variables is always a positive integer. The number of operations is always a positive integer. The input is terminated by a line containing two 0s.
+public void METHOD_2 ( ) { VAR_2 = this ; METHOD_3 ( ) ; }
+// The buggy code is:
+public TYPE_2 METHOD_2 ( java.lang.Integer id ) { return VAR_2. METHOD_3 ( id ) ; }
+// The bug is in the line VAR_2. METHOD_2 ( new TYPE_2 ( TYPE_3. METHOD_3 ( STRING_2, STRING_3 ) ) ) ;
+private void METHOD_2 ( TYPE_1 VAR_1 ) { java.lang.Object [ ] VAR_2 = METHOD_3 ( ) ; METHOD_4 ( VAR_2 ) ; }
+// The bug is in the line: VAR_1 = TYPE_2. METHOD_1 ( STRING_1 ) ;
+public void setId ( int id ) { VAR_1. id = id ; }
+public void METHOD_2 ( TYPE_3 VAR_3, TYPE_4 VAR_4 ) { if ( VAR_3 == null ) { TYPE_5. METHOD_6 ( VAR_5, ( STRING_2 + path ) ) ; METHOD_7 ( ) ; } else { METHOD_8 ( VAR_3. METHOD_9 ( ) ) ; } }
+private static int METHOD_2 ( int VAR_3 ) { return VAR_4. METHOD_3 ( VAR_3 ). compareTo ( VAR_4. METHOD_3 ( VAR_3 ) ) ; }
+public long METHOD_2 ( int i ) { return i + 1 ; }
+private static java.util.List < java.lang.String > METHOD_2 ( ) { return null ; }
+// The bug is that the code is not correct. The code is correct if the following condition is satisfied:
+public void METHOD_2 ( ) throws java.io.IOException { TYPE_2. METHOD_2 ( VAR_2 ) ; this. VAR_1 = null ; this. VAR_2 = null ; }
+private static TYPE_1 METHOD_2 ( TYPE_1 VAR_1 ) { TYPE_1 VAR_2 = VAR_1 ; for ( int i = 2 ; i < VAR_1. METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ). METHOD_1 ( 1 ).
+public void METHOD_2 ( ) { super. METHOD_2 ( ) ; TYPE_1. i ( VAR_1, STRING_3 ) ; METHOD_3 ( ) ; TYPE_1. i ( VAR_1, STRING_4 ) ; }
+where TYPE_1, TYPE_2, VAR_1, VAR_2, VAR_3 are all variables of the given types.
+public void METHOD_2 ( ) { METHOD_3 ( ) ; }
+protected void METHOD_2 ( ) { super. METHOD_2 ( ) ; TYPE_2. i ( VAR_2, STRING_2 ) ; }
+// The bug is that the return type is boolean, but the method returns a java.util.List.
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public boolean METHOD_2 ( ) { java.lang.System.out.println ( VAR_2 ) ; return this. VAR_2 ; }
+public int METHOD_2 ( int VAR_1, int VAR_2 ) { return VAR_1 + VAR_2 ; }
+public int METHOD_2 ( java.lang.Object VAR_2 ) { return 0 ; }
+where TYPE_1, TYPE_2, TYPE_3, TYPE_4, TYPE_5 are all java.lang.String, and VAR_1, VAR_2, VAR_3, VAR_4 are all java.lang.Object.
+// The buggy code is:
+public java.lang.String METHOD_2 ( ) { switch ( METHOD_3 ( ) ) { case 1 : return null ; case INT_1 : return null ; case INT_2 : return getType ( ). toString ( ) ; default : return null ; } }
+public void METHOD_2 ( ) { super. METHOD_2 ( ) ; }
+public static boolean equals ( TYPE_1 VAR_1, TYPE_1 VAR_2 ) { return ( VAR_1. METHOD_1 ( VAR_2 ) ) && ( VAR_1. toString ( ). equals ( VAR_2. toString ( ) ) ) ; }
+The bug is that the value of VAR_1 is used twice, and the value of VAR_3 is used twice.
+private static double METHOD_2 ( double p ) { double sum = 0 ; for ( double i : p ) { sum -= i * ( TYPE_1. METHOD_3 ( i ) ) ; } return sum ; }
+public class Solution {
+where TYPE_1, METHOD_1, TYPE_2, VAR_1, METHOD_2 are strings representing the types of the variables and methods, respectively.
+public void METHOD_2 ( final boolean VAR_1 ) { VAR_2. METHOD_1 ( VAR_1 ) ; }
+public int METHOD_2 ( java.lang.String str ) { java.lang.String str1 = java.lang.String. METHOD_3 ( str ) ; java.lang.String str2 = java.lang.String. METHOD_4 ( str1 ) ; java.lang.String str3 = java.lang.String. METHOD_5 ( str2 ) ; return VAR_3 ; }
+public void METHOD_2 ( android.content.Intent VAR_1, int VAR_2 ) { android.content.Intent VAR_3 = new android.content.Intent ( VAR_1 ) ; VAR_3. putExtra ( VAR_4, VAR_5 ) ; }
+where TYPE_1, METHOD_1, VAR_1, VAR_2, VAR_3, VAR_4 are constants defined for you, and VAR_3 is a java.util.ArrayList.
+public void METHOD_2 ( final TYPE_2 VAR_2 ) { METHOD_3 ( VAR_2 ) ; METHOD_4 ( VAR_2 ) ; METHOD_5 ( VAR_2 ) ; }
+public java.lang.String METHOD_2 ( TYPE_1 VAR_1, TYPE_2 VAR_2 ) { return STRING_2 ; }
+public int METHOD_2 ( ) { if ( ( METHOD_3 ( ) ) == 0 ) { return 0 ; } return ( VAR_1. size ( ) ) + ( VAR_2 ) ; }
+where TYPE_1, TYPE_2, TYPE_3, VAR_1 are data types, and METHOD_1 is a method.
+where TYPE_1, METHOD_1, METHOD_2, METHOD_3, TYPE_2, VAR_1, VAR_2, VAR_3 are all strings.
+public class Solution {
+public void METHOD_2 ( java.lang.String STRING_1 ) { METHOD_3 ( STRING_1 ) ; }
+public boolean METHOD_2 ( java.lang.String VAR_2 ) { if ( VAR_2. length ( ) > VAR_1. length ( ) ) { return true ; } else { return false ; } }
+public void METHOD_2 ( ) { for ( int i = 0 ; i < ( VAR_1. size ( ) ) ; i ++ ) { VAR_1. get ( i ). METHOD_3 ( ) ; } }
+public float METHOD_2 ( long VAR_1, long VAR_2 ) { return ( ( ( float ) ( VAR_1 ) ) / ( 0.0F + VAR_2 ) ) * INT_2 ; }
+public java.lang.Object METHOD_2 ( java.lang.Integer VAR_1, java.lang.Integer size, java.lang.Long VAR_2 ) throws java.lang.Exception { return VAR_3. METHOD_2 ( VAR_2, VAR_1, size ) ; }
+where TYPE_1, TYPE_2, TYPE_3, TYPE_4, METHOD_1, METHOD_2, METHOD_3, VAR_1, VAR_2, VAR_3, VAR_4 are all strings.
+public void METHOD_2 ( int i ) { VAR_2. METHOD_3 ( 0 ) ; }
+public TYPE_2 METHOD_2 ( java.lang.String a, java.lang.String b, int c, java.lang.String d, java.lang.String e ) { return TYPE_2. METHOD_3 ( a, b, c, d, e ) ; }
+public class Solution {
+public void METHOD_2 ( ) { super. METHOD_2 ( ) ; TYPE_2. METHOD_4 ( VAR_3, STRING_2 ) ; VAR_4. METHOD_5 ( ) ; }
+public boolean METHOD_2 ( android.view.View VAR_1, TYPE_1 VAR_2, TYPE_2 VAR_3 ) { return false ; }
+// The bug is that the variable VAR_1 is not initialized.
+// The bug is that the method call is not properly indented.
+// The bug is that the super call is missing.
+private void METHOD_2 ( ) { if ( ( VAR_1. METHOD_3 ( ) ) && ( ( VAR_2 )!= null ) ) VAR_2. METHOD_4 ( VAR_3 ) ; else VAR_2. METHOD_4 ( VAR_4 ) ; }
+private static java.lang.String METHOD_2 ( ) { try { return VAR_1 class. METHOD_3 ( ). METHOD_4 ( ) ; } catch ( java.lang.Throwable VAR_2 ) { VAR_3. METHOD_4 ( STRING_1, VAR_2 ) ; return null ; } }
+// The bug is in the second line.
+private synchronized void METHOD_2 ( ) { VAR_3. METHOD_4 ( VAR_4 ) ; VAR_3. METHOD_5 ( VAR_5 ) ; }
+public void METHOD_2 ( int i ) { if ( i < VAR_4 ) { VAR_5 = i ; } else { VAR_6 = i ; } }
+public class Solution {

@@ -1,0 +1,95 @@
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+private void METHOD_2 ( android.content.Intent VAR_2 ) { android.content.Intent intent = new android.content.Intent ( this, VAR_2 ) ; METHOD_3 ( intent ) ; }
+public void METHOD_2 ( ) { for ( TYPE_2 VAR_2 : VAR_3 ) VAR_2. METHOD_1 ( ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+private static boolean METHOD_2 ( final byte status ) { return status == ( VAR_2 ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public char getColor ( ) throws java.io.IOException { VAR_1. METHOD_1 ( ( STRING_1 + "\n" ) ) ; java.lang.String response = VAR_2. METHOD_2 ( ) ; java.lang.System.out.println ( response ) ; return response. METHOD_3 ( 0 ) ; }
+public void METHOD_2 ( final java.lang.String... VAR_1 ) { if ( VAR_1!= null ) format. METHOD_3 ( ). METHOD_4 ( VAR_2, VAR_1 ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( TYPE_1 VAR_1 ) { super. METHOD_2 ( VAR_1 ) ; VAR_2. METHOD_2 ( VAR_1 ) ; VAR_3. METHOD_3 ( VAR_1 ) ; VAR_4. METHOD_4 ( VAR_1 ) ; VAR_5. METHOD_4 ( VAR_1 ) ; }
+private static native void METHOD_2 ( long set ) ;
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+private void METHOD_2 ( ) { android.content.Intent intent = new android.content.Intent ( this, VAR_2 class ) ; int index = TYPE_2. METHOD_3 ( ). METHOD_4 ( STRING_2, index ) ; METHOD_5 ( intent ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public int update ( java.lang.Object VAR_1 ) { VAR_2. METHOD_1 ( VAR_1 ) ; METHOD_2 ( ) ; try { return METHOD_3 ( VAR_2. METHOD_4 ( ) ). execute ( ) ; } finally { VAR_2. METHOD_5 ( ) ; } }
+public void METHOD_2 ( java.lang.String VAR_1, java.lang.Throwable VAR_2 ) { VAR_3. METHOD_4 ( ( STRING_1 + ( VAR_3. name ( ) ) ), VAR_1 ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public float op ( float VAR_1, float VAR_2 ) { return TYPE_1. METHOD_1 ( VAR_1, VAR_2 ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// The following code is a bit of a hack. The code is a bit of a hack, but it is a good idea to keep the code in a separate file.
+public void setId ( int id ) { VAR_1. id = id ; }
+public void METHOD_2 ( TYPE_1 VAR_1, TYPE_2 VAR_2 ) { if ( VAR_1 == null ) { TYPE_3. METHOD_2 ( VAR_3, ( STRING_1 + path ) ) ; METHOD_3 ( ) ; } else { METHOD_4 ( VAR_1. METHOD_5 ( ) ) ; } }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( ) throws java.io.IOException { TYPE_2. METHOD_2 ( VAR_1 ) ; this. VAR_1 = null ; this. VAR_2 = null ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( ) { super. METHOD_2 ( ) ; TYPE_1. i ( VAR_1, STRING_1 ) ; METHOD_3 ( ) ; TYPE_1. i ( VAR_1, STRING_2 ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public boolean METHOD_2 ( ) { return (! ( this. VAR_1. isEmpty ( ) ) ) || (! ( this. VAR_2. isEmpty ( ) ) ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public int METHOD_2 ( int VAR_1, int VAR_2 ) { return VAR_1 + VAR_2 ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void add ( TYPE_1 a, TYPE_2 b ) { a. add ( b ) ; }
+public java.lang.String METHOD_2 ( ) { switch ( METHOD_1 ( ) ) { case 1 : return null ; case INT_1 : return null ; case INT_2 : return getType ( ). toString ( ) ; default : return null ; } }
+public void METHOD_2 ( ) { super. METHOD_2 ( ) ; }
+public static boolean equals ( TYPE_1 VAR_1, TYPE_2 VAR_2 ) { return ( VAR_1. METHOD_1 ( VAR_2 ) ) && ( VAR_1. toString ( ). equals ( VAR_2. toString ( ) ) ) ; }
+public boolean METHOD_2 ( android.content.Intent intent ) { int VAR_1 = VAR_2. METHOD_3 ( ) ; if ( VAR_1 == ( VAR_4 ) ) { VAR_5. METHOD_4 ( ) ; VAR_6. METHOD_5 ( ) ; return true ; } return false ; }
+private static double METHOD_2 ( double p ) { double sum = 0 ; for ( double i : p ) { sum += i * ( TYPE_2. METHOD_3 ( i ) ) ; } return sum ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public int METHOD_2 ( ) { java.lang.String str = java.lang.String. METHOD_3 ( ( ( TYPE_1 ) ( VAR_1 ) ). getText ( ) ) ; METHOD_4 ( str ) ; return VAR_2 ; }
+public void METHOD_2 ( android.content.Intent VAR_1, int VAR_2 ) {
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+protected java.lang.Object METHOD_2 ( java.lang.Object value ) { return value ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( java.lang.String VAR_2 ) { if ( TYPE_2. METHOD_3 ( VAR_2 ) ) { return ; } this. VAR_2 = VAR_2 ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public float METHOD_2 ( long VAR_1, long VAR_2 ) { return ( ( ( float ) ( VAR_1 ) ) / ( 0.0F + VAR_2 ) ) * INT_2 ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( int i ) { VAR_2. setInt ( i ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( TYPE_2 VAR_2 ) { if ( VAR_3 ) { throw new TYPE_3 ( ) ; } }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( ) throws TYPE_2 { TYPE_3. assertNotNull ( VAR_1. METHOD_4 ( ) ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( TYPE_2 VAR_2 ) { super. METHOD_2 ( VAR_2 ) ; TYPE_1 VAR_1 = ( ( TYPE_1 ) ( VAR_2. METHOD_1 ( VAR_3 ) ) ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+private static java.lang.String METHOD_2 ( ) { try { return VAR_2 class. METHOD_3 ( ). METHOD_4 ( ) ; } catch ( java.lang.Throwable VAR_3 ) { VAR_4. METHOD_5 ( STRING_2, VAR_3 ) ; return null ; } }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:

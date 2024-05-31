@@ -1,0 +1,3 @@
+public void deserialize(final LittleEndianInput in) {field_1_vcenter = in.readShort();}
+public void addAll(int srcDirIdx, int srcBlkIdx, int srcBlkSize) {if (srcBlkSize == 0)return;int srcDirIdx = 0;for (; srcDirIdx < srcBlkIdx; srcDirIdx++)addAll(src.directory[srcDirIdx], 0, srcBlkSize);if (srcBlkIdx!= 0)addAll(src.tailBlock, 0, srcBlkIdx);}
+public void writeShort(short s) {if (upto == blockSize) {if (currentBlock!= null) {addBlock(currentBlock);}currentBlock = new short[blockSize];upto = 0;}currentBlock[upto++] = s;}

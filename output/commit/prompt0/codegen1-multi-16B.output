@@ -1,0 +1,95 @@
+changed the line "buf.writeBytes(request.getMethod().toString().getBytes(CharsetUtil.US_ASCII))" to "encodeAscii(request.getMethod().toString(), buf)"
+changed the line that was commented out
+changed "new Method" to "new Method(" + methodName + ", " + returnType + ", " + parameterTypes + ")"
+added the import statement for the new class
+the first line is the diff header
+added a call to dispose() in DialogWrapperPeerImpl.dispose()
+changed the import from Http11AprProtocol to AjpAprProtocol
+changed "this.channel" to "this.channel"
+the first line is the diff header
+the first line is a header
+changed to private
+changed the return type of the buildLayout method from RotateLayout to RotateLayout
+removed the if statement that was checking if the container existed
+the first line is a comment
+changed class name
+the diff is applied to the current version of the file,
+
+changed "if (model.containsNonNullValue(property))" to "if (model.hasTransitory(property.getName()))"
+removed the line that called recycleCachedViews()
+the first line is the same
+changed the type of the variable "initiator" from int to a constant
+changed the logic around the title
+changed the line "host = svc.getHost();" to "host = svc.getHost();"
+added Logger class
+changed the order of the if statements
+changed the name of the class from ChangeBaseParserWeight to ChangeBaseOptions
+removed the @Seed annotation
+the diff is about the addition of the new line
+removed the deprecation warning
+the diff is about the "if (_stopping!=null)" line
+added a method showBreakpointsDialog
+the first line was added
+the first line was changed from "public abstract class AbstractEntityManagerImpl implements HibernateEntityManage" to "public class AbstractEntityManagerImpl implements HibernateEntityManage"
+changed the visibility of the map button to visible
+removed the import of Roster
+56,8 +56,8:  StringBuilder pageBldr = new StringBuilder("<div class=container-fluid'><div class='row-fluid'><div class='span2' style='text-align:right;overflow-x:scroll;'><h5>Columns</h5>");
+changed type of parameter "symbol" from Symbol to Symbol
+changed to use SVNPathUtil.tail()
+changed the order of the lines in the diff
+getter should be allowed
+the diff is a change to the url.setText line
+the first line is the diff header
+added ClassLoaderUtils.class
+changed the package name
+changed the order of the if/else blocks
+changed "BinaryBlockWriter" to "BinaryBlockWriter"
+removed the if statement that checks for port being in bounds
+the first time we run a diff, we need to create the index
+the first line is the diff header
+the "withProtection" method was added
+changed the return type from Predicate to Predicate<D>
+changed the method signature to take a timeout parameter
+removed the "name" parameter
+the original method is commented out
+the first line was added
+the first time, the file is found, the md5 is computed, the statements are generated, the md5 is computed again
+
+the first line is the same
+the diff is about the package name of the home activity
+the first line is a comment
+changed the diff to use the new ClusterManager class
+changed the order of the if/then statements
+removed the "if" statement that was checking for the existence of the
+changed type of EXTRA_SKIP_UNINSTALL_CONFIRMATION from boolean to String
+the first line is the same
+removed the deprecated method
+changed the name of the variable
+the diff is about the following lines:
+the superclass method was removed
+changed class name
+the first line is a copy of the original
+changed "this.from = block.getRelative(face.getModX(), face.getModY(), face.getModZ());" to "this.from = block.getRelative(face.getModX(), face.getModY(), face.getModZ());"
+the first line was added
+
+changed type of parameter "moduleClass" from "Class<T>" to "Class<? extends WXModule>
+changed the type of store from HashMap to ConcurrentMap
+changed camelContext to camelContext
+the first line is the diff header
+changed package name
+the first line is the diff header
+removed the @Override annotation
+the diff is a bunch of additions to the end of the file
+the first time we use LuceneTestCase, which has some initialization that
+the first line is removed,
+removed the if statement that was checking if the component was already focused
+the first line was added
+added the permissionAsked variable
+changed the setAvatar method to take a byte[] and a String
+added super.tearDown()
+added a new import
+the first line is the same
+the method name is changed
+57,8 +57,7 is the diff between the lines that start with "//~ Constructors"
+changed the if statement to return false
+changed the return type of isValidBlockType() from boolean to int

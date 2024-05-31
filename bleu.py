@@ -6,7 +6,8 @@
 #  - Abstracted notation of tokenization to function tokenize_line
 #  - Clean some spacing
 #  - Removed rounding from _bleu (round(100 * bleu_score,2) ---> bleu_score)
-
+#  - Passed smooth through from _bleu
+#  - Add lower parameter to _bleu
 
 # Copyright 2017 Google Inc. All Rights Reserved.
 #
@@ -56,7 +57,7 @@ def _get_ngrams(segment, max_order):
 
 
 def compute_bleu(reference_corpus, translation_corpus, max_order=4,
-                 smooth=False):
+                 smooth=False, lower=False):
   """Computes BLEU score of translated segments against one or more references.
 
   Args:
@@ -121,15 +122,16 @@ def compute_bleu(reference_corpus, translation_corpus, max_order=4,
 
   return (bleu, precisions, bp, ratio, translation_length, reference_length)
 
-def tokenize_line(line):
+def tokenize_line(line, lower=False):
+    if lower:
+        line = line.lower()
     return line.strip().split()
 
-def _bleu(reference_lines, translation_lines, subword_option=None):
+def _bleu(reference_lines, translation_lines, subword_option=None, smooth=True, lower=False):
     max_order = 4
-    smooth = True
     
     reference_text = [
-        tokenize_line(line)
+        tokenize_line(line, lower=lower)
         for line in reference_lines
     ]
     per_segment_references = [
@@ -138,7 +140,7 @@ def _bleu(reference_lines, translation_lines, subword_option=None):
     ]
     
     translations = [
-        tokenize_line(line)
+        tokenize_line(line, lower=lower)
         for line in translation_lines
     ]
     
