@@ -1,0 +1,42 @@
+public int serialize(int offset, byte data[]) {
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+public void setObjectId(ObjectId objectId) {this.objectId = objectId;}
+private DeleteDomainEntryResult executeDeleteDomainEntry(DeleteDomainEntryRequest request) {
+public void close() throws IOException {
+// This code is written in Java. Reproduce the same exact code in C#.
+public POIFSFileSystem(boolean create) {this(create, POIFSConstants.SMALLER_BIG_BLOCK_SIZE);}
+public void init(int address, int length) {slice = pool.buffers[address >> ByteBlockPool.BYTE_BLOCK_SHIFT];assert slice!= null;upto = address & ByteBlockPool.BYTE_BLOCK_MASK;offset0 = address;assert upto + length <= slice.length;}
+public SubmoduleAddCommand setBranch(String branch) {this.branch = branch;return this;}
+private ListIngestionsResult executeListIngestions(ListIngestionsRequest listIngestionsRequest) {
+public void ReInit(CharStream stream)
+private GetShardIteratorResult executeGetShardIterator(GetShardIteratorRequest getShardIteratorRequest) {
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+public int first() {
+public void print(boolean b) {write(b? "true" : "false");}
+}
+public V previous() {return super.previousEntry().getValue();}
+public final void readBytes(byte[] b, int offset, int len) throws IOException {readBytes(b, offset, len, true);}
+@Override
+}
+private ModifyCacheSubnetGroupRequest beforeClientExecution(ModifyCacheSubnetGroupRequest request) {
+public String getLanguage() {return language;}
+private DeleteDocumentationVersionResult executeDeleteDocumentationVersion(DeleteDocumentationVersionRequest deleteDocumentationVersionRequest) {
+
+    try {
+
+        DeleteDocumentationVersionResult result = client.deleteDocumentationVersion(deleteDocumentationVersionRequest);
+
+        // Client code logic to handle the result.
+public int hashCode() {int hash = 0;for (int i = length - 1; i >= 0; i--) {hash = hash * 31 + components[i].hashCode();}return hash;}
+public static GetInstanceAccessDetailsResult executeGetInstanceAccessDetails(GetInstanceAccessDetailsRequest request) {
+// This code is written in Java. Reproduce the same exact code in C#.
+public String getSheetName(int sheetIndex, int workbookIndex) {return getBoundSheetRec(sheetIndex, workbookIndex).getSheetname();}
+public static GetDashboardResult executeGetDashboard(GetDashboardRequest request) {
+private AssociateSigninDelegateGroupsWithAccountRequest beforeClientExecution(AssociateSigninDelegateGroupsWithAccountRequest request) {
+// This code is written in Java. Reproduce the same exact code in C#.
+public static void main(String[] args) {
+// This code is written in Java. Reproduce the same exact code in C#.

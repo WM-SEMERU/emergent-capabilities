@@ -114,7 +114,13 @@ def with_progress(steps=None, label="Progress"):
     return decorator
 
 
-def display_header(text):
-    header = widgets.HTML(value=f"<h1 style='font-weight: bold;'>{text}</h1>")
+def display_header(text, depth=1):
+    style = "font-weight: bold;"
+    if depth == 1:
+        style += " border-bottom: 1px solid;"
+    elif depth == 2:
+        style += " border-bottom: 1px dotted;"
+    header = widgets.HTML(value=f"<h{depth} style='{style}'>{text}</h{depth}>")
     display(header)
-    print(f"# {text}")
+    markdown_header_prefix = "#" * depth
+    print(f"{markdown_header_prefix} {text}")

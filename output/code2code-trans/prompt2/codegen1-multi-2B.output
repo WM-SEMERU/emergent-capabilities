@@ -1,0 +1,95 @@
+@Override
+// This code is written in Java. Reproduce the same exact code in C#.
+public void writeBytes(byte[] bytes) {for (int i = 0; i < bytes.length; i++) {writeByte(bytes[i]);}}
+public void setObjectId(ObjectId objectId) {this.objectId = objectId;}
+}
+public void setDictionary(BytesRefBuilder[] termsDictOffsets) {
+public final String getMessage() {return getFullMessage().substring(0, getMessageLength());}
+public POIFSFileSystem(boolean create) {this();if(create)create();}
+public void init(int address, int length) {slice = pool.buffers[address >> ByteBlockPool.BYTE_BLOCK_SHIFT];assert slice!= null;upto = address & ByteBlockPool.BYTE_BLOCK_MASK;offset0 = address;assert upto + length <= slice.length;}
+public String getPath() {return path;}
+}
+public QueryParserTokenManager(CharStream stream){
+}
+public ModifyStrategyRequest(String requestBody) throws APIException {
+public int read() throws IOException {synchronized (lock) {if (in == null) {throw new IOException("InputStreamReader is closed");}try {if (bytes.hasRemaining()) {return bytes.get() & 0xFF;}return in.read();} catch (IOException e) {return -1;}}}
+public void setOptRecord(EscherOptRecord optRecord) {_optRecord = optRecord;}
+public synchronized void write(byte[] buffer, int offset, int length) {if (buffer == null) {throw new NullPointerException("buffer == null");}Arrays.checkOffsetAndCount(buffer.length, offset, length);if (length == 0) {return;}int copylen = count + length - pos < length? count + length - pos : length;for (int i = 0; i < copylen; i++) {this.buffer.append((char) buffer[offset + i]);}pos += copylen;if (pos > count) {count = pos;}}
+public int next() {
+public void print(int i) {write(String.valueOf(i));}
+public NotImplementedFunctionException(String functionName, NotImplementedException cause, String message) {super(functionName, cause, message);this.functionName = functionName;}
+public V previous() {return super.previousEntry().getValue();}
+public final void readBytes(byte[] b) throws IOException {readBytes(b, 0, b.length);}
+}
+public void set(int index, T element) {throw new UnsupportedOperationException();}
+}
+public String getLanguage() {return language;}
+@SdkInternalApi
+public int hashCode() {
+}
+public HSSFChildAnchor getAnchor() {return anchor;}
+public int getBoundSheetIndex(int sheetIndex) {return getBoundSheetRec(sheetIndex).getBoundSheetIndex();}
+}
+@Override
+public void addMultipleBlanks(MulBlankRecord mbr, int startRow, int endRow) {for (int j = 0; j < mbr.getNumColumns(); j++) {BlankRecord br = new BlankRecord();br.setColumn(( short ) (j + mbr.getFirstColumn()));br.setRow(startRow);br.setXFIndex(mbr.getXFAt(j));insertCell(br);}}
+public static String unquote(String string) {StringBuilder sb = new StringBuilder();sb.append("\\Q");int apos = 0;int k;while ((k = string.indexOf("\\\\E\\Q", apos)) >= 0) {sb.append(string.substring(apos, k + 2)).append(string.substring(k + 2, k + 4));apos = k + 4;}return sb.append(string.substring(apos)).append("\\E").toString();}
+public ByteBuffer putInt(int index, int value) {throw new ReadOnlyBufferException();}
+public ArrayPtg(int nColumns, int nRows) {_nColumns = (short) nColumns;_nRows = (short) nRows;_arrayValues = new Object[nColumns * nRows];_reserved0Int = 0;_reserved1Short = 0;_reserved2Byte = 0;}
+@Override
+public String getValueAsString() {
+public String toString() {return "ToChildBlockJoinQuery ("+parentQuery.toString()+")";}
+public final void decRef() {
+}
+public int getNextXBATChainOffset(int block) {return getXBATEntriesPerBlock() * LittleEndianConsts.INT_SIZE + block * getXBATEntriesPerBlock() * LittleEndianConsts.INT_SIZE;}
+// This code is written in Java. Reproduce the same exact code in C#.
+public String toString(final int start, final int end){final StringBuilder b = new StringBuilder();final int          l = length();b.append(File.separatorChar);for (int i = start; i < end; i++){b.append(getComponent(i));if (i < end - 1){b.append(File.separatorChar);}}return b.toString();}
+public InstanceProfileCredentialsProvider withRoleName(String roleName) {this.roleName = roleName;return this;}
+public void setProgressMonitor(ProgressMonitor pm, int max) {
+public boolean first() {
+public E next() {if (iterator.nextIndex() < end) {return iterator.next();}throw new NoSuchElementException();}
+public String getOldPrefix() {return this.oldPrefix;}
+public int indexOfValue(int value, int startIndex) {for (int i = startIndex; i < mSize; i++)if (mValues[i] == value)return i;return -1;}
+// This code is written in Java. Reproduce the same exact code in C#.
+}
+public void setPosition(long pos, int blockIndex) {currentBlockIndex = blockIndex;currentBlock = blocks[currentBlockIndex];currentBlockUpto = (int) (pos & blockMask);}
+public int available() {return (int) (end - ptr);}
+public String getBootstrapActionConfigId() {
+public int getRecordSize() {return 8 + (field_6_author.length() * 2) + (field_7_padding == null? 0 : field_7_padding.intValue());}
+// This code is written in Java. Reproduce the same exact code in C#.
+public boolean addAll(Collection<? extends E> collection) {return addAllImpl(collection);}
+public ConfigSnapshot unsetSection(ConfigSnapshot src, String section, String subsection) {
+public final String getTagValue() {return tagValue;}
+public void addSubRecords(int index, Collection<SubRecord> elements) {subrecords.addAll(index, elements);}
+public boolean removeAll(Collection<?> c) {synchronized (mutex) {return delegate().removeAll(c);}}
+private final int maxCodeLength;
+public long inCoreLength() {
+public boolean getValue() {return value;}
+public ContentSource getOldSource() {return oldSource;}
+public void set(int i, int value) {if (count <= i)throw new ArrayIndexOutOfBoundsException(i);entries[i] = value;}
+public CreateRepoRequest(String json) throws APIException {
+public void setDeltaBaseAsOffset(boolean deltaBaseAsOffset) {this.deltaBaseAsOffset = deltaBaseAsOffset;}
+}
+}
+}
+public int getEndIndex() {return end;}
+public static final WeightedTerm[] getTerms(Query query, boolean useWeights){
+public ByteBuffer put(byte x) {throw new ReadOnlyBufferException();}
+
+public String getPath() {return path;}
+}
+public String getAccessKey() {return this.accessKey;}
+}
+@Override
+}
+public String getVaultName() {return vaultName;}
+public int getRecordCount(){return escherRecords.size();}
+}
+}
+public void setTrackingRefUpdate(TrackingRefUpdate trackingRefUpdate) {this.trackingRefUpdate = trackingRefUpdate;}
+public void print(char c) {print(String.valueOf(c));}
+public void setChild(QueryNode child) {getChildren().set(0, child);}
+public boolean accept(File file) {
+public short    getFormatFlags() { return field_1_formatFlags; }
+public GetThumbnailRequest(String apiKey) {super("CloudPhoto", "2017-07-11", "GetThumbnail", "cloudphoto");setProtocol(ProtocolType.HTTPS);setApiKey(apiKey);}
+@Override
+}

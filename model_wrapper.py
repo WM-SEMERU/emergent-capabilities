@@ -8,6 +8,7 @@ from math import exp
 from enum import Enum
 
 class ModelFamily:
+    # fun fact: CodeGen.nl came first; CodeGen.multi was built atop that, and mono atop multi 
     class CodeGen1:
         mono = {}
         multi = {}
@@ -20,6 +21,29 @@ class ModelFamily:
         multi = "Salesforce/codegen25-7b-multi"
         instruct = "Salesforce/codegen25-7b-instruct"
 
+    @staticmethod
+    def name_for(family):
+        if family == ModelFamily.CodeGen1.mono:
+            return "codegen1-mono"
+        if family == ModelFamily.CodeGen1.multi:
+            return "codegen1-multi"
+        if family == ModelFamily.CodeGen1.nl:
+            return "codegen1-multi"
+        if family == ModelFamily.CodeGen2:
+            return "codegen2"
+        # CodeGen2.5 is "weird" in that its the only model here with only one model size per kind (i.e. 7B)
+        if family == ModelFamily.CodeGen2p5:
+            return "codegen2p5"
+        if family == ModelFamily.CodeGen2p5.mono:
+            return "codegen2p5-mono"
+        if family == ModelFamily.CodeGen2p5.multi:
+            return "codegen2p5-multi"
+        if family == ModelFamily.CodeGen2p5.instruct:
+            return "codegen2p5-instruct"
+
+        assert False, f"Cannot provide nice name for {family}"
+
+# these model sizes are what huggingface uses, but are actually (perhaps unsurprisingly) rounded from their true values
 for size in [ "350M", "2B", "6B", "16B" ]:
     for label in [ "mono", "multi", "nl" ]:
         model_name = f"Salesforce/codegen-{size}-{label}"
@@ -116,51 +140,7 @@ class Model:
     
     @staticmethod
     def prob_from_logit(logit):
-        assert false, "Do not use this function"
-
-    
-    @staticmethod
-    def test_battery(family, family_name, battery, prompt, output_dir, meta_count=None, *args, **kwargs):
-        # e.g. family=ModelFamily.CodeGen1.multi
-        for key, model_name in family.items():
-            display_header(f"Loading {key} ({model_name})")
-            torch.cuda.empty_cache()
-            model = Model(model_name)
-            model.configure(time=True)
-            model.verbose = False
-
-            @with_progress(len(battery))
-            def iterate(output_file, *, step=None):
-                test_case = battery[step]
-                specific_prompt = prompt.format(prompt=test_case)
-                output = model.generate_until(specific_prompt, stops=["\n"], **kwargs)
-                
-                if output is None:
-                    print("Warning: Model returned no output (prompt may have been too large)")
-                    decoded = ""
-                else:
-                    decoded = model.decode(output).strip()
-                
-                output_file.write(decoded + "\n")
-        
-                del model.inputs, output
-        
-            for i in range(meta_count or 1):
-                if meta_count is None:
-                    base_name = f"{family_name}-{key}.output"
-                else:
-                    base_name = f"{family_name}-{key}-mc{i}.output"
-                output_path = os.path.join(output_dir, base_name)
-                print(f"Opening {output_path}...")
-                with open(output_path, "a+") as output_file: 
-                    # iterate(output_file)
-                    output_file.seek(0)
-                    to_skip = len(output_file.readlines())
-                    if to_skip > 0:
-                        print(f"{to_skip} entries found already, skipping that many...")
-                    iterate(output_file, skip=to_skip)
-        
-            model.free()
+        assert False, "Do not use this function"
     
     def __init__(self, name, cache_dir=None, device_name=None, verbose=True, softmax=None):
         self.verbose = verbose

@@ -1,0 +1,95 @@
+public void serialize(LittleEndianOutput out, int version) {
+// This code is written in Java. Reproduce the same exact code in C#.
+public void writeBytes(byte[] b, int offset, int len) {
+public void setObjectId(ObjectId objectId) {this.objectId = objectId;}
+// endregion
+}
+public final String getMessage() {byte[] raw = buffer;int msgB = RawParseUtils.tagMessage(raw, 0);if (msgB < 0) {return ""; }return RawParseUtils.decode(guessEncoding(), raw, msgB, raw.length);}
+public POIFSFileSystem(boolean bigBlockSize) {this(bigBlockSize, true);_header.setBATCount(1);_header.setBATArray(new int[]{1});BATBlock bb = BATBlock.createEmptyBATBlock(bigBlockSize, false);bb.setOurBlockIndex(1);_bat_blocks.add(bb);setNextBlock(0, POIFSConstants.END_OF_CHAIN);setNextBlock(1, POIFSConstants.FAT_SECTOR_BLOCK);_property_table.setStartBlock(0);}
+public int upto() {return upto;}
+public SubmoduleAddCommand setName(String name) {this.name = name;return this;}
+
+public static final int _tokenSet_0_data_[] = {
+
+public ModifyStrategyRequest(String id,String name,String description,String status,String type,String strategy,String strategyType,String strategyId,String strategyName,String strategyTypeName,String strategyStatus,String strategyStatusName,String strategyStatusValue,String strategyStatusValueName,String strategyStatusValueValue,String strategyStatusValueValueName,String strategyStatusValueValueValue,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValueValueValueName,String strategyStatusValue
+}
+public void setOptRecord(EscherOptRecord optRecord) {_optRecord = optRecord;}
+}
+public int next() {
+// This code is written in Java. Reproduce the same exact code in C#.
+public String getFunctionName() {return functionName;}
+// This code is written in Java. Reproduce the same exact code in C#.
+public final void readBytes(byte[] b) throws IOException {readBytes(b, 0, b.length, false);}
+private TagQueueResult executeTagQueue(TagQueueRequest tagQueueRequest) {
+// This code is written in Java. Reproduce the same exact code in C#.
+@Override
+public String getParams() {return language + "," + country + "," + variant;}
+@Override
+// This code is written in Java. Reproduce the same exact code in C#.
+// endregion
+public HSSFPolygon createPolygon(HSSFChildAnchor anchor, HSSFAnchor.AnchorType type) {HSSFPolygon shape = new HSSFPolygon(this, anchor, type);shape.setParent(this);shape.setAnchor(anchor);shapes.add(shape);onCreate(shape);return shape;}
+// This code is written in Java. Reproduce the same exact code in C#.
+
+@Override
+// This code is written in Java. Reproduce the same exact code in C#.
+
+public ByteBuffer putInt(int index, int value) {throw new ReadOnlyBufferException();}
+public Object[][] getValues2d() {return _arrayValues;}
+private GetIceServerConfigResult executeGetIceServerConfig(GetIceServerConfigRequest request) {
+}
+}
+public final void decRef() {
+
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+public static void main(String[] args){new File(".").listFiles();}
+public InstanceProfileCredentialsProvider withRoleName(String roleName) {this.roleName = roleName;return this;}
+// This code is written in Java. Reproduce the same exact code in C#.
+public boolean first() {return ptr == 0;}
+// This code is written in Java. Reproduce the same exact code in C#.
+public void setNewPrefix(String newPrefix) {this.newPrefix = newPrefix;}
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+
+public int read(byte[] b, int offset, int len) {
+public int available() {return (int) (end - ptr);}
+// Constructor for JSON support.
+public void setRow(short field_1_row) {this.field_1_row=field_1_row;}
+// This code is written in Java. Reproduce the same exact code in C#.
+public boolean addAll(Collection<? extends E> c) {return addAllImpl(c);}
+// This code is written in Java. Reproduce the same exact code in C#.
+public final String getTagName(String namespace) {
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+}
+// This code is written in Java. Reproduce the same exact code in C#.
+public boolean getValue() {return value;}
+public ContentSource getOldSource() {return oldSource;}
+// This code is written in Java. Reproduce the same exact code in C#.
+}
+// This code is written in Java. Reproduce the same exact code in C#.
+}
+
+
+public int getEndIndex() {return end;}
+public static final WeightedTerm[] getTerms(Query query,boolean useStopWords){
+public ByteBuffer put(byte[] src, int offset, int length) {throw new ReadOnlyBufferException();}
+}
+}
+@SdkInternalApi
+// This code is written in Java. Reproduce the same exact code in C#.
+@Override
+
+@Override
+public DescribeJobRequest withVaultName(String vaultName) {setVaultName(vaultName); return this;}
+public int getEscherRecordCount(){return escherRecords.size();}
+private GetApisResult executeGetApis(GetApisRequest request) {
+@Override
+// This code is written in Java. Reproduce the same exact code in C#.
+public void print(char c) {print(String.valueOf(c));}
+public QueryNode getChild(int index) {return getChildren().get(index);}
+public boolean accept(File pathname) {
+public void serialize(RecordOutputStream out) {
+public GetThumbnailRequest(String name, String version) {super(name, version, "GetThumbnail", "cloudphoto");setProtocol(ProtocolType.HTTPS);}
+@SdkInternalApi
+@Override

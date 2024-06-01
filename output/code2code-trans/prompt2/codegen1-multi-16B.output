@@ -1,0 +1,111 @@
+public int serialize(int offset, byte data[]) {
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+public void setObjectId(ObjectId objectId) {this.objectId = objectId;}
+private DeleteDomainEntryResult executeDeleteDomainEntry(DeleteDomainEntryRequest request) {
+public void close() throws IOException {
+// This code is written in Java. Reproduce the same exact code in C#.
+public POIFSFileSystem(boolean create) {this(create, POIFSConstants.SMALLER_BIG_BLOCK_SIZE);}
+public void init(int address, int length) {slice = pool.buffers[address >> ByteBlockPool.BYTE_BLOCK_SHIFT];assert slice!= null;upto = address & ByteBlockPool.BYTE_BLOCK_MASK;offset0 = address;assert upto + length <= slice.length;}
+public SubmoduleAddCommand setBranch(String branch) {this.branch = branch;return this;}
+private ListIngestionsResult executeListIngestions(ListIngestionsRequest listIngestionsRequest) {
+public void ReInit(CharStream stream)
+private GetShardIteratorResult executeGetShardIterator(GetShardIteratorRequest getShardIteratorRequest) {
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+public int first() {
+public void print(boolean b) {write(b? "true" : "false");}
+}
+public V previous() {return super.previousEntry().getValue();}
+public final void readBytes(byte[] b, int offset, int len) throws IOException {readBytes(b, offset, len, true);}
+@Override
+}
+private ModifyCacheSubnetGroupRequest beforeClientExecution(ModifyCacheSubnetGroupRequest request) {
+public String getLanguage() {return language;}
+private DeleteDocumentationVersionResult executeDeleteDocumentationVersion(DeleteDocumentationVersionRequest deleteDocumentationVersionRequest) {
+
+    try {
+
+        DeleteDocumentationVersionResult result = client.deleteDocumentationVersion(deleteDocumentationVersionRequest);
+
+        // Client code logic to handle the result.
+public int hashCode() {int hash = 0;for (int i = length - 1; i >= 0; i--) {hash = hash * 31 + components[i].hashCode();}return hash;}
+public static GetInstanceAccessDetailsResult executeGetInstanceAccessDetails(GetInstanceAccessDetailsRequest request) {
+// This code is written in Java. Reproduce the same exact code in C#.
+public String getSheetName(int sheetIndex, int workbookIndex) {return getBoundSheetRec(sheetIndex, workbookIndex).getSheetname();}
+public static GetDashboardResult executeGetDashboard(GetDashboardRequest request) {
+private AssociateSigninDelegateGroupsWithAccountRequest beforeClientExecution(AssociateSigninDelegateGroupsWithAccountRequest request) {
+// This code is written in Java. Reproduce the same exact code in C#.
+public static void main(String[] args) {
+// This code is written in Java. Reproduce the same exact code in C#.
+public int getNextXBATChainOffset(int offset) {return offset + getNextXBATChainOffset();}
+// This code is written in Java. Reproduce the same exact code in C#.
+public String toString(String separator){final StringBuilder b = new StringBuilder();final int          l = length();b.append(File.separatorChar);for (int i = 0; i < l; i++){b.append(getComponent(i));if (i < l - 1){b.append(separator);}}return b.toString();}
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+public String getNewSuffix() {return this.newSuffix;}
+public int indexOfValue(int value, int startIndex) {for (int i = startIndex; i < mSize; i++)if (mValues[i] == value)return i;return -1;}
+// This code is written in Java. Reproduce the same exact code in C#.
+public static GetGatewayResponsesResult executeGetGatewayResponses(GetGatewayResponsesRequest request) {
+public void setStart(long pos) {start = pos;}
+// This code is written in Java. Reproduce the same exact code in C#.
+public BootstrapActionDetail() { }
+public int serialize(int offset, byte [] data) {
+public int lastIndexOf(String string, int start) {
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+public final String getTagName() {return tagName;}
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+public void setMaxCodeLength(int maxCodeLength) {
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+public Pair(ContentSource oldSource, ContentSource newSource, int oldIndex, int newIndex) {this.oldSource = oldSource;this.newSource = newSource;this.oldIndex = oldIndex;this.newIndex = newIndex;}
+public void set(int i, int value) {if (count <= i)throw new ArrayIndexOutOfBoundsException(i);entries[i] = value;}
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+// This code is written in Java. Reproduce the same exact code in C#.
+private MergeShardsResult executeMergeShards(MergeShardsRequest mergeShardsRequest) {
+private AllocateHostedConnectionResult executeAllocateHostedConnection(AllocateHostedConnectionRequest allocateHostedConnectionRequest) {
+
+    // TODO: Write your own code here.
+public int getEndIndex() {return end;}
+public static final WeightedTerm[] getTerms(Query query,boolean includeSpanQueryTerms){
+public ByteBuffer duplicate() {throw new ReadOnlyBufferException();}
+}
+
+private DescribeNotebookInstanceLifecycleConfigResult executeDescribeNotebookInstanceLifecycleConfig(DescribeNotebookInstanceLifecycleConfigRequest describeNotebookInstanceLifecycleConfigRequest) {
+
+    String uri = "https://sagemaker-api-endpoint.execute-api.us-west-2.amazonaws.com/prod/describeNotebookInstanceLifecycleConfig";
+// This code is written in Java. Reproduce the same exact code in C#.
+private CreateVpnConnectionResult executeCreateVpnConnection(CreateVpnConnectionRequest createVpnConnectionRequest) {
+
+    try {
+private DescribeVoicesResult executeDescribeVoices(DescribeVoicesRequest describeVoicesRequest) {
+private ListMonitoringExecutionsResult executeListMonitoringExecutions(ListMonitoringExecutionsRequest listMonitoringExecutionsRequest) {
+
+    // TODO: Fill this with the necessary business logic for listing monitoring executions.
+// This code is written in Java. Reproduce the same exact code in C#.
+public EscherRecord getEscherRecord(int index, int recordId){return escherRecords.get(index);}
+static GetApisResult executeGetApis(GetApisRequest request) {
+private DeleteSmsChannelResult executeDeleteSmsChannel(DeleteSmsChannelRequest deleteSmsChannelRequest) {
+
+    // Create a new client.
+// This code is written in Java. Reproduce the same exact code in C#.
+public void print(char c) {print(String.valueOf(c));}
+public QueryNode getParent() {return getParents().get(0);}
+public boolean shouldBeIgnored(String path) {
+public String toString() {
+public String getAccessToken() {return accessToken;}
+private DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest describeTransitGatewayVpcAttachmentsRequest) {
+
+    ExecutionContext executionContext = createExecutionContext(describeTransitGatewayVpcAttachmentsRequest);
+private static PutVoiceConnectorStreamingConfigurationResult executePutVoiceConnectorStreamingConfiguration(PutVoiceConnectorStreamingConfigurationRequest putVoiceConnectorStreamingConfigurationRequest) {
+
+    String uri = "https://voiceconnectorstreaming.twilio.com/v1/Voice/{VoiceConnectorId}/StreamingConfiguration";
+
+    // For each of the parameters, check that the C# version matches the Java version
