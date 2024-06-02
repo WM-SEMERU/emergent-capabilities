@@ -93,3 +93,8 @@ the method name is changed
 57,8 +57,7 is the diff between the lines that start with "//~ Constructors"
 changed the if statement to return false
 changed the return type of isValidBlockType() from boolean to int
+added the line "Note that compare operations will not work if salted-SHA (SSHA) passwords are used, as it is not possible to"
+remove the thresholds from the train and valid AUC results to keep output JSON small
+
+added a line
+

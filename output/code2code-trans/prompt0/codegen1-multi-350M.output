@@ -93,3 +93,8 @@ public AreaRecord(int field_1_formatFlags) {this.field_1_formatFlags            
 public GetThumbnailRequest(String photoId, String thumbnailId, String protocol) {super(photoId, thumbnailId, "GetThumbnail", "cloudphoto");setProtocol(protocol);}
 //
 // src/main/java/com/microsoft/azure/iothub/messaging/v1/PutVoiceConnectorStreamingConfigurationResult.java
+public OrdRange getOrdRange(String dim, String ord) {return prefixToOrdRange.get(dim, ord);}
+public String toString(String s) {String symbol = "";if (startIndex >= 0 && startIndex < getInputStream().size()) {symbol = getInputStream().getText(Interval.of(startIndex,startIndex));symbol = Utils.escapeWhitespace(symbol, false);}return String.format(Locale.getDefault(), "%s('%s')", LexerNoViableAltException.class.getSimpleName(), symbol);}
+public E peekFirst() {return peekFirstImpl();}
+//
+public NumberFormatIndexRecord copy() {

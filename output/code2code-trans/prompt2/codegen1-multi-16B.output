@@ -25,12 +25,6 @@ public final void readBytes(byte[] b, int offset, int len) throws IOException {r
 private ModifyCacheSubnetGroupRequest beforeClientExecution(ModifyCacheSubnetGroupRequest request) {
 public String getLanguage() {return language;}
 private DeleteDocumentationVersionResult executeDeleteDocumentationVersion(DeleteDocumentationVersionRequest deleteDocumentationVersionRequest) {
-
-    try {
-
-        DeleteDocumentationVersionResult result = client.deleteDocumentationVersion(deleteDocumentationVersionRequest);
-
-        // Client code logic to handle the result.
 public int hashCode() {int hash = 0;for (int i = length - 1; i >= 0; i--) {hash = hash * 31 + components[i].hashCode();}return hash;}
 public static GetInstanceAccessDetailsResult executeGetInstanceAccessDetails(GetInstanceAccessDetailsRequest request) {
 // This code is written in Java. Reproduce the same exact code in C#.
@@ -40,6 +34,12 @@ private AssociateSigninDelegateGroupsWithAccountRequest beforeClientExecution(As
 // This code is written in Java. Reproduce the same exact code in C#.
 public static void main(String[] args) {
 // This code is written in Java. Reproduce the same exact code in C#.
+public ArrayPtg(Object[] values) {int nColumns = values.length;int nRows = 1;_nColumns = (short) nColumns;_nRows = (short) nRows;Object[] vv = new Object[nColumns];for (int c=0; c<nColumns; c++) {vv[c] = values[c];}}
+public static GetIceServerConfigResponse executeGetIceServerConfig(GetIceServerConfigRequest request) {
+public String getValueAsString() {
+// This code is written in Java. Reproduce the same exact code in C#.
+public final void decRef() {refCount.decrementAndGet();}
+private UpdateConfigurationSetSendingEnabledResult executeUpdateConfigurationSetSendingEnabled(UpdateConfigurationSetSendingEnabledRequest updateConfigurationSetSendingEnabledRequest) {
 public int getNextXBATChainOffset(int offset) {return offset + getNextXBATChainOffset();}
 // This code is written in Java. Reproduce the same exact code in C#.
 public String toString(String separator){final StringBuilder b = new StringBuilder();final int          l = length();b.append(File.separatorChar);for (int i = 0; i < l; i++){b.append(getComponent(i));if (i < l - 1){b.append(separator);}}return b.toString();}
@@ -71,30 +71,20 @@ public void set(int i, int value) {if (count <= i)throw new ArrayIndexOutOfBound
 // This code is written in Java. Reproduce the same exact code in C#.
 private MergeShardsResult executeMergeShards(MergeShardsRequest mergeShardsRequest) {
 private AllocateHostedConnectionResult executeAllocateHostedConnection(AllocateHostedConnectionRequest allocateHostedConnectionRequest) {
-
-    // TODO: Write your own code here.
 public int getEndIndex() {return end;}
 public static final WeightedTerm[] getTerms(Query query,boolean includeSpanQueryTerms){
 public ByteBuffer duplicate() {throw new ReadOnlyBufferException();}
 }
 
 private DescribeNotebookInstanceLifecycleConfigResult executeDescribeNotebookInstanceLifecycleConfig(DescribeNotebookInstanceLifecycleConfigRequest describeNotebookInstanceLifecycleConfigRequest) {
-
-    String uri = "https://sagemaker-api-endpoint.execute-api.us-west-2.amazonaws.com/prod/describeNotebookInstanceLifecycleConfig";
 // This code is written in Java. Reproduce the same exact code in C#.
 private CreateVpnConnectionResult executeCreateVpnConnection(CreateVpnConnectionRequest createVpnConnectionRequest) {
-
-    try {
 private DescribeVoicesResult executeDescribeVoices(DescribeVoicesRequest describeVoicesRequest) {
 private ListMonitoringExecutionsResult executeListMonitoringExecutions(ListMonitoringExecutionsRequest listMonitoringExecutionsRequest) {
-
-    // TODO: Fill this with the necessary business logic for listing monitoring executions.
 // This code is written in Java. Reproduce the same exact code in C#.
 public EscherRecord getEscherRecord(int index, int recordId){return escherRecords.get(index);}
 static GetApisResult executeGetApis(GetApisRequest request) {
 private DeleteSmsChannelResult executeDeleteSmsChannel(DeleteSmsChannelRequest deleteSmsChannelRequest) {
-
-    // Create a new client.
 // This code is written in Java. Reproduce the same exact code in C#.
 public void print(char c) {print(String.valueOf(c));}
 public QueryNode getParent() {return getParents().get(0);}
@@ -102,10 +92,9 @@ public boolean shouldBeIgnored(String path) {
 public String toString() {
 public String getAccessToken() {return accessToken;}
 private DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest describeTransitGatewayVpcAttachmentsRequest) {
-
-    ExecutionContext executionContext = createExecutionContext(describeTransitGatewayVpcAttachmentsRequest);
 private static PutVoiceConnectorStreamingConfigurationResult executePutVoiceConnectorStreamingConfiguration(PutVoiceConnectorStreamingConfigurationRequest putVoiceConnectorStreamingConfigurationRequest) {
-
-    String uri = "https://voiceconnectorstreaming.twilio.com/v1/Voice/{VoiceConnectorId}/StreamingConfiguration";
-
-    // For each of the parameters, check that the C# version matches the Java version
+// This code is written in Java. Reproduce the same exact code in C#.
+}
+public E peekFirst() {return peekFirstImpl();}
+private CreateWorkspacesResult executeCreateWorkspaces(CreateWorkspacesRequest createWorkspacesRequest) {
+public NumberFormatIndexRecord copy() {

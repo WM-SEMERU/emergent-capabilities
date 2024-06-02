@@ -93,3 +93,8 @@ public AreaRecord(short formatFlags) {field_1_formatFlags            = formatFla
 public GetThumbnailRequest(String accessToken) {super("CloudPhoto", "2017-07-11", "GetThumbnail", "cloudphoto");setAccessToken(accessToken);setProtocol(ProtocolType.HTTPS);}
 public DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest describeTransitGatewayVpcAttachmentsRequest) {
 public PutVoiceConnectorStreamingConfigurationResult putVoiceConnectorStreamingConfiguration(PutVoiceConnectorStreamingConfigurationRequest request, IpAccessControlList ipAccessControlList) {request = beforeClientExecution(request, ipAccessControlList);return executePutVoiceConnectorStreamingConfiguration(request);}
+public OrdRange getOrdRange(String dim, int prefix) {return prefixToOrdRange.get(dim);}
+public String toString() {String symbol = "";if (startIndex >= 0 && startIndex < getInputStream().size()) {symbol = getInputStream().getText(Interval.of(startIndex,startIndex));symbol = Utils.escapeWhitespace(symbol, false);}return String.format(Locale.getDefault(), "%s('%s')", LexerNoViableAltException.class.getSimpleName(), symbol);}
+public E peek() {return peekFirstImpl();}
+public CreateWorkspacesResult createWorkspaces(CreateWorkspacesRequest request, IAsyncResultHandler<CreateWorkspacesResult> handler) {request = beforeClientExecution(request);return executeCreateWorkspaces(request, handler);}
+public NumberFormatIndexRecord copy() {

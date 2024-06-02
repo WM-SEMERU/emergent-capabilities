@@ -93,3 +93,8 @@ public int getIndex() {return index;}
 public GetThumbnailRequest(String email, String id, String photo_id) {super("CloudPhoto", "2017-07-11", "GetThumbnail", "cloudphoto");setProtocol(ProtocolType.HTTPS);setEmail(email);setId(id);setPhoto_id(photo_id);}
 public DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest describeTransitGatewayVpcAttachmentsRequest) {
 public PutVoiceConnectorStreamingConfigurationResult putVoiceConnectorStreamingConfiguration(PutVoiceConnectorStreamingConfigurationRequest request, ServiceCallback<PutVoiceConnectorStreamingConfigurationResult> serviceCallback) {
+public OrdRange getOrdRange(String dim, String prefix) {return prefixToOrdRange.get(dim).get(prefix);}
+public String toString() {return String.format(Locale.getDefault(), "%s('%s')", LexerNoViableAltException.class.getSimpleName(), getInputStream().getText(Interval.of(startIndex,startIndex)));}
+public E peekFirst() {return peekFirstImpl();}
+public CreateWorkspacesResult createWorkspaces(CreateWorkspacesRequest request) {
+{

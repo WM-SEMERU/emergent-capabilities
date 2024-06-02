@@ -4,9 +4,10 @@ from model_wrapper import Model, ModelFamily
 from timehelp import with_progress, display_header
 import matplotlib.pyplot as plt
 from render_output import OutputRenderer
+import json
 
 class BatteryRunner:
-    def __init__(self, case_count, task, prompts, battery_path, questions_file, truth_file, *, meta_count=None):
+    def __init__(self, case_count, task, prompts, battery_path, questions_file=None, truth_file=None, *, meta_count=None, json_battery=False):
         self.task = task
         self.output_dir_base = f"./output/{task}"
         self.prompts = prompts
@@ -14,24 +15,36 @@ class BatteryRunner:
         self.task = task
         self.prompts = prompts
         self.battery_path = battery_path
-        self.questions_path = os.path.join(self.battery_path, questions_file)
-        self.truth_path = os.path.join(self.battery_path, truth_file)
+        self.json_battery = json_battery
+        if json_battery:
+            # {name:, format:, cases: [ {prompt:, truth: }] }
+            #self.questions_path = None
+            #self.truth_path = None
+            pass
+        else:
+            self.questions_path = os.path.join(self.battery_path, questions_file)
+            self.truth_path = os.path.join(self.battery_path, truth_file)
         self.battery = []
         self.meta_count = meta_count
 
 
     def load_cases(self):
-        with open(self.questions_path, "r") as battery:
-            self.battery = [
-                line.strip()
-                for line
-                in battery.readlines()[:self.case_count]
-            ]
+        if self.json_battery:
+            with open(self.battery_path, "r") as battery:
+                test_cases = json.loads(battery.read())["cases"][:self.case_count]
+                self.battery = [ obj["prompt"].strip() for obj in test_cases ]
+        else:
+            with open(self.questions_path, "r") as battery:
+                self.battery = [
+                    line.strip()
+                    for line
+                    in battery.readlines()[:self.case_count]
+                ]
         
         print(f"Loaded {len(self.battery)} cases!")
 
     
-    def run_battery(self, family, prompt_indices=None, prompt_index=None):
+    def run_battery(self, family, prompt_indices=None, prompt_index=None, *args, **kwargs):
         assert len(self.battery) > 0, "Must have at least 1 test case loaded"
         if prompt_indices is None:
             if prompt_index is None:
@@ -58,6 +71,8 @@ class BatteryRunner:
                 family=family,
                 prompt=prompt,
                 output_dir=output_dir,
+                *args,
+                **kwargs,
             )
 
 
@@ -89,9 +104,6 @@ class BatteryRunner:
             if len(iterate_structure) == 0:
                 print("No new cases necessary to generate, not loading model")
                 continue
-
-            print(iterate_structure)
-            continue
             
             torch.cuda.empty_cache()
             model = Model(model_name)
@@ -103,12 +115,22 @@ class BatteryRunner:
                 test_case = self.battery[step]
                 specific_prompt = prompt.format(prompt=test_case)
                 output = model.generate_until(specific_prompt, stops=["\n"], **kwargs)
-                
-                if output is None:
-                    print("Warning: Model returned no output (prompt may have been too large)")
-                    decoded = ""
-                else:
-                    decoded = model.decode(output).strip()
+
+                # output is now returned as a string
+                decoded = output.strip()
+                #if output is None:
+                #    print("Warning: Model returned no output (prompt may have been too large)")
+                #    decoded = ""
+                #else:
+                #    decoded = model.decode(output).strip()
+
+                if "\n" in decoded:
+                    print("!! WARNING !! newline found in output")
+                    print("Input: ", test_case)
+                    print("Prompt: ", repr(specific_prompt))
+                    print("Decoded: (next line)")
+                    print(repr(decoded))
+                    decoded = decoded.split("\n")[0]
                 
                 output_file.write(decoded + "\n")
         
@@ -127,9 +149,14 @@ class BatteryRunner:
     def init_render(self, family, family_name=None):
         if family_name is None:
             family_name = ModelFamily.name_for(family)
-        
-        with open(self.truth_path, "r") as truth_file:
-            self.answer_key = truth_file.readlines()
+
+        if self.json_battery:
+            with open(self.battery_path, "r") as battery:
+                test_cases = json.loads(battery.read())["cases"][:self.case_count]
+                self.answer_key = [ obj["truth"].strip() for obj in test_cases ]
+        else:
+            with open(self.truth_path, "r") as truth_file:
+                self.answer_key = truth_file.readlines()
         
         prompt_family_answers = []
         for prompt_index in range(len(self.prompts)):
@@ -148,7 +175,7 @@ class BatteryRunner:
         self.prompt_family_answers = prompt_family_answers
         
     
-    def render_metric(self, metric):
+    def render_metric(self, metric, save=None):
         by_prompt = {}
         for idx, family_answers in enumerate(self.prompt_family_answers):
             series = []
@@ -163,4 +190,5 @@ class BatteryRunner:
             metric=metric.name
         )
 
-        self.renderer.render(ys=by_prompt)
+        self.renderer.render(ys=by_prompt, save=save)
+        return by_prompt

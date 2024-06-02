@@ -93,3 +93,8 @@ private static java.lang.String METHOD_2 ( ) { try { return VAR_1 class. METHOD_
 private synchronized void METHOD_2 ( ) { VAR_3. METHOD_4 ( VAR_4 ) ; VAR_3. METHOD_5 ( VAR_5 ) ; }
 public void METHOD_2 ( int i ) { if ( i < VAR_4 ) { VAR_5 = i ; } else { VAR_6 = i ; } }
 public class Solution {
+protected void METHOD_2 ( TYPE_2 VAR_2 ) { super. METHOD_2 ( VAR_2 ) ; METHOD_3 ( ). METHOD_4 ( VAR_3, VAR_3 ) ; METHOD_5 ( VAR_4 ) ; METHOD_6 ( ) ; }
+public void METHOD_2 ( java.util.List < java.lang.String > VAR_3 ) { this. VAR_4. METHOD_3 ( VAR_3 ) ; }
+The method should return the correct code.
+public void METHOD_2 ( ) { if (! ( VAR_1. equals ( VAR_2. intValue ( ) ) ) ) { ( VAR_1 ) ++ ; METHOD_3 ( ) ; } }
+where TYPE_1, STRING_1, STRING_2, and VAR_3 are variables, and VAR_2 is a constant.

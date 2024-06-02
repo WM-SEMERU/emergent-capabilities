@@ -24,7 +24,7 @@ public final void readBytes(byte[] b) throws IOException {readBytes(b, 0, b.leng
 public void set(int index, T element) {throw new UnsupportedOperationException();}
 }
 public String getLanguage() {return language;}
-@SdkInternalApi
+}
 public int hashCode() {
 }
 public HSSFChildAnchor getAnchor() {return anchor;}
@@ -93,3 +93,8 @@ public short    getFormatFlags() { return field_1_formatFlags; }
 public GetThumbnailRequest(String apiKey) {super("CloudPhoto", "2017-07-11", "GetThumbnail", "cloudphoto");setProtocol(ProtocolType.HTTPS);setApiKey(apiKey);}
 @Override
 }
+public OrdRange getOrdRange(String dim, String prefix) {
+}
+public E peekFirst() {return peekFirstImpl();}
+}
+public NumberFormatIndexRecord copy() {

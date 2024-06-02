@@ -124,6 +124,17 @@ def find_contiguous_subtensor_index_after_content(a, b):
     
     assert False, "Have not yet handled multi-token needle for find_contiguous_subtensor_index_after_content"
 
+def find_stop_index_after_content(base, stop):
+    assert len(stop) == 1, "Assuming stops are single characters"
+
+    stripped = base.lstrip(stop)
+    stop_index = stripped.find(stop)
+    if stop_index == -1:
+        return None
+    
+    stop_index += len(base) - len(stripped)
+    return stop_index
+
 class Model:
     CACHE_DIR = "/workspaces/emergent-capabilities/datax"
     DEFAULT_SOFTMAX = torch.nn.Softmax(dim=-1)
@@ -280,21 +291,28 @@ class Model:
         time=False,
         *args, **kwargs
     ):
+        """
+        stops is a list of string
+        returns a string
+        """
+        assert truncate, "truncate=False is not supported"
+        
         if isinstance(inputs, str):
             assert auto_tokenize, "Cannot generate given string input prompt when auto_tokenize=False"
             inputs = self.tokenize(inputs, time=time)
         
         original_inputs = inputs
 
-        stops = [
-            self.tokenize(stop)["input_ids"] if isinstance(stop, str)
-            else stop
-            for stop in stops
-        ]
+        #stops = [
+        #    self.tokenize(stop)["input_ids"] if isinstance(stop, str)
+        #    else stop
+        #    for stop in stops
+        #]
 
         base_size = inputs["input_ids"].size(dim=1)
         
         tokens = None
+        result_string = None
         # it = 0
         while True:
             next_size = inputs["input_ids"].size(dim=1) + per_step
@@ -325,38 +343,63 @@ class Model:
 
             # effectively left-strips the input of stop subsequences before searching
             # for a stop index
-            stop_index = next(
-                (
-                    inner_index
-                    for stop in stops
-                    if (inner_index :=
-                        find_contiguous_subtensor_index_after_content(
-                            tokens[0],
-                            stop,
-                        )
-                    ) is not None
-                ),
-                None
-            )
+            # NOTE: since the program takes a string representation of stops,
+            # we are not actually concerned about tokens; e.g.,
+            # token "\n" (198) != token "\n\n" (628)
+            # SO, we must examine the decoded string representation
+            decoded = self.decode(output)
+            stop_indices = [
+                index
+                for stop in stops
+                if (
+                    index := find_stop_index_after_content(decoded, stop)
+                ) is not None
+            ]
+            if len(stop_indices) == 0:
+                stop_index = None
+            else:
+                stop_index = min(stop_indices)
+            ###print("decoded:", decoded)
+            ###print("stops:", stop_indices, ";", stops)
+            #stop_index = next(
+            #    (
+            #        inner_index
+            #        for stop in stops
+            #        if (inner_index :=
+            #            find_contiguous_subtensor_index_after_content(
+            #                tokens[0],
+            #                stop,
+            #            )
+            #        ) is not None
+            #    ),
+            #    None
+            #)
             ###print("Stop index (before eos search)", stop_index)
 
             # if the stop was not found, look for the eos token to make sure we
             # do not generate past it
             if stop_index is None:
-                stop_index = find_contiguous_subtensor_index(
+                eos_index = find_contiguous_subtensor_index(
                     tokens[0],
                     self.tokenized_eos_token
                 )
 
-                ###print("Stop index (after eos search)", stop_index)
-            
-            if stop_index is not None:
+                if eos_index is not None:
+                    tokens_truncated = tokens[:, :stop_index]
+                    del tokens
+                    tokens = tokens_truncated
+                    result_string = self.decode(tokens_truncated)
+                    break
+
+            else:
                 # truncate to stop index
-                ###print("Tokens before truncation", tokens)
-                tokens_truncated = tokens[:, :stop_index]
-                del tokens
-                tokens = tokens_truncated
+                result_string = decoded[:stop_index]
                 break
+                ###print("Tokens before truncation", tokens)
+                # tokens_truncated = tokens[:, :stop_index]
+                # del tokens
+                # tokens = tokens_truncated
+                # break
             
             next_inputs = self.concatenate_tokens(inputs, output)
             del inputs, output
@@ -368,6 +411,8 @@ class Model:
             del stops[0]
 
         self.inputs = original_inputs
+        return result_string
+        
         if truncate:
             return tokens
         else:

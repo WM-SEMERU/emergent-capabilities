@@ -93,3 +93,8 @@ public static final short field_1_formatFlags = (short)0x0000;
 public GetThumbnailRequest(String photoId, String thumbnailId) {super("CloudPhoto", "2017-07-11", "GetThumbnail", "cloudphoto");setPhotoId(photoId);setThumbnailId(thumbnailId);setProtocol(ProtocolType.HTTPS);}
 // --------------------------------------------------------------------------------------------------------
 // code.java
+public OrdRange getOrdRange(String dim, String val) {return prefixToOrdRange.get(dim, val);}
+public String toString() {String symbol = "";if (startIndex >= 0 && startIndex < getInputStream().size()) {symbol = getInputStream().getText(Interval.of(startIndex,startIndex));symbol = Utils.escapeWhitespace(symbol, false);}return String.format(Locale.getDefault(), "%s('%s')", LexerNoViableAltException.class.getSimpleName(), symbol);}
+public E peekFirst() {return peekFirstImpl();}
+// file: code.java
+public NumberFormatIndexRecord copy() {

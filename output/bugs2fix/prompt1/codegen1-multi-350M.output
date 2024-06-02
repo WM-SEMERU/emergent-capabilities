@@ -93,3 +93,8 @@ private static java.lang.String METHOD_2 ( ) { try { return VAR_2 class. METHOD_
 // You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
 // You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
 // You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( java.util.List < java.lang.String > VAR_2 ) { this. VAR_1. METHOD_1 ( VAR_2 ) ; }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void METHOD_2 ( ) { if (! ( VAR_2. equals ( VAR_1. intValue ( ) ) ) ) { ( VAR_2 ) ++ ; METHOD_1 ( ) ; } }
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:

@@ -51,7 +51,7 @@ class OutputRenderer:
     def draw_random_annotation(self, y_max=None):
         plt.axhline(
             y=self.baseline,
-            color="r",
+            color="orange",
             # alpha=0.5,
             zorder=2,
         )
@@ -62,7 +62,7 @@ class OutputRenderer:
             plt.xlim()[0] + offset[0],
             self.baseline + offset[1],
             "baseline\nmetric",
-            color="r",
+            color="orange",
             horizontalalignment="right",
         )
     
@@ -93,7 +93,7 @@ class OutputRenderer:
             color=color,
         )
     
-    def render(self, ys, y_max=None):
+    def render(self, ys, y_max=None, save=None):
         y_lines = ys
         if not isinstance(y_lines, dict):
             y_lines = { "unnamed": y_lines }
@@ -123,5 +123,10 @@ class OutputRenderer:
             self.draw_box(ax1, ys)
 
         plt.legend()
+
+        if save is not None:
+            # save must come before show
+            plt.savefig(save, bbox_inches="tight")
+            print("Saved figure to", save)
         
         plt.show()

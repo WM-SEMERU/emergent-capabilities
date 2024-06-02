@@ -93,3 +93,8 @@ Get changes from point of view of VCS
 a) the consumer manager
 diff of changes
 diff --git a/src/main/java/com/sk89q/worldedit/bukkit/BukkitWorld.java b/src/main/java/com/sk89q/worldedit/bukkit/BukkitWorld.java
+a change in the password field
+the number of output classes
+
+a.add("com.fasterxml.jackson.annotation.")
+

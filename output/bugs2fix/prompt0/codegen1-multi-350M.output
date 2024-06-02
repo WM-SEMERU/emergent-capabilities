@@ -93,3 +93,8 @@ void METHOD_2 ( ) { if ( METHOD_3 ( ) ) { VAR_1. METHOD_4 ( ) ; VAR_2. METHOD_5 
 private synchronized void METHOD_2 ( ) { VAR_2. METHOD_3 ( listener ) ; }
 public void METHOD_2 ( ) { VAR_2. METHOD_3 ( VAR_3 ) ; METHOD_4 ( ) ; setState ( VAR_4 ) ; METHOD_5 ( ) ; }
 public boolean METHOD_2 ( TYPE_1 VAR_1 ) { TYPE_1 result = TYPE_2. METHOD_1 ( VAR_1 ) ; result. METHOD_3 ( ) ; return true ; }
+protected void METHOD_1 ( TYPE_1 VAR_1 ) { super. METHOD_1 ( VAR_1 ) ; METHOD_2 ( VAR_2 ) ; METHOD_3 ( ). METHOD_4 ( VAR_3, VAR_3 ) ; METHOD_5 ( VAR_4 ) ; METHOD_6 ( ) ; }
+public void METHOD_2 ( java.util.List < java.lang.String > VAR_1 ) { this. VAR_2. METHOD_1 ( VAR_1 ) ; }
+public void METHOD_2 ( TYPE_1 event, TYPE_2 target, TYPE_2 VAR_1 ) { VAR_2. String class. getName ( ) ; }
+public void METHOD_2 ( ) { if (! ( VAR_2. equals ( VAR_1. intValue ( ) ) ) ) { ( VAR_2 ) ++ ; METHOD_1 ( ) ; } }
+public void METHOD_2 ( TYPE_2 VAR_2 ) { int VAR_3 = VAR_4 ; java.lang.System.out.println ( ( ( STRING_2 + VAR_3 ) + STRING_3 ) ) ; }

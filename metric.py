@@ -7,6 +7,12 @@ def _codebleu(references, predictions, lang):
     result = calc_codebleu(references, predictions, lang=lang)
     return result["codebleu"]
 
+def b_moses(ref, trans):
+    return _bleu(ref, trans, smooth=False, lower=False)
+
+def b_norm(ref, trans):
+    return _bleu(ref, trans, smooth=True, lower=True)
+
 class Metric:
     def __init__(self, name, *, grade_single=None, grade_multi=None, baseline=0.0):
         self.name = name
@@ -42,4 +48,12 @@ CodeBLEUJava = Metric(
 CodeBLEUCSharp = Metric(
     name="CodeBLEU (C#)",
     grade_multi = partial(_codebleu, lang="c_sharp"),
+)
+BMoses = Metric(
+    name="B-Moses",
+    grade_multi = b_moses,
+)
+BNorm = Metric(
+    name="B-Norm",
+    grade_multi = b_norm,
 )

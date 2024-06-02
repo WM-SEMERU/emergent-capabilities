@@ -93,3 +93,8 @@ add a new method to the class
 added a constructor with a ConsumerManager
 add the idempotent check
 added a check for material.getMaterial(type)!= null
+38: removed the line "import org.springframework.util.Assert;
+remove the last line
+
+69 additions
+
