@@ -115,7 +115,7 @@ class OutputRenderer:
     
         self.draw_random_annotation(y_max=y_max)
 
-        colors = ["b", "g", "r"]
+        colors = ["b", "g", "r", "c", "m", "y"]
         for idx, (key, ys) in enumerate(y_lines.items()):
             color = colors[idx % len(colors)]
             self.draw_bands(ax1, ys, color=color)

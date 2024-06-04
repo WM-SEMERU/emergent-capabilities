@@ -6,6 +6,23 @@ import matplotlib.pyplot as plt
 from render_output import OutputRenderer
 import json
 
+class BatteryConfigs:
+    Code2Code = dict(
+        case_count=100,
+        meta_count=None,
+        task="code2code-trans",
+        prompts=[
+            "// original code.java\n{prompt}\n// code.cs version of code.java\n",
+            "// code.java\n{prompt}\n// code.cs\n",
+            "// This code is written in Java. Reproduce the same exact code in C#.\n{prompt}\n",
+            "// original code.java\n{prompt}\n\n// code.cs version of code.java\n",
+        ],
+        battery_path="./data/CodeXGLUE/Code-Code/code-to-code-trans/data",
+        questions_file="test.java-cs.txt.java",
+        truth_file="test.java-cs.txt.cs",
+    )
+
+
 class BatteryRunner:
     def __init__(self, case_count, task, prompts, battery_path, questions_file=None, truth_file=None, *, meta_count=None, json_battery=False):
         self.task = task
@@ -27,6 +44,10 @@ class BatteryRunner:
         self.battery = []
         self.meta_count = meta_count
 
+
+    @staticmethod
+    def of(kwargs):
+        return BatteryRunner(**kwargs)
 
     def load_cases(self):
         if self.json_battery:
@@ -117,6 +138,8 @@ class BatteryRunner:
                 output = model.generate_until(specific_prompt, stops=["\n"], **kwargs)
 
                 # output is now returned as a string
+                if output is None:
+                    output = ""
                 decoded = output.strip()
                 #if output is None:
                 #    print("Warning: Model returned no output (prompt may have been too large)")

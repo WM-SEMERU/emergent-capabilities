@@ -1,0 +1,100 @@
+public void serialize(LittleEndianOutput out) {out.writeShort(field_1_vcenter);}
+}
+upto++] = b;}
+public ObjectId getObjectId(String objectId) {
+public DeleteDomainEntryResult deleteDomainEntry(DeleteDomainEntryRequest request) {
+public long ramBytesUsed(IndexReader r) {
+decode(guessEncoding(), raw, msgB, raw.length);}
+public POIFSFileSystem(boolean bigBlockSize) {
+BLOCK_MASK;offset0 = address;assert upto + length <= slice.length;}
+public SubmoduleAddCommand setPath(String path, boolean force) {this.path = path;this.force = force;return this;}
+public ListIngestionsResult listIngestions(ListIngestionsRequest request) {
+public QueryParserTokenManager(CharStream stream){
+public GetShardIteratorResult executeGetShardIterator(GetShardIteratorRequest request) {
+(MethodType.POST);
+;} catch (IOException e) {return false;}}}
+public EscherOptRecord getOptRecord(boolean createIfNull) {
+= this.buffer.charAt(pos + i);}pos += copylen;return copylen;}
+public OpenNLPSentenceBreakIterator(NLPSentenceDetectorOp sentenceOp, String lang) {this.sentenceOp = sentenceOp; this.lang = lang;}
+public void print(Object obj) {write(obj!= null? obj.toString() : String.valueOf((Object) null));}
+public NotImplementedFunctionException(String functionName, NotImplementedException cause, String message) {super(functionName, cause, message);this.functionName = functionName;}
+public V next() {return super.nextEntry().getValue();}
+public final void readBytes(byte[] b, int offset, int len) throws IOException {readBytes(b, offset, len, false);}
+public TagQueueResult tagQueue(TagQueueRequest request) {
+public void remove() {throw new UnsupportedOperationException();}
+public CacheSubnetGroup modifyCacheSubnetGroup(ModifyCacheSubnetGroupRequest request) {
+= st.nextToken();if (st.hasMoreTokens())country = st.nextToken();if (st.hasMoreTokens())variant = st.nextToken();}
+public DeleteDocumentationVersionResult deleteDocumentationVersion(DeleteDocumentationVersionRequest request) {
+i = length - 1; i >= 0; i--) {if (!components[i].equals(other.components[i])) {return false;}}return true;}
+public GetInstanceAccessDetailsResult executeGetInstanceAccessDetails(GetInstanceAccessDetailsRequest request) {
+Parent(this);shape.setAnchor(anchor);shapes.add(shape);onCreate(shape);return shape;}
+public int getSheetIndex(String sheetName) {
+public GetDashboardResult getDashboard(GetDashboardRequest request) {
+public AssociateSigninDelegateGroupsWithAccountResult associateSigninDelegateGroupsWithAccount(AssociateSigninDelegateGroupsWithAccountRequest request) {
+short ) (j + mbr.getFirstColumn()));br.setRow(mbr.getRow());br.setXFIndex(mbr.getXFAt(j));insertCell(br);}}
+.substring(apos, k)).append("\\");apos = k;}return sb.append(string.substring(apos)).toString();}
+public ByteBuffer putInt(int index, int value) {throw new ReadOnlyBufferException();}
+[c];}}_arrayValues = vv;_reserved0Int = reserved0Int;_reserved1Short = reserved1Short;_reserved2Byte = reserved2Byte;}
+public GetIceServerConfigResult executeGetIceServerConfig(GetIceServerConfigRequest request) {
+public String toString() {return getClass().getName() + " [" +getValueAsString() +"]";}
+public String toString(String field) {return "ToChildBlockJoinQuery ("+parentQuery.toString()+")";}
+public final void decRef() {refCount.decrementAndGet();}
+public UpdateConfigurationSetSendingEnabledResult updateConfigurationSetSendingEnabled(UpdateConfigurationSetSendingEnabledRequest request) {
+public int getNextXBATChainOffset(int blockSize) {return getXBATEntriesPerBlock(blockSize) * LittleEndianConsts.INT_SIZE;}
+, tp._divisorShift);} else {mulShift(tp._multiplicand, tp._multiplierShift);}}
+1){b.append(File.separatorChar);}}return b.toString();}
+Name);return this;}
+public void setProgressMonitor(ProgressMonitor pm) {
+public void reset() {if (!first()) {ptr = 0;if (!eof())parseEntry();}}
+public E previous() {if (iterator.previousIndex() >= start) {return iterator.previous();}throw new NoSuchElementException();}
+public String getNewPrefix() {return this.newPrefix;}
+public int indexOfValue(int value) {for (int i = 0; i < mSize; i++)if (mValues[i] == value)return i;return -1;}
+deduped.add(s);terms.add(s);}}return deduped;}
+public GetGatewayResponsesResult executeGetGatewayResponses(GetGatewayResponsesRequest request) {
+public void setPosition(long pos) {
+public long skip(long n) {
+public BootstrapActionDetail(String name, String scriptPath, String args, String actionId) {
+_7_padding!= null) {out.writeByte(field_7_padding.intValue());}}
+public int lastIndexOf(String string, int start) {
+public boolean add(E object, int index) {return addImpl(object, index);}
+src, res));}
+public final String getTagName() {return tagName;}
+public void addSubRecord(SubRecord element) {subrecords.add(element);}
+public boolean removeAll(Collection<?> c) {synchronized (mutex) {return delegate().removeAll(c);}}
+public DoubleMetaphoneFilter create(TokenStream input, int maxCodeLength, boolean inject) {return new DoubleMetaphoneFilter(input, maxCodeLength, inject);}
+public long length() {return inCoreLength();}
+public void setValue(boolean newValue, boolean isFinal) {
+public Pair(ContentSource oldSource, ContentSource newSource) {
+public int get(int i) {if (count <= i)throw new ArrayIndexOutOfBoundsException(i);return entries[i];}
+{
+public boolean isDeltaBaseAsOffset() {return deltaBaseAsOffset;}
+new IllegalStateException();}} else {throw new ConcurrentModificationException();}}
+public MergeShardsResult mergeShards(MergeShardsRequest request) {
+public AllocateHostedConnectionResult allocateHostedConnection(AllocateHostedConnectionRequest request) {
+public int getEndIndex() {return end;}
+public static final WeightedTerm[] getTerms(Query query, boolean useStopWords){
+public ByteBuffer compact() {throw new ReadOnlyBufferException();}
+] = byte2 & 63;}}
+ants.DOT_GIT_EXT.length());return result;}
+public DescribeNotebookInstanceLifecycleConfigResult executeDescribeNotebookInstanceLifecycleConfig(DescribeNotebookInstanceLifecycleConfigRequest describeNotebookInstanceLifecycleConfigRequest) {
+public String getAccessKeySecret() {return this.accessKeySecret;}
+public CreateVpnConnectionResult createVpnConnection(CreateVpnConnectionRequest request) {
+public DescribeVoicesResult executeDescribeVoices(DescribeVoicesRequest describeVoicesRequest) {
+public ListMonitoringExecutionsResult executeListMonitoringExecutions(ListMonitoringExecutionsRequest request) {
+public DescribeJobRequest(String vaultName, String jobId, String description) {setVaultName(vaultName);setJobId(jobId);setDescription(description);}
+public EscherRecord getEscherRecord(int index){return escherRecords.get(index);}
+public GetApisResult getApis(GetApisRequest request) {
+public DeleteSmsChannelResult executeDeleteSmsChannel(DeleteSmsChannelRequest deleteSmsChannelRequest) {
+public TrackingRefUpdate getTrackingRefUpdate(String trackingRefUpdate) {return trackingRefUpdate;}
+public void print(char c) {print(String.valueOf(c));}
+public QueryNode getChild() {return getChildren().get(0);}
+public NotIgnoredFilter(int workdirTreeIndex, boolean isCaseSensitive) {
+public void setFormatFlags(short formatFlags) {field_1_formatFlags = formatFlags;}
+public GetThumbnailRequest(String service, String version, String action, String apiId) {super(service, version, action, apiId);}
+public DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest describeTransitGatewayVpcAttachmentsRequest) {
+public PutVoiceConnectorStreamingConfigurationResult putVoiceConnectorStreamingConfiguration(PutVoiceConnectorStreamingConfigurationRequest request) {
+public OrdRange getOrdRange(String dim, String prefix) {return prefixToOrdRange.get(dim).get(prefix);}
+}
+public E peekFirstImpl() {
+public CreateWorkspacesResult createWorkspaces(CreateWorkspacesRequest request) {
+public NumberFormatIndexRecord copy() {
