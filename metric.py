@@ -14,8 +14,9 @@ def b_norm(ref, trans):
     return _bleu(ref, trans, smooth=True, lower=True)
 
 class Metric:
-    def __init__(self, name, *, grade_single=None, grade_multi=None, baseline=0.0):
+    def __init__(self, name, shortname, *, grade_single=None, grade_multi=None, baseline=0.0):
         self.name = name
+        self.shortname = shortname
         self.grade_single = grade_single
         self.grade_multi = grade_multi
         self.baseline = 0.0
@@ -35,25 +36,31 @@ class Metric:
 
 ExactMatch = Metric(
     name="Accuracy% (Exact Match)",
+    shortname="em",
     grade_single = lambda truth, answer: truth == answer,
 )
 BLEU = Metric(
     name="BLEU",
+    shortname="bleu",
     grade_multi = _bleu,
 )
 CodeBLEUJava = Metric(
     name="CodeBLEU (Java)",
+    shortname="codebleu-java",
     grade_multi = partial(_codebleu, lang="java"),
 )
 CodeBLEUCSharp = Metric(
     name="CodeBLEU (C#)",
+    shortname="codebleu-cs",
     grade_multi = partial(_codebleu, lang="c_sharp"),
 )
 BMoses = Metric(
     name="B-Moses",
+    shortname="codebleu-bmoses",
     grade_multi = b_moses,
 )
 BNorm = Metric(
     name="B-Norm",
+    shortname="codebleu-bnorm",
     grade_multi = b_norm,
 )

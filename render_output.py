@@ -1,11 +1,12 @@
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
 from statistics import median
 import numpy as np
 
 class OutputRenderer:
     def __init__(self, baseline=0.0, metric="(Unspecified metric)"):
         self.x_values = [0.35, 2.70, 6.10, 16.10]
-        self.box_color = "Pink"
+        #self.box_color = "Pink"
         self.baseline = baseline
         self.metric = metric
 
@@ -18,7 +19,15 @@ class OutputRenderer:
         plt.ylim(0, y_max)
 
     
-    def draw_box(self, ax, ys):
+    def draw_box(self, ax, ys, box_color):
+        solid_color = mcolors.to_rgb(box_color)
+        # a black version of the given color
+        black_ratio = 0.2
+        black = (0.0, 0.0, 0.0)
+        edge_color = tuple(
+            (1 - black_ratio) * np.array(solid_color)
+            + black_ratio * np.array(black)
+        )
         bplot = ax.boxplot(
             ys,
             positions=self.x_values,
@@ -26,11 +35,36 @@ class OutputRenderer:
             manage_ticks=False,
             patch_artist=True,
             zorder=5,
-            medianprops=dict(color="black"),
+            medianprops=dict(
+                color=edge_color,
+                linewidth=2
+            ),
+            whiskerprops=dict(
+                color=edge_color,
+                linewidth=2
+            ),
+            capprops=dict(
+                color=edge_color,
+                linewidth=2
+            ),
+            flierprops=dict(
+                markersize=5,
+                markeredgecolor=solid_color,
+                markerfacecolor=solid_color,
+                marker=".",
+                # the "x" marker is cursed, idky
+                # markeredgecolor=box_color,
+                # marker="x",
+                # linewidth=15,
+            ),
+            boxprops=dict(
+                color=edge_color,
+                linewidth=2
+            ),
         )
         
         for patch in bplot["boxes"]:
-            patch.set_facecolor(self.box_color)
+            patch.set_facecolor(box_color)
     
     def draw_line(self, ax, ys, label=None, color="b"):
         medians = [median(vals) for vals in ys]
@@ -65,11 +99,13 @@ class OutputRenderer:
             color="orange",
             horizontalalignment="right",
         )
+
     
-    def meta_info(self):
+    def meta_info(self, title=None):
         plt.xlabel("Parameters (in billions)")
         plt.ylabel(self.metric)
-        plt.title("Model Performance")
+        plt.title(title or "Model Performance")
+
     
     def draw_bands(self, ax, ys, color="b"):
         q1 = [np.percentile(val, 25) for val in ys]
@@ -92,8 +128,9 @@ class OutputRenderer:
             zorder=5,
             color=color,
         )
+
     
-    def render(self, ys, y_max=None, save=None):
+    def render(self, ys, y_max=None, save=None, title=None):
         y_lines = ys
         if not isinstance(y_lines, dict):
             y_lines = { "unnamed": y_lines }
@@ -111,7 +148,7 @@ class OutputRenderer:
         ax1 = fig.add_subplot(111)
         plt.grid(True)
         self.set_lim(y_max=y_max)
-        self.meta_info()
+        self.meta_info(title=title)
     
         self.draw_random_annotation(y_max=y_max)
 
@@ -120,7 +157,9 @@ class OutputRenderer:
             color = colors[idx % len(colors)]
             self.draw_bands(ax1, ys, color=color)
             self.draw_line(ax1, ys, label=key, color=color)
-            self.draw_box(ax1, ys)
+            box_color = mcolors.to_rgb(color)
+            box_color += (0.3, )
+            self.draw_box(ax1, ys, box_color)
 
         plt.legend()
 
