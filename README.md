@@ -4,6 +4,7 @@
 - `bugs2fix.ipynb` generates the graphs for the Bugs2Fix code repair task.
 - `code2code-trans.ipynb` generates the graphs for the Code2Code code translation tastk.
 - `commit-message.ipynb` generates the graphs for the commit message generation task.
+- `tabulate-results.ipynb` generates the tables and pulls together the information.
 
 - `pull-tests.ipynb` installs the datasets from BIG and other various places. (I'm pretty sure CodeXGLUE was not installed this way - the repository was simply cloned to `data/CodeXGLUE`.)
 - `trim-tokens.ipynb` (***TODO***) is to uniformly trim output lines to ensure all lines are at most 500 tokens long (useful because various configurations were used during the testing process).

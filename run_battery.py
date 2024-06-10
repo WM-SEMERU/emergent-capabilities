@@ -13,6 +13,7 @@ class BatteryConfigs:
         case_count=100,
         meta_count=None,
         task="code2code-trans",
+        display_name="CodeTrans",
         prompts=[
             "// original code.java\n{prompt}\n// code.cs version of code.java\n",
             "// code.java\n{prompt}\n// code.cs\n",
@@ -28,6 +29,7 @@ class BatteryConfigs:
         case_count=100,
         meta_count=None,
         task="bugs2fix",
+        display_name="Bugs2fix",
         prompts=[
             "// the buggy version of the code\n{prompt}\n// the fixed version of the code\n",
             "// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:\n{prompt}\n",
@@ -39,7 +41,7 @@ class BatteryConfigs:
 
 
 class BatteryRunner:
-    def __init__(self, case_count, task, prompts, battery_path, questions_file=None, truth_file=None, *, meta_count=None, json_battery=False):
+    def __init__(self, case_count, task, prompts, battery_path, questions_file=None, truth_file=None, *, meta_count=None, json_battery=False, **kwargs):
         self.task = task
         self.output_dir_base = f"./output/{task}"
         self.prompts = prompts
@@ -220,10 +222,28 @@ class BatteryRunner:
 
     
     def init_render(self, *args, **kwargs):
-        return self.init_cases(self, *args, **kwargs)
+        return self.init_cases(*args, **kwargs)
 
     
-    def calculate_metrics(self, metric, limit=None):
+    def calculate_metrics(self, metric, limit=None, cache=True):
+        if cache:
+            cache_file_path = os.path.join("./output", self.task, "metrics.json")
+            with open(cache_file_path, "a+", encoding="utf-8") as cache_file:
+                cache_file.seek(0)
+                data = cache_file.read()
+                if len(data) == 0:
+                    cache_obj = {
+                        "case_count": self.case_count,
+                        "results": {}
+                    }
+                else:
+                    cache_obj = json.loads(data)
+            
+            if cache_obj["case_count"] == self.case_count and metric.shortname in cache_obj["results"]:
+                return cache_obj["results"][metric.shortname]
+        else:
+            cache_obj = None
+        
         by_prompt = {}
         for idx, family_answers in enumerate(self.prompt_family_answers):
             series = []
@@ -235,6 +255,13 @@ class BatteryRunner:
                 grade = metric.grade(self.answer_key[:limit], answers[:limit])
                 series.append(grade)
             by_prompt[series_name] = series
+
+        if cache:
+            cache_obj["case_count"] = self.case_count
+            cache_obj["results"][metric.shortname] = by_prompt
+            with open(cache_file_path, "w", encoding="utf-8") as cache_file:
+                cache_file.write(json.dumps(cache_obj))
+        
         return by_prompt
         
     
