@@ -1,0 +1,100 @@
+public class Cardigan {
+the bugs in the sixth box. The eighth box is the box that is used to store the bugs in the seventh box. The ninth box is the box that is used to store the bugs in the eighth box.
+private void corge ( android.content.Intent intent ) { }
+public void corge ( ) { for ( Egg e : i ) e. foo ( ) ; }
+public class Apple {
+public Thingy foo ( Thingy h ) { t [ ( ( h. position ) + 1 ) ] = isEmpty ( ) ; h. position += 1 ; l = baz ( h. position ) ; return h ; }
+public static void main ( final String[] args ) {
+public void grault ( int l, Egg u ) { this. i. add ( l, u ) ; g. add ( this ) ; }
+<|endoftext|>
+public void fred ( final java.lang.String e ) { if ( e!= null ) format. thud ( ). grault ( r, e ) ; }
+setText ( o ) ; }
+// The following code is correct.
+public void corge ( Gadget v ) { this. v = v ; }
+public java.lang.Boolean corge ( java.lang.String id ) { return a. corge ( id ) ; }
+fred ( o ) ; }
+private static native void waldo ( long set, int i ) ;
+public static int k ( Egg i ) { return i. getCount () ; }
+// The following is correct code:
+public < Widget > Widget bar ( final java.lang.Object h, final java.lang.Class < Widget > q, final java.lang.Class < Widget > r ) {
+public void qux ( Doohickey f ) { Widget. bar ( h, ( "" + f ) ) ; Yak. fred ( this, "results", d ). show ( ) ; }
+public class Widget {
+private void grault ( ) { baz ( ) ; }
+public void bar ( Doohickey c, boolean a, boolean b ) {
+( ) ; intent2. fred ( "truth", index ) ; qux ( intent2 ) ; }
+public void baz ( ) { }
+public void thud ( ) { if (! ( h ) ) { j. update ( ) ; } l. thud ( ) ; }
+public boolean baz ( ) { return true ; }
+red ( ) ) ; }
+public void foo ( ) { p. waldo ( e ) ; l. waldo ( e ) ; l. garply ( this ) ; }
+public int qux ( java.lang.Object r ) { c. grault ( r ) ; return c. fred ( ). execute ( ) ; }
+public void fred ( ) { g. foo ( ( "" + ( r. name ( ) ) ), new java.lang.Exception ( "" ) ) ; }
+public class Solution {
+// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+public void bar ( ) { }
+// The following code is correct.
+public Egg garply ( java.lang.Integer id ) { return new Egg ( id ) ; }
+public class Doohickey {
+private void garply ( ) { }
+class Doohickey {
+public int getAge ( ) { return i. age ; }
+public void qux ( ) { }
+<|endoftext|>
+public long fred ( int i ) { return i ; }
+public static void main ( String[] args ) {
+public class Doohickey {
+public void thud ( int z ) throws java.io.IOException { }
+<|endoftext|>
+<|endoftext|>
+public static Cardigan qux ( Box b, double g, double height ) { if ( ( f ) == null ) { f = new Cardigan ( b, g, height ) ; } return f ; }
+public class Egg {
+public static void main ( String[] args ) {
+; }
+public boolean fred ( ) { return (! ( this. y. isEmpty ( ) ) ) || (! ( this. a. isEmpty ( ) ) ) ; }
+public static void main ( ) {
+public int fred ( int x, int y ) { return x + y ; }
+public int corge ( java.lang.Object t ) { return 0 ; }
+// The following code is correct.
+public void bar ( Doohickey d ) { }
+public int fred ( ) { return 1 ; }
+)!= null ) ) { garply ( ). qux ( title. toString ( ), title2. toString ( ) ) ; } }
+public static boolean equals ( Widget k, Widget d ) { return ( k. corge ( d ) ) && ( k. toString ( ). equals ( d. toString ( ) ) ) ; }
+<|endoftext|>
+public static void main ( String[] args ) {
+// The following code is correct.
+public Gadget garply ( Doohickey j ) { java.lang.String e = j. qux ( ) ; return new Gadget ( e ) ; }
+public void grault ( final boolean p ) { if ( p ) { y. grault ( p ) ; } }
+public int bar ( java.lang.String str ) { return h ; }
+
+public Widget qux ( ) { int p = java.lang.Math. abs ( ( ( y. grault ( ) ) % ( h. size ( ) ) ) ) ; return w. get ( p ) ; }
+public void qux ( final Apple k ) { }
+public class Solution {
+public int garply ( ) { if ( ( p. size ( ) ) == 0 ) { return 0 ; } return ( p. size ( ) ) ; }
+// The following code is correct.
+}
+public static void main ( String[] args ) {
+public void qux ( java.lang.String s ) { }
+public class Widget {
+public class Solution {
+// The following code is correct:
+public static java.lang.Object corge ( java.lang.Long o, java.lang.Integer t, java.lang.Integer size ) throws java.lang.Exception {
+// The following code is correct:
+public void qux ( java.lang.String text ) { c. setText ( text ) ; c. fred ( 0 ) ; }
+public static class Yak {
+public class Thingy extends Exception {
+public class Yak {
+public boolean waldo ( android.view.View h, Cardigan t ) { return false ; }
+ply ( ) ) ; }
+The buggy code is:
+public void baz ( android.widget.Button button ) { }
+<|endoftext|>
+
+; baz ( ) ; } l = false ; }
+<|endoftext|>
+public void i. garply ( ) { }
+// The following code is correct:
+protected void garply ( Egg s ) { super. garply ( s ) ; corge ( ). qux ( h, h ) ; baz ( r ) ; foo ( ) ; }
+public void foo ( java.util.List < java.lang.String > t ) { this. w. grault ( t ) ; }
+public void foo ( ) {
+public void garply ( ) { }
+public void foo ( int i ) { int t = a ; java.lang.System.out.println ( ( ( "truth" + t ) + "\n" ) ) ; }

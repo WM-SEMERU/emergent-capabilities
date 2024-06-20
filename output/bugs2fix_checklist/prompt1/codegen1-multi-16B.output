@@ -1,0 +1,100 @@
+private Cardigan getType ( Yak k ) { return new Cardigan ( k, k ) ; }
+Input Format
+private void corge ( java.lang.Class h ) { android.content.Intent intent = new android.content.Intent ( this, h ) ; intent. putExtra ( "name", "value" ) ; }
+// Input Format
+// The bug is that the method call is missing the space between the dot and the method name.
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+The input to your program will be a sequence of strings, each string representing a single line of code. The output should be the corrected code.
+// The buggy code is:
+// The bug is that the switch statement is missing a case label.
+public void corge ( Gadget v ) { this. v = v ; }
+The method corge is defined in the class a.
+// The buggy code is:
+public static void main ( String [ ] args ) {
+The buggy code is:
+// The bug is that the variable r is not initialized before the call to grault.
+// The bug is that the second parameter is not a class.
+// The buggy code is:
+// The buggy code is:
+private void grault ( ) { }
+public void bar ( Doohickey c, boolean a, boolean b ) { this. bar ( c, a, b ) ; }
+corge ( ). waldo ( ) ) ; }
+// The buggy code is:
+// Input Format
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+
+public int thud ( ) { return this. x ; }
+// The buggy code is:
+// The bug is that the variable 'e' is not initialized before the call to bar ( ).
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+private void garply ( ) { }
+// The bug is that the method fred is not defined for the class Apple.
+public void setId ( int id ) { i. id = id ; }
+// The buggy code is:
+// The bug is that the method bar() returns a Comparable object, but the method compareTo() expects an int.
+public long fred ( int i, int j ) { return i + j ; }
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The bug is that the code is not correct. The code is correct if you pass the test cases.
+// The buggy code is:
+// The bug is that the method is called with a null argument.
+// The buggy code is:
+// The buggy code is:
+// The bug is that the method bar is not declared as static.
+The bug is that the code incorrectly checks if the first element of the first array is empty, and if the second element of the second array is empty.
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The bug is that the code compiles, but it does not work.
+// The buggy code is:
+private Doohickey doohickey ( Gadget g ) { java.lang.String e = g. foo ( ) ; return new Doohickey ( e ) ; }
+// The buggy code is:
+// The bug is that the code is calling the method bar() with a string that is not a string literal.
+// The bug is that the variable waldo is never initialized.
+The buggy code is the one that is commented out.
+// The bug is that the method baz is called twice.
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+public class Solution {
+// The buggy code is:
+// The bug is that the variable k is never used.
+// Input Format
+The input to your program is a single line of input containing the value of j and z. The output should be the value of bar(j,z).
+; }
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The bug is that the code throws an exception, but the exception is never caught.
+// The buggy code is:
+// The bug is that the method returns a boolean, but it should return a Cardigan.
+// The buggy code is:
+// The bug is that the second call to grault is missing.
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The bug is that the variable l is not initialized.
+private synchronized void waldo ( ) { b. garply ( listener ) ; }
+// The buggy code is:
+// The buggy code is:
+// The buggy code is:
+// The bug is that the method bar is called with a parameter of type java.util.List<java.lang.String> instead of java.util.List<java.lang.Integer>.
+// The bug is that the method call is missing the space between the dot and the method name.
+// The buggy code is:
+// The bug is that the variable t is not declared before the call to java.lang.System.out.println.
