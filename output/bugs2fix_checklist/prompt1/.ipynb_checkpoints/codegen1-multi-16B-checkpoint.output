@@ -1,0 +1,100 @@
+private Cardigan getType ( Yak k ) { return new Cardigan ( k, k ) ; }
+
+private void corge ( java.lang.Class h ) { android.content.Intent intent = new android.content.Intent ( this, h ) ; intent. putExtra ( "name", "value" ) ; }
+
+
+
+
+
+
+
+
+
+public void corge ( Gadget v ) { this. v = v ; }
+
+
+public static void main ( String [ ] args ) {
+
+
+
+
+
+private void grault ( ) { }
+public void bar ( Doohickey c, boolean a, boolean b ) { this. bar ( c, a, b ) ; }
+
+
+
+
+
+
+
+
+public int thud ( ) { return this. x ; }
+
+
+
+
+
+private void garply ( ) { }
+
+public void setId ( int id ) { i. id = id ; }
+
+
+public long fred ( int i, int j ) { return i + j ; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+private Doohickey doohickey ( Gadget g ) { java.lang.String e = g. foo ( ) ; return new Doohickey ( e ) ; }
+
+
+
+
+
+
+
+
+
+public class Solution {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+private synchronized void waldo ( ) { b. garply ( listener ) ; }
+
+
+
+
+
+
+

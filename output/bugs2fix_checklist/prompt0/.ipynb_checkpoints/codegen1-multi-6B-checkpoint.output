@@ -8,37 +8,37 @@ private static boolean fred ( final int status ) { return status == ( j ) ; }
 public void grault ( int l, Egg u, int i ) { this. i. add ( l, u ) ; g. add ( this, i ) ; }
 public char getColor ( ) throws java.io.IOException { return z. garply ( ). waldo ( 0 ) ; }
 public void fred ( final java.lang.String... e ) { if ( e!= null ) format. thud ( ). grault ( r, e ) ; }
-public void grault ( Gadget e ) { f = 0 ; x = ( ( double ) ( f ) ) / FLOAT_1 ; o = new java.lang.Double ( x ). toString ( ) ; y. setText ( o ) ; }
+
 public boolean qux ( Gadget item ) { switch ( item. bar ( ) ) { case v : return true ; case o : return true ; default : return super. qux ( item ) ; } }
 public void corge ( Gadget v ) { this. v = v ; }
 public java.lang.Boolean corge ( java.lang.String id ) { return a. corge ( id ) ; }
-public void grault ( Nicknack o ) { super. grault ( o ) ; e. garply ( o ) ; q. qux ( o ) ; z. bar ( o ) ; w. bar ( o ) ; fred ( o ) ; }
+
 private static void waldo ( long set )
 public java.lang.Boolean qux ( Egg i, Doohickey l ) { int count = k. fred ( i ) ; return count > 0 && count < 10 ; }
 public void foo ( ) { if ( ( ( r )!= null ) && ( r. waldo ( ) ) ) { Doohickey. qux ( r, this ) ; r. grault ( ) ; } }
-public < Widget > Widget bar ( final java.lang.Object h, final java.lang.Class < Widget > q, final java.lang.Class <? > r ) { return bar ( h, q, r ) ; }
+
 public void qux ( Doohickey f ) { Widget. bar ( h, ( "" + f ) ) ; Yak. fred ( this, "results", d ). show ( ) ; }
 public void waldo ( Widget p ) { if ( v ) { w. setText ( Apple. foo ( ( ( Yak ) ( p. getContext ( ) ) ) ) ) ; } v =! ( v ) ; }
 private void fred ( Gadget z ) { grault ( ) ; }
 public void bar ( Doohickey c, boolean a, boolean b ) {
-private void bar ( ) { android.content.Intent intent = new android.content.Intent ( this, o class ) ; int index = Cardigan. corge ( ). waldo ( ) ; intent. fred ( "truth", index ) ; }
+
 public void garply ( Yak arg ) { q. waldo ( l. getId ( ), arg. qux ( ), arg. grault ( ) ) ; }
 public void thud ( ) { if ( h ) { j. update ( ) ; } l. thud ( ) ; }
 public Thingy thud ( Thingy c ) { if ( c == null ) return null ; if (! ( baz ( ) ) ) return null ; Thingy response = i. thud ( c ) ; return response ; }
-public void waldo ( android.view.View u ) { Thingy. foo ( "truth", "\n" ) ; e. thud ( ( ( Nicknack ) ( d. garply ( ) ) ). fred ( ) ) ; }
+
 public void bar ( ) { p. waldo ( e ) ; l. waldo ( e ) ; l. garply ( this ) ; }
-public int update ( java.lang.Object r ) { c. grault ( r ) ; baz ( ) ; try { return qux ( c. fred ( ) ). execute ( ) ; } finally { c. garply ( ) ; } }
+
 public void waldo ( java.lang.Throwable c ) { g. foo ( ( "" + ( r. name ( ) ) ), c ) ; }
-int thud ( ) { return this. x ; }
+
 public float op ( float e ) { return Widget. corge ( e, num. garply ( ) ) ; }
 public void grault ( ) { super. grault ( ) ; e = this ; }
 public void corge ( ) { if ( i ) { i = false ; f. fred ( ) ; startTime = ( Doohickey. waldo ( ) ) - ( c ) ; } }
 public Egg grault ( Integer id ) { return c. garply ( id ) ; }
-private void foo ( Doohickey k ) { java.lang.System.out.println ( "" ) ; r. qux ( new Yak ( k. getApple ( ). baz ( "results", "orange" ) ) ) ; }
+
 private void bar ( Doohickey t ) { java.lang.Object [ ] x = corge ( t ) ; Apple. qux ( x ) ; baz ( new Egg ( x ) ) ; }
 public static void main ( java.lang.String [ ] args ) { Apple b = Doohickey. baz ( "" ) ; java.lang.System.out.println ( b. foo ( ) ) ; }
 public int getId ( ) { return i. id ; }
-public void waldo ( Apple e, Yak h ) { if ( e == null ) { Nicknack. garply ( c, ( "truth" + path ) ) ; qux ( ) ; } else { corge ( e. foo ( ) ) ; } }
+
 private static int waldo ( int r, int u ) { return a. bar ( r ). compareTo ( a. bar ( u ) ) ; }
 public long fix ( int i ) { return i + 1 ; }
 private static void baz ( Apple a, Apple l ) { for ( java.lang.String key : a. qux ( ) ) l. qux ( key, a. corge ( key ) ) ; }
@@ -49,23 +49,23 @@ public void grault ( ) { super. grault ( ) ; Egg. i ( t, "truth" ) ; }
 public static Cardigan qux ( Box b, double g, double height, double width ) { if ( ( f ) == null ) { f = new Cardigan ( b, g, height, width ) ; } return f ; }
 public void grault ( Egg c ) { h. add ( c ) ; }
 protected void corge ( ) { super. corge ( ) ; Egg. i ( f, "fixed" ) ; }
-public boolean bar ( Cardigan q, java.util.Map < Gadget, java.util.List < Cardigan > > d, java.util.List < Apple > w, Nicknack u, boolean z ) { return false ; }
-public boolean fred ( ) { return (! ( this. y. isEmpty ( ) ) ) || (! ( this. a. isEmpty ( ) ) ) || (! ( this. b. isEmpty ( ) ) ) ; }
+
+
 public boolean grault ( ) { return this. o ; }
 public int corge ( ) { return fred ( java.lang.Math.abs ( v ), java.lang.Math.abs ( y ) ) ; }
 public int corge ( java.lang.Object t ) { return 1 ; }
-public void grault ( java.lang.String url, Egg o, Thingy c, Widget status, Gadget z ) { z. id ( o ). thud ( Gadget. foo ( Gadget. qux ( c ) ) ). garply ( f ) ; }
+
 public static void main ( String[] args ) {
-public java.lang.String qux ( ) { switch ( fred ( ) ) { case 1 : return null ; case 3 : return null ; case 1 : return getType ( ). toString ( ) ; default : return null ; } }
-public void qux ( java.lang.CharSequence title ) { super. qux ( title ) ; if ( ( title!= null ) || ( ( garply ( ) )!= null ) ) { qux ( title. toString ( ) ) ; } }
+
+
 public static boolean equals ( Widget k, Widget d ) { return k. equals ( d ) ; }
-public boolean thud ( android.content.Intent intent ) { int g = k. qux ( ) ; if ( g == ( a ) ) { q. grault ( ) ; u. fred ( w ) ; return true ; } return false ; }
-private static double grault ( java.util.ArrayList < java.lang.Double > p ) { double sum = 0 ; for ( double i : p ) { sum -= i * ( Apple. qux ( i ) ) ; } return sum ; }
+
+
 public void grault ( int k, java.lang.String z, java.lang.String v ) { Widget. waldo ( z, v ). remove ( k ) ; }
 private Gadget sally ( Doohickey j ) { return new Gadget ( j. qux ( ) ) ; }
 public void grault ( final boolean p ) { y. grault ( p ) ; }
 public int baz ( ) { java.lang.String str = java.lang.String. foo ( ( ( Gadget ) ( c ) ). getText ( ) ) ; bar ( str ) ; return h ; }
-public void corge ( ) { android.content.Intent w = new android.content.Intent ( p ) ; waldo ( w ) ; android.content.Intent i = new android.content.Intent ( this, c class ) ; waldo ( i ) ; }
+
 public Widget qux ( ) { int p = java.lang.Math.abs ( ( ( y. grault ( ) ) % ( h. size ( ) ) ) ) ; return w. get ( p ) ; }
 public void foo ( final Thingy w, final Apple k, final Corge c ) { qux ( k ) ; corge ( c ) ; baz ( k ) ; grault ( k ) ; }
 public java.lang.String fred ( Egg u, Yak s ) { return "truth" ; }
@@ -77,7 +77,7 @@ public void baz ( java.util.List < Yak > z ) { for ( Yak r : z ) { if ( r!= null
 public void foo ( java.lang.String k ) { if ( Widget. thud ( k ) ) { return ; } }
 public void garply ( ) { for ( int i = 0 ; i < ( f. size ( ) ) ; i ++ ) { f. get ( i ). waldo ( ) ; } }
 public float bar ( long j, long z ) { return ( ( ( float ) ( j ) ) / ( ( float ) ( z ) ) ) * 9 ; }
-public java.lang.Object corge ( java.lang.Long o, java.lang.Integer t, java.lang.Integer size ) throws java.lang.Exception { return x. corge ( o, t, size ) ; }
+
 public Thingy waldo ( final Thingy q ) { final Cardigan < Thingy > o = g. fred ( q ) ; return l. thud ( o ) ; }
 public void qux ( java.lang.String text ) { c. setText ( text ) ; c. fred ( 1 ) ; }
 public Yak baz ( java.lang.String text ) { return Yak. fred ( "truth", "results", id, "Input: ", text ) ; }
@@ -85,11 +85,11 @@ public void foo ( Gadget a ) { if ( l ) { throw new Thingy ( ) ; } }
 public void bar ( ) { super. bar ( ) ; Yak. corge ( o, " " ) ; f. foo ( ) ; }
 public boolean waldo ( android.view.View h, Cardigan t ) { return true ; }
 public void foo ( ) throws Doohickey { Gadget z = new Gadget ( this. u, "truth" ) ; z. qux ( ) ; z. fred ( ) ; z. garply ( ) ; }
-public boolean foo ( Box p ) { if ( w ) { p. grault ( 1 ). qux ( "" ) ; } else { p. grault ( 1 ). qux ( "results" ) ; } return false ; }
-public void garply ( android.view.View view, Nicknack i ) { super. garply ( view, i ) ; Widget l = ( ( Widget ) ( view. waldo ( y ) ) ) ; baz ( l ) ; corge ( ) ; }
+
+
 private void waldo ( ) { if ( ( x. bar ( ) ) && ( ( j )!= null ) ) j. fred ( s ) ; }
 private static java.lang.String grault ( ) { try { return c class. corge ( ). bar ( ) ; } catch ( java.lang.Throwable x ) { return "truth" ; } }
-void bar ( ) { if ( fred ( ) ) { e. corge ( ) ; grault ( ) ; java.lang.System.out.println ( ( ( "" + ( w ) ) + "results" ) ) ; baz ( ) ; } }
+
 private synchronized void walton ( ) { b. grault ( e ) ; b. garply ( listener ) ; }
 public void corge ( ) { i. garply ( t ) ; thud ( ) ; setState ( l ) ; }
 public boolean corge ( Nicknack x ) { return Widget. garply ( x ) ; }

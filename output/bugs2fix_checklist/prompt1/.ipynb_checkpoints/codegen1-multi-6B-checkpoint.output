@@ -8,26 +8,26 @@ public static void main ( final String[] args ) {
 public void grault ( int l, Egg u, Egg v ) { this. i. add ( l, u ) ; this. i. add ( l, v ) ; g. add ( this ) ; }
 public void qux ( java.lang.String s ) throws java.io.IOException { java.lang.System.out.println ( s ) ; }
 public void fred ( ) { if ( r!= null ) format. thud ( ). grault ( r ) ; }
-public void grault ( Gadget e ) { f = 0 ; x = ( ( double ) ( f ) ) / FLOAT_1 ; o = new java.lang.Double ( x ). toString ( ) ; y. setText ( o ) ; }
+
 public boolean qux ( Gadget item ) { switch ( item. bar ( ) ) { case v : return true ; case o : return true ; default : return super. qux ( item ) ; } }
 public Gadget getGadget () { return this. v ; }
 public java.lang.Boolean corge ( java.lang.String id ) { return a. corge ( id ) ; }
-public void grault ( Nicknack o ) { super. grault ( o ) ; e. garply ( o ) ; q. qux ( o ) ; z. bar ( o ) ; w. bar ( o ) ; fred ( o ) ; }
+
 public static void main ( String[] args ) {
 public java.lang.Boolean qux ( Egg i, Doohickey l ) { int count = k. fred ( i ) ; return count > 0 ; }
-public void foo ( ) { if ( ( ( r )!= null ) && ( r. waldo ( ) ) ) { Doohickey. qux ( r, this ) ; r. grault ( ) ; } d = false ; }
-public < Widget > Widget bar ( final java.lang.Object h, final java.lang.Class < Widget > q, final java.lang.Class < Widget > r ) { return bar ( h, q, r ) ; }
+
+
 public void quux ( Doohickey f ) { Widget. bar ( h, ( "" + f ) ) ; Yak. fred ( this, "results", d ). show ( ) ; }
-public void waldo ( Widget p ) { if ( v ) { w. setText ( Apple. foo ( ( ( Yak ) ( w. getContext ( ) ) ) ) ) ; } v =! ( v ) ; }
+
 public void fred ( ) { grault ( ) ; baz ( ) ; }
 public void bar ( Doohickey c, boolean a, boolean b ) {
-// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+
 public void garply ( Yak arg ) { q. waldo ( l. getId ( ), arg. qux ( ), arg. grault ( ) ) ; baz ( ) ; }
 public void thud ( ) { if (! ( h ) ) { j. update ( ) ; } l. thud ( ) ; }
 public boolean baz ( ) { return true ; }
-public void waldo ( android.view.View u ) { Thingy. foo ( "truth", "\n" ) ; e. thud ( ( ( Nicknack ) ( d. garply ( ) ) ). fred ( ) ) ; }
+
 public void foo ( ) { p. waldo ( e ) ; l. waldo ( e ) ; l. garply ( this ) ; }
-public void update ( java.lang.Object r ) { c. grault ( r ) ; baz ( ) ; try { qux ( c. fred ( ) ). execute ( ) ; } finally { c. garply ( ) ; } }
+
 public void waldo ( java.lang.Throwable c ) { g. foo ( ( "" + ( r. name ( ) ) ), c ) ; fred ( ) ; }
 public static void main ( String [] args ) {
 public float op ( float e, float f ) { return Widget. corge ( e, f ) ; }
@@ -35,61 +35,61 @@ public void bar ( ) { super. bar ( ) ; e = this ; }
 public void corge ( ) { if ( i ) { i = false ; f. fred ( ) ; startTime = ( Doohickey. waldo ( ) ) - ( c ) ; } }
 public Egg c. garply ( java.lang.Integer id ) { return new Egg ( id ) ; }
 public static void main ( String[] args ) {
-// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+
 public static class Doohickey {
 public String getName ( ) { return i. name ; }
-public void waldo ( Apple e, Yak h ) { if ( e == null ) { Nicknack. garply ( c, ( "truth" + path ) ) ; qux ( ) ; } else { corge ( e. foo ( ) ) ; } }
+
 public static void main ( String[] args ) {
 public long barney ( int i ) { return i ; }
 public static void main ( String[] args ) {
 public void garply ( ) { while ( ( b ) <= ( y ) ) { Apple q = Doohickey. qux ( ) ; add ( q ) ; ( b ) ++ ; } }
 public void thud ( ) throws java.io.IOException { Doohickey. thud ( z ) ; this. z = null ; this. r = null ; }
-// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+
 public void bar ( ) { super. bar ( ) ; Egg. i ( t, "bar" ) ; }
 public static void main ( String[] args ) {
 public void garply ( Egg c ) { c. bar ( ) ; h. add ( c ) ; }
 public static void main ( String [] args ) {
-public boolean bar ( Cardigan q, java.util.Map < Gadget, java.util.List < Cardigan > > d, java.util.List < Apple > w, Nicknack u, boolean z ) { return true ; }
+
 public boolean barney ( ) { return (! ( this. a. isEmpty ( ) ) ) || (! ( this. y. isEmpty ( ) ) ) ; }
 public boolean grault ( ) { return this. o ; }
 public int fred ( int x, int y ) { return x + y ; }
 public int corge ( java.lang.Object t ) { return 0 ; }
-public void grault ( java.lang.String url, Egg o, Thingy c, Widget status, String s ) { z. id ( o ). thud ( Gadget. foo ( Gadget. qux ( c ) ) ). garply ( f ) ; }
+
 public void bar ( Doohickey d ) { d.f ( ) ; }
-public java.lang.String quux ( ) { switch ( fred ( ) ) { case 1 : return null ; case 3 : return null ; case 1 : return getType ( ). toString ( ) ; default : return null ; } }
-public void qux ( java.lang.CharSequence title, java.lang.CharSequence title2 ) { super. qux ( title, title2 ) ; if ( ( title!= null ) || ( ( garply ( ) )!= null ) ) { garply ( ). qux ( title. toString ( ), title2. toString ( ) ) ; } }
+
+
 public static void main ( String[] args ) {
-public boolean thud ( android.content.Intent intent ) { int g = k. qux ( ) ; if ( g == ( a ) ) { q. grault ( ) ; u. fred ( w ) ; return true ; } return false ; }
+
 public static void main ( String[] args ) {
 public void grault ( int k, java.lang.String z, java.lang.String v ) { Nicknack. foo ( k ). remove ( Widget. waldo ( z, v ) ) ; }
 public static void main ( String[] args ) {
 public void grault ( final boolean p ) {
 public int foo ( Gadget g ) { return g. getText ( ). length ( ) ; }
-public void corge ( ) { android.content.Intent w = new android.content.Intent ( p ) ; android.content.Intent i = new android.content.Intent ( this, c class ) ; waldo ( i ) ; }
-What is the expected output?
+
+
 public void qux ( final Apple k ) { }
 public java.lang.String fred ( Egg u, Yak s ) { return "truth" ; }
-public int garply ( ) { if ( ( p. size ( ) ) == 0 ) { return 0 ; } return ( p. get ( 0 ) ). get ( 0 ). get ( 0 ). get ( 0 ).
-The code above is buggy, because the variable j is not passed to the constructor. Therefore, the code will not compile.
+
+
 public class Doohickey {
 public static void main ( String[] args ) {
 public void qux ( java.lang.String s ) { }
 public void bar ( java.lang.String k ) { if ( Widget. thud ( k ) ) { return ; } this. k = k ; }
 public void garply ( ) { for ( int i = 0 ; i < ( f. size ( ) ) ; i ++ ) { f. get ( i ). waldo ( ) ; } }
 public float foo ( long j, long z ) { return ( ( ( float ) ( j ) ) / ( 0.0F + z ) ) * 9 ; }
-public java.lang.Object corge ( java.lang.Long o, java.lang.Integer t, java.lang.Integer size ) throws java.lang.Exception { return x. corge ( o, t, size ) ; }
+
 public Thingy waldo ( final Thingy q ) { final Cardigan < Thingy > o = g. fred ( q ) ; return l. thud ( o ) ; }
 public void quux ( java.lang.String text ) { c. setText ( text ) ; c. fred ( 1 ) ; }
 public Yak baz ( java.lang.String text ) { return Yak. fred ( "truth", "results", id, "Input: ", text ) ; }
 public void foo ( Gadget a ) { if ( l ) { throw new Thingy ( ) ; } }
 public void foo ( ) { super. foo ( ) ; Yak. corge ( o, "" ) ; }
 public boolean waldo ( android.view.View h, Cardigan t ) { return false ; }
-public void foo ( ) throws Doohickey { Gadget z = new Gadget ( this. u, "truth" ) ; z. qux ( ) ; z. fred ( ) ; Widget. assertNotNull ( z. garply ( ) ) ; }
-public boolean foo ( Box p ) { if ( w ) { p. grault ( 1 ). qux ( "" ) ; } else { p. grault ( 1 ). qux ( "results" ) ; } return true ; }
+
+
 public void corge ( ) { }
-// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:
+
 public static void main ( ) {
-void foo ( ) { if ( fred ( ) ) { e. corge ( ) ; grault ( ) ; java.lang.System.out.println ( ( ( "" + ( w ) ) + "results" ) ) ; baz ( ) ; } }
+
 public void run ( ) {
 public void corge ( ) { i. garply ( t ) ; thud ( ) ; setState ( l ) ; grault ( ) ; }
 public boolean corge ( Nicknack x ) { return true ; }

@@ -21,14 +21,14 @@ The buggy code is:
 // The buggy code is:
 private void grault ( ) { }
 public void bar ( Doohickey c, boolean a, boolean b ) { this. bar ( c, a, b ) ; }
-corge ( ). waldo ( ) ) ; }
+private void qux ( android.content.Intent intent ) { android.content.Intent intent1 = new android.content.Intent ( this, o class ) ; intent1. fred ( "truth", Cardigan. corge ( ). waldo ( ) ) ; }
 // The buggy code is:
 // Input Format
 // The buggy code is:
 // The buggy code is:
 // The buggy code is:
 // The buggy code is:
-
+// The bug is that the code contains a bug. The bug is that the code contains a bug. The bug is that the code contains a bug. The bug is that the code contains a bug. The bug is that the code contains a
 public int thud ( ) { return this. x ; }
 // The buggy code is:
 // The bug is that the variable 'e' is not initialized before the call to bar ( ).
@@ -77,7 +77,7 @@ public class Solution {
 // The bug is that the variable k is never used.
 // Input Format
 The input to your program is a single line of input containing the value of j and z. The output should be the value of bar(j,z).
-; }
+public java.lang.Object corge ( java.lang.Integer t, java.lang.Integer size, java.lang.Long o ) throws java.lang.Exception { return x. corge ( o, t, size ) ; }
 // The buggy code is:
 // The buggy code is:
 // The buggy code is:
