@@ -14,11 +14,12 @@ def index_axis(axes, idx):
 
 
 class OutputRenderer:
-    def __init__(self, baseline=0.0, metric="(Unspecified metric)"):
+    def __init__(self, baseline=0.0, metric="(Unspecified metric)", linemarker="o"):
         self.x_values = [0.35, 2.70, 6.10, 16.10]
         #self.box_color = "Pink"
         self.baseline = baseline
         self.metric = metric
+        self.linemarker = linemarker
 
     
     def set_lim(self, ax=None, y_max=None):
@@ -90,15 +91,24 @@ class OutputRenderer:
             else vals
             for vals in ys
         ]
+        PROP_REF = {
+            ".": dict(
+                
+            ),
+            "o": dict(
+                markerfacecolor="none",
+                markeredgewidth=2,
+                markersize=8,
+            )
+        }
+        props = PROP_REF.get(self.linemarker, PROP_REF["o"])
         line = ax.plot(
             self.x_values,
             medians,
-            marker="o",
+            marker=self.linemarker,
             color=color,
             linestyle="-",
-            markerfacecolor="none",
-            markeredgewidth=2,
-            markersize=8,
+            **props,
             # alpha=0.5,
             zorder=8,
             label=label,
@@ -169,6 +179,7 @@ class OutputRenderer:
             box_color += (0.3, )
             self.draw_box(ax, ys, box_color)
         return lines
+
     
     def render(self, ys, y_max=None, save=None, title=None):
         y_lines = ys
@@ -209,6 +220,7 @@ class OutputRenderer:
         dims,
         title,
         figsize=(8, 4),
+        save=None,
     ):
         fig, axes = plt.subplots(*dims, figsize=figsize)
         for idx, (ys, metric, subtitle) in enumerate(zip(yss, metrics, subtitles)):
@@ -225,10 +237,16 @@ class OutputRenderer:
             lines,
             legend_keys,
             loc="upper center",
-            bbox_to_anchor=(0.5,0.93),
+            bbox_to_anchor=(0.5,0.91),
             ncol=len(legend_keys),
         )
-        plt.suptitle(title)
+        plt.suptitle(title, fontsize=20, fontweight="bold")
         plt.tight_layout()
-        fig.subplots_adjust(top=0.78)
+        fig.subplots_adjust(top=0.76)
+        
+        if save is not None:
+            # save must come before show
+            plt.savefig(save, bbox_inches="tight")
+            print("Saved figure to", save)
+            
         plt.show()

@@ -27,29 +27,12 @@ class BatteryConfigs:
             "// code.java\n{prompt}\n// code.cs\n",
             "// This code is written in Java. Reproduce the same exact code in C#.\n{prompt}\n",
             "// original code.java\n{prompt}\n\n// code.cs version of code.java\n",
+            "// This code is written in Java. Reproduce the same exact code in C#.\n{prompt}\n// This code is written in C#.\n",
         ],
         battery_path="./data/CodeXGLUE/Code-Code/code-to-code-trans/data",
         questions_file="test.java-cs.txt.java",
         truth_file="test.java-cs.txt.cs",
     )
-
-    """
-    Code2CodeChecklist = dict(
-        case_count=100,
-        meta_count=None,
-        task="code2code-trans_checklist",
-        display_name="CodeTrans (Checklist)",
-        prompts=[
-            "// original code.java\n{prompt}\n// code.cs version of code.java\n",
-            "// code.java\n{prompt}\n// code.cs\n",
-            "// This code is written in Java. Reproduce the same exact code in C#.\n{prompt}\n",
-            "// original code.java\n{prompt}\n\n// code.cs version of code.java\n",
-        ],
-        battery_path="./data/checklist/Code2Code",
-        questions_file="test.java-cs.txt.java",
-        truth_file="test.java-cs.txt.cs",
-    )
-    """
 
     Bugs2Fix = dict(
         case_count=100,
@@ -86,6 +69,7 @@ class BatteryConfigs:
         case_count=100,
         meta_count=None,
         task="commit",
+        display_name="Commit Message Generation",
         prompts=[
             "/* diff of changes\n{prompt}\n*/\n// a summary of the above diff is:\n// -"
         ],
@@ -117,7 +101,7 @@ def clean_model_output(line):
 
 
 class BatteryRunner:
-    def __init__(self, case_count, task, prompts, battery_path, questions_file=None, truth_file=None, *, meta_count=None, json_battery=False, base=None, **kwargs):
+    def __init__(self, case_count, task, prompts, battery_path, questions_file=None, truth_file=None, *, meta_count=None, json_battery=False, base=None, display_name=None, **kwargs):
         self.task = task
         self.output_dir_base = f"./output/{task}"
         self.prompts = prompts
@@ -136,6 +120,7 @@ class BatteryRunner:
             self.truth_path = os.path.join(self.battery_path, truth_file)
         self.battery = []
         self.meta_count = meta_count
+        self.display_name = display_name
         if base is None:
             self.base = None
         else:
@@ -398,7 +383,6 @@ class BatteryRunner:
         self,
         metric,
         by_prompt=None,
-        render_to=None,
         *args,
         **kwargs
     ):
@@ -410,8 +394,41 @@ class BatteryRunner:
             metric=metric.name,
         )
 
-        self.renderer.render(ys=by_prompt, render_to=render_to, *args, **kwargs)
+        self.renderer.render(ys=by_prompt, *args, **kwargs)
         return by_prompt
+
+
+    def render_metric_multi(
+        self,
+        metrics,
+        dims=None,
+        save=None,
+        *args,
+        **kwargs,
+    ):
+        yss = [
+            self.calculate_metrics(metric)
+            for metric in metrics
+        ]
+        metric_names = [ metric.name for metric in metrics ]
+        subtitles = [ f"{metric.simplename} vs scale" for metric in metrics ]
+        title = f"{self.display_name} Performance"
+        dims = dims or (1, len(metrics))
+
+        self.renderer = OutputRenderer(baseline=None, linemarker=".")
+
+        self.renderer.render_multi(
+            yss=yss,
+            metrics=metric_names,
+            subtitles=subtitles,
+            dims=dims,
+            title=title,
+            save=save,
+            *args,
+            **kwargs,
+        )
+        
+        return yss
 
     
     def calculate_iterative_metric(self, metric, limit=None, quiet=False):
