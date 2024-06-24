@@ -4,9 +4,17 @@ import torch
 from model_wrapper import Model, ModelFamily
 from timehelp import with_progress, display_header
 import matplotlib.pyplot as plt
-from render_output import OutputRenderer
+from matplotlib.transforms import offset_copy
+from render_output import OutputRenderer, index_axis
 import json
 import numpy as np
+import scipy
+
+PATCH_SEPARATOR = "=" * 30 + "\n"
+BASE_DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+
+def open_relative(name, *args, **kwargs):
+    return open(os.path.join(BASE_DIRECTORY, name), *args, **kwargs)
 
 class BatteryConfigs:
     Code2Code = dict(
@@ -25,6 +33,24 @@ class BatteryConfigs:
         truth_file="test.java-cs.txt.cs",
     )
 
+    """
+    Code2CodeChecklist = dict(
+        case_count=100,
+        meta_count=None,
+        task="code2code-trans_checklist",
+        display_name="CodeTrans (Checklist)",
+        prompts=[
+            "// original code.java\n{prompt}\n// code.cs version of code.java\n",
+            "// code.java\n{prompt}\n// code.cs\n",
+            "// This code is written in Java. Reproduce the same exact code in C#.\n{prompt}\n",
+            "// original code.java\n{prompt}\n\n// code.cs version of code.java\n",
+        ],
+        battery_path="./data/checklist/Code2Code",
+        questions_file="test.java-cs.txt.java",
+        truth_file="test.java-cs.txt.cs",
+    )
+    """
+
     Bugs2Fix = dict(
         case_count=100,
         meta_count=None,
@@ -33,15 +59,65 @@ class BatteryConfigs:
         prompts=[
             "// the buggy version of the code\n{prompt}\n// the fixed version of the code\n",
             "// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:\n{prompt}\n",
+            "// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:\n{prompt}\n// The following code is correct:\n",
         ],
         battery_path="./data/CodeXGLUE/Code-Code/code-refinement/data/small",
         questions_file="test.buggy-fixed.buggy",
         truth_file="test.buggy-fixed.fixed",
     )
 
+    Bugs2FixChecklist = dict(
+        case_count=100,
+        meta_count=None,
+        task="bugs2fix_checklist",
+        display_name="Bugs2fix (Checklist)",
+        prompts=[
+            "// the buggy version of the code\n{prompt}\n// the fixed version of the code\n",
+            "// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:\n{prompt}\n",
+            "// You are given a piece of buggy code. Your task is to fix the error, and generate the corrected code. Fix the following code:\n{prompt}\n// The following code is correct:\n",
+        ],
+        battery_path="./data/checklist/Bugs2fix",
+        questions_file="test.buggy-fixed.buggy",
+        truth_file="test.buggy-fixed.fixed",
+        base="Bugs2Fix",
+    )
+
+    CommitMessageGeneration = dict(
+        case_count=100,
+        meta_count=None,
+        task="commit",
+        prompts=[
+            "/* diff of changes\n{prompt}\n*/\n// a summary of the above diff is:\n// -"
+        ],
+        battery_path="./data/commits/commit_message_generation_codisum.json",
+        json_battery=True,
+    )
+
+
+def sample_cmap(cmap, count=4, lower=0, upper=1):
+    cmap_object = plt.get_cmap(cmap)
+    colors = cmap_object(np.linspace(upper, lower, count))
+    return colors
+
+
+def init_lazy_model(model_name):
+    model = None
+    def inner_model(load=True):
+        nonlocal model
+        if load and model is None:
+            model = Model(model_name)
+            model.configure(time=True)
+            model.verbose = False
+        return model
+    return inner_model
+
+
+def clean_model_output(line):
+    return line.replace("<|endoftext|>", "").strip()
+
 
 class BatteryRunner:
-    def __init__(self, case_count, task, prompts, battery_path, questions_file=None, truth_file=None, *, meta_count=None, json_battery=False, **kwargs):
+    def __init__(self, case_count, task, prompts, battery_path, questions_file=None, truth_file=None, *, meta_count=None, json_battery=False, base=None, **kwargs):
         self.task = task
         self.output_dir_base = f"./output/{task}"
         self.prompts = prompts
@@ -60,6 +136,10 @@ class BatteryRunner:
             self.truth_path = os.path.join(self.battery_path, truth_file)
         self.battery = []
         self.meta_count = meta_count
+        if base is None:
+            self.base = None
+        else:
+            self.base = BatteryRunner.of(getattr(BatteryConfigs, base))
 
 
     @staticmethod
@@ -68,11 +148,11 @@ class BatteryRunner:
 
     def load_cases(self):
         if self.json_battery:
-            with open(self.battery_path, "r") as battery:
+            with open_relative(self.battery_path, "r") as battery:
                 test_cases = json.loads(battery.read())["cases"][:self.case_count]
                 self.battery = [ obj["prompt"].strip() for obj in test_cases ]
         else:
-            with open(self.questions_path, "r") as battery:
+            with open_relative(self.questions_path, "r") as battery:
                 self.battery = [
                     line.strip()
                     for line
@@ -80,9 +160,12 @@ class BatteryRunner:
                 ]
         
         print(f"Loaded {len(self.battery)} cases!")
+        if self.base is not None:
+            print("Loading base config (does not run base config battery)...")
+            self.base.load_cases()
 
     
-    def run_battery(self, family, prompt_indices=None, prompt_index=None, quiet=False, *args, **kwargs):
+    def run_battery(self, family, prompt_indices=None, prompt_index=None, quiet=False, patch=False, *args, **kwargs):
         assert len(self.battery) > 0, "Must have at least 1 test case loaded"
         if prompt_indices is None:
             if prompt_index is None:
@@ -111,12 +194,15 @@ class BatteryRunner:
                 prompt=prompt,
                 output_dir=output_dir,
                 quiet=quiet,
+                patch=patch,
                 *args,
                 **kwargs,
             )
+            #print("Breaking out of prompt iteration index early...")
+            #break
 
 
-    def single_battery(self, family, prompt, output_dir, family_name=None, quiet=False, *args, **kwargs):
+    def single_battery(self, family, prompt, output_dir, family_name=None, quiet=False, patch=False, *args, **kwargs):
         # e.g. family=ModelFamily.CodeGen1.multi
         if family_name is None:
             family_name = ModelFamily.name_for(family)
@@ -127,6 +213,7 @@ class BatteryRunner:
             # optimization: don't load the model if we don't need to make more cases
             # reading files twice is way more time-efficient than loading a model we don't need to
             iterate_structure = []
+            existing_lines = []
             for i in range(self.meta_count or 1):
                 if self.meta_count is None:
                     base_name = f"{family_name}-{key}.output"
@@ -134,10 +221,15 @@ class BatteryRunner:
                     base_name = f"{family_name}-{key}-mc{i}.output"
                 output_path = os.path.join(output_dir, base_name)
                 # creates the file if it doesn't exist
-                with open(output_path, "a+") as output_file:
+                with open_relative(output_path, "a+") as output_file:
                     output_file.seek(0)
-                    to_skip = len(output_file.readlines())
+                    existing_lines = [line.strip() for line in output_file.readlines()]
+                    to_skip = len(existing_lines)
 
+                # if we're in patch mode, we need to investigate the file anyway
+                if patch:
+                    to_skip = 0
+                
                 # only record file if its missing outputs
                 if to_skip < len(self.battery):
                     iterate_structure.append([ output_path, to_skip ])
@@ -148,15 +240,25 @@ class BatteryRunner:
                 continue
             
             torch.cuda.empty_cache()
-            model = Model(model_name)
-            model.configure(time=True)
-            model.verbose = False
+            # lazily access it, so we don't actually need to load the model unless we generate
+            get_model = init_lazy_model(model_name)
 
             @with_progress(len(self.battery))
             def iterate(output_file, *, step=None):
+                output = None
                 test_case = self.battery[step]
                 specific_prompt = prompt.format(prompt=test_case)
-                output = model.generate_until(specific_prompt, stops=["\n"], **kwargs)
+                patching = False
+                if patch:
+                    existing_output = existing_lines[step]
+                    if existing_output != "":
+                        output = existing_output
+                    else:
+                        patching = True
+                        print(f"Regenerating empty test case index {step} for {repr(test_case)} with prompt {repr(specific_prompt)}...")
+                    
+                if output is None:
+                    output = get_model().generate_until(specific_prompt, stops=["\n"], **kwargs)
 
                 # output is now returned as a string
                 if output is None:
@@ -166,7 +268,7 @@ class BatteryRunner:
                 #    print("Warning: Model returned no output (prompt may have been too large)")
                 #    decoded = ""
                 #else:
-                #    decoded = model.decode(output).strip()
+                #    decoded = get_model().decode(output).strip()
 
                 if "\n" in decoded:
                     if not quiet:
@@ -176,20 +278,38 @@ class BatteryRunner:
                         print("Decoded: (next line)")
                         print(repr(decoded))
                     decoded = decoded.split("\n")[0]
+
+                if patching:
+                    print(f"Patched output: {repr(decoded)}")
                 
                 output_file.write(decoded + "\n")
-        
-                del model.inputs, output
+                
+                if get_model(load=False) is not None and get_model().inputs is not None:
+                    del get_model().inputs
+                    # ensure we don't null-read
+                    get_model().inputs = None
         
             for output_path, to_skip in iterate_structure:
                 if not quiet:
                     print(f"Opening {output_path}...")
-                with open(output_path, "a+") as output_file: 
+                with open_relative(output_path, "a+") as output_file: 
                     if to_skip > 0 and not quiet:
                         print(f"{to_skip} entries found already, skipping that many...")
+                    elif patch:
+                        print(f"Preparing file for patching...")
+                        output_file.write(PATCH_SEPARATOR)
                     iterate(output_file, skip=to_skip)
-        
-            model.free()
+
+            if patch:
+                with open_relative(output_path, "r") as source:
+                    parts = source.read().split(PATCH_SEPARATOR)
+                with open_relative(output_path, "w") as dest:
+                    dest.write(parts[-1])
+
+            if get_model(load=False) is not None:
+                get_model().free()
+            #print("Breaking out of model family iteration loop early...")
+            #return
 
     
     def init_cases(self, family, family_name=None):
@@ -197,11 +317,11 @@ class BatteryRunner:
             family_name = ModelFamily.name_for(family)
 
         if self.json_battery:
-            with open(self.battery_path, "r") as battery:
+            with open_relative(self.battery_path, "r") as battery:
                 test_cases = json.loads(battery.read())["cases"][:self.case_count]
                 self.answer_key = [ obj["truth"].strip() for obj in test_cases ]
         else:
-            with open(self.truth_path, "r") as truth_file:
+            with open_relative(self.truth_path, "r") as truth_file:
                 self.answer_key = truth_file.readlines()
         
         prompt_family_answers = []
@@ -213,12 +333,18 @@ class BatteryRunner:
                 # meta_count: base_name = f"{family_name}-{key}-mc{i}.output"
                 base_name = f"{family_name}-{key}.output"
                 output_path = os.path.join(output_dir, base_name)
-                with open(output_path, "r") as output_file:
-                    answers = output_file.readlines()
+                with open_relative(output_path, "r") as output_file:
+                    answers = [
+                        clean_model_output(answer)
+                        for answer in output_file.readlines()
+                    ]
                 family_answers[key] = answers
             prompt_family_answers.append(family_answers)
 
         self.prompt_family_answers = prompt_family_answers
+
+        if self.base is not None:
+            self.base.init_cases(family, family_name)
 
     
     def init_render(self, *args, **kwargs):
@@ -226,9 +352,12 @@ class BatteryRunner:
 
     
     def calculate_metrics(self, metric, limit=None, cache=True):
+        if limit is not None:
+            cache = False
+        
         if cache:
             cache_file_path = os.path.join("./output", self.task, "metrics.json")
-            with open(cache_file_path, "a+", encoding="utf-8") as cache_file:
+            with open_relative(cache_file_path, "a+", encoding="utf-8") as cache_file:
                 cache_file.seek(0)
                 data = cache_file.read()
                 if len(data) == 0:
@@ -259,22 +388,29 @@ class BatteryRunner:
         if cache:
             cache_obj["case_count"] = self.case_count
             cache_obj["results"][metric.shortname] = by_prompt
-            with open(cache_file_path, "w", encoding="utf-8") as cache_file:
+            with open_relative(cache_file_path, "w", encoding="utf-8") as cache_file:
                 cache_file.write(json.dumps(cache_obj))
         
         return by_prompt
         
     
-    def render_metric(self, metric, by_prompt=None, *args, **kwargs):
+    def render_metric(
+        self,
+        metric,
+        by_prompt=None,
+        render_to=None,
+        *args,
+        **kwargs
+    ):
         if by_prompt is None:
             by_prompt = self.calculate_metrics(metric)
 
         self.renderer = OutputRenderer(
             baseline=metric.baseline,
-            metric=metric.name
+            metric=metric.name,
         )
 
-        self.renderer.render(ys=by_prompt, *args, **kwargs)
+        self.renderer.render(ys=by_prompt, render_to=render_to, *args, **kwargs)
         return by_prompt
 
     
@@ -314,14 +450,15 @@ class BatteryRunner:
         linear_axes = []
         
         for i in range(prompt_count):
-            if len(axes.shape) == 1:
-                ax = axes[i]
-            else:
-                ax = axes[i // width, i % width]
-            linear_axes.append(ax)
+            linear_axes.append(index_axis(axes, i))
 
-        cmap_object = plt.get_cmap(cmap)
-        colors = cmap_object(np.linspace(1, 0, len(names)))
+        i += 1
+        while i < width * height:
+            # turn off extra subplots
+            index_axis(axes, i).axis("off")
+            i += 1
+        
+        colors = sample_cmap(cmap, count=len(names))
         
         for idx, prompt in enumerate(prompts):
             ax = linear_axes[idx]
@@ -346,10 +483,174 @@ class BatteryRunner:
         
         plt.tight_layout()
         if save:
-            plt.save_fig(save, bbox_inches="tight")
+            plt.savefig(save, bbox_inches="tight")
         plt.show()
 
 
+    def calculate_perturbations(self, metric, series_name="prompt0"):
+        assert self.base is not None, "Cannot calculate perturbations for model without base battery"
+
+        # TODO: optional extras
+        extras_path = os.path.join(self.battery_path, "extras.json")
+        with open_relative(extras_path, "r") as file:
+            extras = json.loads(file.read())
+            
+        # stored as e.g. plot_xs["prompt0"]["350M"] i.e. plot_xs[series_name][model_key]
+        plot_data = {}
+        for idx, family_answers in enumerate(self.prompt_family_answers):
+            series_name = f"prompt{idx}"
+            result = {}
+            plot_data[series_name] = {}
+            for model_idx, (model_key, answers) in enumerate(family_answers.items()):
+                plot_data[series_name][model_key] = model_plot = {
+                    "xs": [],
+                    "ys": [],
+                    "diff_ys": [],
+                }
+                for answer_idx, answer in enumerate(answers):
+                    extra = extras[answer_idx]
+                    truth = self.answer_key[answer_idx]
+                    base_answer = self.base.prompt_family_answers[idx][model_key][answer_idx]
+                    distance = extra["lev"]
+                    # TODO: make this work with newlines in output
+                    try:
+                        score = metric.grade_single(truth, answer, silent=True)
+                    except:
+                        print(
+                            "Warning: perturbed score could not be calculated, skipping. Origin: (",
+                            series_name, model_key, answer_idx,
+                            ")...",
+                            end=""
+                        )
+                        next
+                    try:
+                        score_baseline = metric.grade_single(truth, base_answer, silent=True)
+                    except:
+                        print(
+                            "Warning: baseline score could not be calculated, skipping. Origin: (",
+                            series_name, model_key, answer_idx,
+                            ")...",
+                            end=""
+                        )
+                        next
+                    model_plot["xs"].append(distance)
+                    model_plot["ys"].append(score)
+                    model_plot["diff_ys"].append(score - score_baseline)
+        
+        return plot_data
+
+    def _render_perturbations(
+        self,
+        metric,
+        plot_data,
+        series_name,
+        save=None,
+        colors=None,
+        y_target="ys",
+        ylim=(0, 1),
+        center_axis=False,
+        xlabel="Levenshtein Distance",
+        ylabel=None,
+        title=None,
+    ):
+        if colors is None:
+            BASE_COLORS = sample_cmap("viridis", count=4, lower=0, upper=0.9)
+        else:
+            BASE_COLORS = colors
+        
+        height = 2
+        width = 2
+        fig, axes = plt.subplots(
+            height, width,
+            figsize=(10, 10)
+            #, sharex=True, sharey=True
+        )
+        
+        for idx, (model_key, target_data) in enumerate(plot_data[series_name].items()):
+            ax = index_axis(axes, idx)
+            ax.set_ylim(*ylim)
+            xs = np.array(target_data["xs"])
+            ys = np.array(target_data[y_target])
+            color = BASE_COLORS[idx]
+            marker = "o"
+            
+            ax.scatter(xs, ys, color=color, label=model_key, alpha=1, marker=marker)
+            linreg = scipy.stats.linregress(xs, ys)
+            # we only graph unique sorted xs cuz we don't want to draw multiple lines atop each other
+            unique_xs = np.unique(np.sort(xs))
+            # y = mx + b
+            trend_ys = linreg.slope * unique_xs + linreg.intercept
+            #trendline = np.poly1d(np.polyfit(xs, ys, 1))
+            series_single, = ax.plot(
+                unique_xs,
+                trend_ys,
+                color="red",
+                #color=color,
+                linestyle="--",
+                label=f"{model_key} trend"
+            )
+
+            if center_axis:
+                ax.spines["left"].set_position(("data", 0))
+                ax.spines["bottom"].set_position(("data", 0))
+                ax.spines["top"].set_visible(False)
+                ax.spines["right"].set_visible(False)
+            
+            ax.legend()
+            print(f"{series_name} & {model_key} & {linreg.slope:.5f} & {linreg.rvalue:.5f} \\\\")
+            ax.set_xlabel(f"{model_key}; $m={linreg.slope:.3f}$, $R^2={linreg.rvalue**2:.3f}$")
+
+            if center_axis:
+                ax.xaxis.set_label_coords(x=0.5, y=0)
+        
+        # hack to get labels properly aligned around the entire graph
+        fig.add_subplot(111, frameon=False)
+        plt.tick_params(labelcolor="none", which="both", top=False, bottom=False, left=False, right=False)
+        plt.xlabel(xlabel, labelpad=20)
+        plt.ylabel(ylabel)
+        plt.suptitle(title)
+        plt.tight_layout()
+
+        if save:
+            plt.savefig(save, bbox_inches="tight")
+        
+        plt.show()
+    
+    def render_perturbations(self, metric, plot_data=None, series_name="prompt0", save=None, colors=None):
+        if plot_data is None:
+            plot_data = self.calculate_perturbations(metric)
+
+        return self._render_perturbations(
+            metric=metric,
+            plot_data=plot_data,
+            series_name=series_name,
+            save=save,
+            colors=colors,
+            y_target="ys",
+            ylim=(0, 1),
+            ylabel=f"{metric.name} after Perturbation",
+            title=f"{series_name}: Perturbed {metric.name} vs Levenshtein Distance"
+        )
+
+
+    def render_perturbations_relative(self, metric, plot_data=None, series_name="prompt0", save=None, colors=None):
+        if plot_data is None:
+            plot_data = self.calculate_perturbations(metric)
+
+        return self._render_perturbations(
+            metric=metric,
+            plot_data=plot_data,
+            series_name=series_name,
+            save=save,
+            colors=colors,
+            y_target="diff_ys",
+            ylim=(-1, 1),
+            center_axis=True,
+            ylabel=f"Improvement {metric.name} between base and Perturbation",
+            title=f"{series_name}: Change in {metric.name} after Perturbation vs Levenshtein Distance",
+        )
+
+    
     def calculate_bootstrap_metric(self, metric, sample_size=50, iterations=500, quiet=False, use_cache=True, seed=None):
         cache_config = {
             "seed": seed,
@@ -360,9 +661,9 @@ class BatteryRunner:
         bootstrap_cache = f"./output/{self.task}/bootstrap-{metric.shortname}.json"
         cache_file = None
         if os.path.exists(bootstrap_cache):
-            cache_file = open(bootstrap_cache, "r+")
+            cache_file = open_relative(bootstrap_cache, "r+")
         else:
-            cache_file = open(bootstrap_cache, "w+")
+            cache_file = open_relative(bootstrap_cache, "w+")
         
         cache = json.loads(cache_file.read() or "{}")
         cache_file.close()
@@ -404,7 +705,11 @@ class BatteryRunner:
 
         cache_config["results"] = by_prompt
         if use_cache:
-            with open(bootstrap_cache, "w+") as cache_file:
+            with open_relative(bootstrap_cache, "w+") as cache_file:
                 cache_file.write(json.dumps(cache_config))
         
         return by_prompt
+
+    
+    def free(self):
+        pass

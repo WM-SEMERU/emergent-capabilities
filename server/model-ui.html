@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Model Explorer</title>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/picnic@7.1.0/Gruntfile.min.js"></script> -->
+        <link href="https://cdn.jsdelivr.net/npm/picnic@7.1.0/picnic.min.css" rel="stylesheet">
+        <style>
+            main {
+                margin: 0px auto;
+                width: 100%;
+                max-width: 960px;
+                display: block;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                margin: 0;
+                padding: 0;
+            }
+            :checked + .toggle, :checked + .toggle:hover {
+                box-shadow: inset 0 0 0 99em rgba(17,17,17,.6);
+            }
+            textarea {
+                font-family: monospace;
+            }
+            .hidden {
+                display: none;
+            }
+            #testCases {
+                overflow: auto;
+                background-color: #279aff;
+                max-height: 20vh;
+            }
+            #testCases input {
+                display: none;
+            }
+            #testCases .button {
+                width: auto;
+                display: inline-block;
+                white-space: pre;
+            }
+            textarea[readonly] {
+                background-color: #ccc;
+                font-style: italic;
+            }
+            textarea {
+                resize: vertical;
+            }
+        </style>
+        <script src="model-ui.js"></script>
+    </head>
+    <body>
+        <main>
+        <h1>Model Explorer</h1>
+        <div class="tabs three">
+            <input id="appTab1" type="radio" name="appMainGroup" checked>
+            <label class="button toggle" for="appTab1">Family/Task</label>
+            <input id="appTab2" type="radio" name="appMainGroup">
+            <label class="button toggle" for="appTab2">Explore Prompts</label>
+            <input id="appTab3" type="radio" name="appMainGroup">
+            <label class="button toggle" for="appTab3">Model Output</label>
+            <div class="row">
+                <div class="tab">
+                    <h2>Select a Family and Task</h2>
+                    <div class="flex two">
+                        <div>
+                            <h3>Family</h3>
+                            <label class="stack">
+                            <input type="radio" name="model-family" value="350M" checked>
+                            <span class="button toggle">350M</span>
+                            </label>
+                            <label class="stack">
+                            <input type="radio" name="model-family" value="2B">
+                            <span class="button toggle">2B</span>
+                            </label>
+                            <label class="stack">
+                            <input type="radio" name="model-family" value="6B">
+                            <span class="button toggle">6B</span>
+                            </label>
+                            <label class="stack">
+                            <input type="radio" name="model-family" value="16B">
+                            <span class="button toggle">16B</span>
+                            </label>
+                        </div>
+                        <div>
+                            <h3>Task</h3>
+                            <label class="stack">
+                            <input type="radio" name="task" value="Bugs2Fix" checked>
+                            <span class="button toggle">Bugs2Fix</span>
+                            </label>
+                            <label class="stack">
+                            <input type="radio" name="task" value="Bugs2FixChecklist">
+                            <span class="button toggle">Bugs2Fix (Checklist)</span>
+                            </label>
+                            <label class="stack">
+                            <input type="radio" name="task" value="Code2Code">
+                            <span class="button toggle">Code2code</span>
+                            </label>
+                            <label class="stack">
+                            <input type="radio" name="task" value="CommitMessageGeneration">
+                            <span class="button toggle">Commit Message Generation</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button id="loadCases">Load model/cases</button>
+                </div>
+                <div class="tab">
+                    <div>
+                        <h2>Current model: <span id="modelInfo">(none)</span></h2>
+                        <div class="flex two hidden if-model-loaded">
+                            <div>
+                                <h3>Prompt</h3>
+                                <div id="prompts"></div>
+                            </div>
+                            <div>
+                                <h3>Test Case</h3>
+                                <div id="testCases"></div>
+                            </div>
+                        </div>
+                        <div class="flex two">
+                            <div>
+                                <h3>Model prompt template</h3>
+                                <textarea id="modelPrompt" rows=4></textarea>
+                            </div>
+                            <div>
+                                <h3>Prompt <code>{prompt}</code></h3>
+                                <textarea id="modelTestCase" rows=4></textarea>
+                            </div>
+                        </div>
+                        <h3>Model input</h3>
+                        <textarea id="modelInput" rows=6></textarea>
+                        <button id="runModel">Run prompt</button>
+                    </div>
+                </div>
+                <div class="tab">
+                    <div>
+                        <h2>Model output</h2>
+                        <h3>Provided input</h3>
+                        <textarea readonly id="modelInputDisplay" rows=6></textarea>
+                        <h3>Generated output</h3>
+                        <textarea readonly id="modelOutput" rows=3 placeholder="Model is thinking..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal">
+            <input id="modalPopup" type="checkbox">
+            <label class="overlay" for="modalLoading"></label>
+            <article>
+                <header id="popupHeader"></header>
+                <section class="content" id="popupContent"></section>
+                <footer></footer>
+            </article>
+        </div>
+    </body>
+</html>

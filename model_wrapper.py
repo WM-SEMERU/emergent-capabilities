@@ -163,6 +163,8 @@ class Model:
         self.device = None
         self.softmax = softmax or Model.DEFAULT_SOFTMAX
         self._tokenized_eos_token = None
+        # used to cache the inputs given, if transformed e.g.
+        self.inputs = None
     
     
     def yap(self, *args, **kwargs):
@@ -313,6 +315,7 @@ class Model:
         
         tokens = None
         result_string = None
+        force_stop = False
         # it = 0
         while True:
             next_size = inputs["input_ids"].size(dim=1) + per_step
@@ -326,13 +329,21 @@ class Model:
                     start=400,
                     end=100
                 ))
-                break
-                
-            output = self.generate(inputs, max_new_tokens=per_step, auto_tokenize=False)
+                output = inputs["input_ids"]
+                force_stop = True
+            else:
+                output = self.generate(inputs, max_new_tokens=per_step, auto_tokenize=False)
             # remove input given so far from output 
-            output_trimmed = output[:, inputs["input_ids"].size(dim=1):]
+            
+            output_trimmed = output[:, original_inputs["input_ids"].size(dim=1):]
             del output
             output = output_trimmed
+
+            if force_stop:
+                result_string = self.decode(output)
+                del output
+                break
+                
             
             if tokens is None:
                 tokens = output
@@ -348,6 +359,7 @@ class Model:
             # token "\n" (198) != token "\n\n" (628)
             # SO, we must examine the decoded string representation
             decoded = self.decode(output)
+            # print(f"{decoded = }")
             stop_indices = [
                 index
                 for stop in stops

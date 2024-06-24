@@ -8,6 +8,7 @@
 #  - Removed rounding from _bleu (round(100 * bleu_score,2) ---> bleu_score)
 #  - Passed smooth through from _bleu
 #  - Add lower parameter to _bleu
+#  - Fixed divide-by-zero errors
 
 # Copyright 2017 Google Inc. All Rights Reserved.
 #
@@ -111,12 +112,18 @@ def compute_bleu(reference_corpus, translation_corpus, max_order=4,
   else:
     geo_mean = 0
 
+  # we assume the reference length (totoal length of references) is != 0
+  # in BLEU.grade([""], ["lalala"]), this would error; this is an exceedingly unlikey scenario
   ratio = float(translation_length) / reference_length
 
   if ratio > 1.0:
     bp = 1.
   else:
-    bp = math.exp(1 - 1. / ratio)
+    if ratio == 0:
+      # special case: lim x->0 e^(1-1/x) = 0, so we can avoid the divide-by-zero error
+      bp = 0.
+    else:
+      bp = math.exp(1 - 1. / ratio)
 
   bleu = geo_mean * bp
 
