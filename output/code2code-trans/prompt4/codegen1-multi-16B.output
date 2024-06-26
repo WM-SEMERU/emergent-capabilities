@@ -1,0 +1,100 @@
+private void deserialize(LittleEndianInput in) {
+public void addAll(BlockList<T> src, int srcDirIdx, int srcBlkIdx, int srcOff) {if (src.size == 0)return;int srcOff2 = srcOff;for (public void addAll(BlockList<T> src, int srcDirIdx, int srcBlkIdx, int srcOff) {if (src.size == 0)return;int srcOff2 = srcOff;for (; srcDirIdx < src.tailDirIdx; srcDirIdx++)addAll(src.directory[srcDirIdx], srcBlkIdx, srcOff2);if (src.tailBlkIdx!= 0)addAll(src.tailBlock, srcBlkIdx, srcOff2);}
+public void writeBytes(byte[] b) {if (b.length!= 0) {if (upto + b.length > blockSize) {if (currentBlock!= null) {addBlock(currentBlock);}currentBlock = new byte[blockSize];upto = 0;}System.arraycopy(b, 0, currentBlock, upto, b.length);upto += b.length;}
+public void setObjectId(ObjectId value) {objectId = value;}
+// This code is written in Java. Reproduce the same exact code in C#.
+public long ramBytesUsed(int version) {return ((termOffsets!=null)? termOffsets.ramBytesUsed(version) : 0) +((termsDictOffsets!=null)? termsDictOffsets.ramBytesUsed(version) : 0);}
+public final String getFullMessage(byte[] raw) {int msgB = RawParseUtils.tagMessage(raw, 0);if (msgB < 0) {return ""; }return RawParseUtils.decode(guessEncoding(), raw, msgB, raw.length);}
+public POIFSFileSystem(boolean isBigBlockSize) {
+public void init(int address, int length) {slice = pool.buffers[address >> ByteBlockPool.BYTE_BLOCK_SHIFT];assert slice!= null;upto = address & ByteBlockPool.BYTE_BLOCK_MASK;offset0 = address;assert upto + length <= slice.length;}
+public SubmoduleAddCommand setBranch(String branch) {this.branch = branch;return this;}
+private ListIngestionsResult executeListIngestions(ListIngestionsRequest request) {
+public void SwitchTo(int lexState){if (lexState >= 1 || lexState < 0)
+private GetShardIteratorResult executeGetShardIterator(GetShardIteratorRequest request) {
+// public ModifyStrategyRequest(string name, string date, string time, string description) {
+public void close() throws IOException {synchronized (lock) {if (in!= null) {in.close(); in = null;}}}}
+public EscherClientDataRecord getClientDataRecord() {return _clientData;}
+public synchronized int read(byte[] buffer, int offset, int length) {if (buffer == null) {throw new NullPointerException("buffer == null");}Arrays.checkOffsetAndCount(buffer.length, offset, lengthpublic synchronized int read(byte[] buffer, int offset, int length) {if (buffer == null) {throw new NullPointerException("buffer == null");}Arrays.checkOffsetAndCount(buffer.length, offset, length);if (length == 0) {return 0;}int copylen = count - pos < length? count - pos : length;for (int i = 0; i < copylen; i++) {buffer[offset + i] = (byte) this.buffer.charAt(pos + i);}pos += copylen;return copylen;}
+public int getCurrent() {return current;}
+public void print(Object obj) {write(obj!= null? String.valueOf(obj) : String.valueOf((Object) null));}
+public NotImplementedFunctionException(String functionName) {super(functionName);this.functionName = functionName;}
+public V previous() {return super.previousEntry().getValue();}
+public final void readBytes(byte[] b, int offset, int len) throws IOException {readBytes(b, offset, len, false);}
+// This code is written in Java.
+public void remove() {throw new UnsupportedOperationException();}
+private CacheSubnetGroup executeModifyCacheSubnetGroup(ModifyCacheSubnetGroupRequest request) {
+public String getParams() {return super.getParams() + "," + language + "," + country + "," + variant;}
+private DeleteDocumentationVersionResult executeDeleteDocumentationVersion(DeleteDocumentationVersionRequest deleteDocumentationVersionRequest) {
+public int hashCode() {int hash = 0;for (int i = 0; i < length; i++) {hash = hash * 31 + components[i].hashCode();}return hash;}
+private GetInstanceAccessDetailsResult executeGetInstanceAccessDetails(GetInstanceAccessDetailsRequest request) {
+public HSSFPolygon createPolygon(HSSFChildAnchor anchor, int numPoints) {HSSFPolygon shape = new HSSFPolygon(this, anchor, numPoints);shape.setParent(this);shape.setAnchor(anchor);shapes.add(shape);onCreate(shape);return shape;}
+public int getSheetIndex(String sheetName) {return getBoundSheetRec(sheetName).getSheetindex();}
+private GetDashboardResult executeGetDashboard(GetDashboardRequest request) {
+private static AssociateSigninDelegateGroupsWithAccountResponse executeAssociateSigninDelegateGroupsWithAccount(AssociateSigninDelegateGroupsWithAccountRequest request) {
+public void addMultipleBlanks(MulBlankRecord mbr, int firstColumn, int lastColumn) {for (int j = firstColumn; j <= lastColumn; j++) {BlankRecord br = new BlankRecord();brpublic void addMultipleBlanks(MulBlankRecord mbr, int firstColumn, int lastColumn) {for (int j = firstColumn; j <= lastColumn; j++) {BlankRecord br = new BlankRecord();br.setColumn(( short ) (j + mbr.getFirstColumn()));br.setRow(mbr.getRow());br.setXFIndex(mbr.getXFAt(j));insertCell(br);}}}}
+public static String quote(String string) {StringBuilder sb = new StringBuilder();sb.append("\\Q");int apos = 0;int k;while ((k = string.indexOf("\\E", apos)) >=public static String quote(String string) {StringBuilder sb = new StringBuilder();sb.append("\\Q");int apos = 0;int k;while ((k = string.indexOf("\\E", apos)) >= 0) {sb.append(string.substring(apos, k + 2)).append("\\\\E\\Q");apos = k + 2;}return sb.append(string.substring(apos)).append("\\E").toString();}
+public ByteBuffer putInt(int value, int index) {throw new ReadOnlyBufferException();}
+public int getValueIndex(int column, int row) {return (row * _nColumns) + column;}
+// public static GetIceServerConfigResult executeGetIceServerConfig(GetIceServerConfigRequest request) {
+public String getValueAsString() {
+public ToChildBlockJoinQuery clone() {
+public final void decRef() {
+private UpdateConfigurationSetSendingEnabledResult executeUpdateConfigurationSetSendingEnabled(UpdateConfigurationSetSendingEnabledRequest updateConfigurationSetSendingEnabledRequest) {
+public int getNextXBATChainOffset() {return getXBATEntriesPerBlock() * LittleEndianConsts.INT_SIZE;}
+public void multiplyByPowerOfTen(int pow10) {TenPower tp = TenPower.getInstance(Math.abs(pow10));if (pow10 < 0) {mulShift(tp._divisor, tp._divisorShift);} else {mulShift(tp._multiplicand, tp._multiplierShift);}}
+public String toString(){return String.join(File.separator, this);}
+public InstanceProfileCredentialsProvider withRoleName(String roleName) {this.roleName = roleName;return this;}
+public void setProgressMonitor(ProgressMonitor pm) {progressMonitor = pm;}
+public void reset(int p) {if (!first()) {ptr = p;if (!eof())parseEntry();}}
+public E previous() {if (iterator.previousIndex() >= start) {return iterator.previous();}throw new NoSuchElementException();}
+public String getNewSuffix() {return this.newSuffix;}
+public int indexOfValue(int value) {for (int i = 0; i < mSize; i++)if (mValues[i] == value)return i;return -1;}
+public List<CharsRef> uniqueStems(char word[], int length) {List<CharsRef> stems = stem(word, length);if (stems.size() < 2) {return stems;}CharArraySetpublic List<CharsRef> uniqueStems(char word[], int length) {List<CharsRef> stems = stem(word, length);if (stems.size() < 2) {return stems;}CharArraySet terms = new CharArraySet(8, dictionary.ignoreCase);List<CharsRef> deduped = new ArrayList<>();for (CharsRef s : stems) {if (!terms.contains(s)) {deduped.add(s);terms.add(s);}}return deduped;}
+private GetGatewayResponsesResult executeGetGatewayResponses(GetGatewayResponsesRequest request) {
+public void setPosition(long pos, int idx) {currentBlockIndex = (int) (pos >> blockBits);currentBlock = blocks[currentBlockIndex];currentBlockUpto = (int) (pos & blockMask);}
+public long skip(long n, long start) {int s = (int) Math.min(available(), Math.max(0, n));ptr += s;return s;}
+public BootstrapActionDetail(BootstrapActionConfig bootstrapActionConfig, String description) {setBootstrapActionConfig(bootstrapActionConfig);setDescription(description);}
+private static int ComputeSize(int row, int col, int flags, int shapeid, int authorLength, boolean hasMultibyte, String author) {
+public int lastIndexOf(String string, int startIndex) {
+public boolean addFirstImpl(E object) {
+public ConfigSnapshot unsetSection(ConfigSnapshot src, String section, String subsection) {ConfigSnapshot res;do {res = unsetSection(src, section, subsection);} while (!state.compareAndSet(src, res));return res;}
+public final String getTagName() {return tagName;}
+public void addSubRecord(SubRecord element) {subrecords.add(element);}
+public boolean removeAll(Collection<?> c) {synchronized (mutex) {return delegate().removeAll(c);}}
+public DoubleMetaphoneFilter create(TokenStream input, int maxCodeLength, boolean inject) {return new DoubleMetaphoneFilter(input, maxCodeLength, inject);}
+public long inCoreLength() {
+public void setValue(int newValue) {value = newValue;}
+public Pair(ContentSource oldSource, ContentSource newSource, int oldIndex, int newIndex) {this.oldSource = oldSource;this.newSource = newSource;this.oldIndex = oldIndex;this.newIndex = newIndex;}
+public void set(int i, int value) {if (count <= i)throw new ArrayIndexOutOfBoundsException(i);entries[i] = value;}
+// public CreateRepoRequest(string name, string description, string homepage, string private_repo, string has_issues, string has_wiki, string has_downloads, string default_branch, string team_id, string permission) {
+public void setDeltaBaseAsOffset(boolean deltaBaseAsOffset) {this.deltaBaseAsOffset = deltaBaseAsOffset;}
+public void remove(int index) {if (expectedModCount == list.modCount) {if (index < 0 || index >= list.size) {throw new IndexOutOfBoundsException();}Link<ET> link = thispublic void remove(int index) {if (expectedModCount == list.modCount) {if (index < 0 || index >= list.size) {throw new IndexOutOfBoundsException();}Link<ET> link = this.link;if (index == 0) {if (link.previous!= null) {link.previous.next = link.next;link.next.previous = link.previous;} else {list.first = linkpublic void remove(int index) {if (expectedModCount == list.modCount) {if (index < 0 || index >= list.size) {throw new IndexOutOfBoundsException();}Link<ET> link = thispublic void remove(int index) {if (expectedModCount == list.modCount) {if (index < 0 || index >= list.size) {throw new IndexOutOfBoundsException();}Link<ET> link = this.link;if (index == 0) {if (link.previous!= null) {link.previous.next = link.next;link.next.previous = link.previous;} else {list.first = link.next;}if (link.next == null) {list.last = link.previous;}else {link.next.previous = link.previous;}if (link.previous == null) {list.first = link
+private MergeShardsResult executeMergeShards(MergeShardsRequest request) {
+private AllocateHostedConnectionResult executeAllocateHostedConnection(AllocateHostedConnectionRequest allocateHostedConnectionRequest) {
+public int getEndIndex() {return end;}
+public static final WeightedTerm[] getTerms(Query query, boolean includeSpans){
+public ByteBuffer duplicate() {throw new ReadOnlyBufferException();}
+// public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final int byte0 = blocks[blocksOffset++// public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final int byte0 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = byte0 >>> 2;final int byte1 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = ((byte0 & 3) << 4)// public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final int byte0 = blocks[blocksOffset++// public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final int byte0 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = byte0 >>> 2;final int byte1 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = ((byte0 & 3) << 4) | (byte1 >>> 4);final int byte2 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = ((byte1 & 15) << 2) | (byte2 >>> 6);values[valuesOffset
+public String getPath() throws IllegalArgumentException {String s = getHost();if (s == null) throw new IllegalArgumentException();String[] elements;if ("file".equals(scheme) || LOCAL_FILE.public String getPath() throws IllegalArgumentException {String s = getHost();if (s == null) throw new IllegalArgumentException();String[] elements;if ("file".equals(scheme) || LOCAL_FILE.matcher(s).matches()) elements = s.split("[\\" + File.separatorChar + "/]"); elseelements = s.split("/+"); if (elements.length == 0)throw new IllegalArgpublic String getPath() throws IllegalArgumentException {String s = getHost();if (s == null) throw new IllegalArgumentException();String[] elements;if ("file".equals(scheme) || LOCAL_FILE.public String getPath() throws IllegalArgumentException {String s = getHost();if (s == null) throw new IllegalArgumentException();String[] elements;if ("file".equals(scheme) || LOCAL_FILE.matcher(s).matches()) elements = s.split("[\\" + File.separatorChar + "/]"); elseelements = s.split("/+"); if (elements.length == 0)throw new IllegalArgumentException();String result = elements[elements.length - 1];if (Constants.DOT_GIT.equals(result))result = elements[elements.length - 2];else if (result.endsWith(
+private DescribeNotebookInstanceLifecycleConfigResult executeDescribeNotebookInstanceLifecycleConfig(DescribeNotebookInstanceLifecycleConfigRequest describeNotebookInstanceLifecycleConfigRequest) {
+public String getAccessKey() {return this.accessKey;}
+// This code is written in Java.
+private static DescribeVoicesResult executeDescribeVoices(DescribeVoicesRequest describeVoicesRequest) {
+private ListMonitoringExecutionsResult executeListMonitoringExecutions(ListMonitoringExecutionsRequest listMonitoringExecutionsRequest) {
+public String getVaultName() {return vaultName;}
+public void setEscherRecord(int index, EscherRecord value){escherRecords.set(index, value);}
+private GetApisResult executeGetApis(GetApisRequest request) {
+// This code is written in Java.
+public void setTrackingRefUpdate(TrackingRefUpdate trackingRefUpdate) {this.trackingRefUpdate = trackingRefUpdate;}
+public void print(byte b) {print(String.valueOf(b));}
+public QueryNode getParent() {return getParents().get(0);}
+public int getIndex() {return index;}
+public AreaRecord(short field_1_formatFlags) {this.field_1_formatFlags = field_1_formatFlags;}
+// This code is written in Java.
+private DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest describeTransitGatewayVpcAttachmentsRequest) {
+private PutVoiceConnectorStreamingConfigurationResult executePutVoiceConnectorStreamingConfiguration(PutVoiceConnectorStreamingConfigurationRequest putVoiceConnectorStreamingConfigurationRequest) {
+public String getDim(OrdRange ordRange) {return ordRangeToPrefix.get(ordRange);}
+}
+public E peekFirstImpl() {
+private CreateWorkspacesResult executeCreateWorkspaces(CreateWorkspacesRequest createWorkspacesRequest) {
+public NumberFormatIndexRecord copy() {

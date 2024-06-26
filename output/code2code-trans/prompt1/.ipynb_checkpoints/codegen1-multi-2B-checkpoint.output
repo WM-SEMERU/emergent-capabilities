@@ -2,13 +2,13 @@ public int getNumberOfRecords()
 public void addAll(BlockList<T> src, int srcDirIdx, int srcBlkIdx) {if (srcBlkIdx == 0)return;int srcDirIdx2 = srcDirIdx + 1;for (; srcDirIdx2 < src.tailDirIdx; srcDirIdx2++)addAll(src.directory[srcDirIdx2], srcDirIdx, srcBlkIdx);if (src.tailBlkIdx!= 0)addAll(src.tailBlock, srcDirIdx, srcBlkIdx);}
 public void writeChar(char c) {if (upto == blockSize) {if (currentBlock!= null) {addBlock(currentBlock);}currentBlock = new byte[blockSize];upto = 0;}currentBlock[upto++] = (byte)(c >>> 8);currentBlock[upto++] = (byte)(c);}
 public void setObjectId(ObjectId objectId) {this.objectId = objectId;}
-<|endoftext|>
+
 public long ramBytesUsed() {return ((termOffsets!=null)? termOffsets.ramBytesUsed() : 0) +((termsDictOffsets!=null)? termsDictOffsets.ramBytesUsed() : 0);}
 public final String getFullMessage() {byte[] raw = buffer;int msgB = RawParseUtils.tagMessage(raw, 0);if (msgB < 0) {return ""; }return RawParseUtils.decode(guessEncoding(), raw, msgB, raw.length);}
 public POIFSFileSystem(boolean create) {
 public void next() {
 public SubmoduleAddCommand setPath(Path path) {this.path = path;return this;}
-<|endoftext|>
+
 public QueryParserTokenManager(CharStream stream){
 }//CodeClient
 public ModifyStrategyRequest(String requestBody) throws IOException {
@@ -35,7 +35,7 @@ public void addMultipleBlanks(MulBlankRecord mbr) {for (int j = 0; j < mbr.getNu
 public static String quote(String string) {StringBuilder sb = new StringBuilder();sb.append("\\Q");int apos = 0;int k;while ((k = string.indexOf("\\E", apos)) >= 0) {sb.append(string.substring(apos, k + 2)).append("\\\\E\\Q");apos = k + 2;}return sb.append(string.substring(apos)).append("\\E").toString();}
 public ByteBuffer putInt(int index, int value) {throw new ReadOnlyBufferException();}
 public ArrayPtg(Object[][] values2d, int nColumns, int nRows) {_nColumns = (short) nColumns;_nRows = (short) nRows;_arrayValues = values2d;_reserved0Int = 0;_reserved1Short = 0;_reserved2Byte = 0;}
-<|endoftext|>
+
 public String getValueAsString() {return value;}
 public String toString() {return "ToChildBlockJoinQuery ("+parentQuery.toString()+")";}
 public final void decRef() {
@@ -70,21 +70,21 @@ public CreateRepoRequest(String name) {super("cr", "2016-06-07", "CreateRepo", "
 public boolean isDeltaBaseAsOffset() {return deltaBaseAsOffset;}
 public void add(ET e) {if (expectedModCount == list.modCount) {if (lastLink!= null) {Link<ET> next = lastLink.next;Link<ET> previous = lastLink.previous;next.previous = previous;previous.next = next;if (lastLink == link) {pos--;}link = previous;lastLink = null;expectedModCount++;list.size++;list.modCount++;} else {throw new IllegalStateException();}} else {throw new ConcurrentModificationException();}}
 // code.java
-<|endoftext|>
+
 public int getEndIndex() {return end;}
 public static final WeightedTerm[] getTerms(Query query,boolean sort){
 public ByteBuffer compact(int start, int end) {throw new ReadOnlyBufferException();}
-<|endoftext|>
+
 public String getPath() throws IllegalArgumentException {String s = getHost();if (s == null) throw new IllegalArgumentException();return s;}
 public DescribeNotebookInstanceLifecycleConfigResult executeDescribeNotebookInstanceLifecycleConfig(DescribeNotebookInstanceLifecycleConfigRequest request) {
 public String getAccessKeyID() {return this.accessKeyID;}
 // CreateVpnGatewayResult.java
-<|endoftext|>
-<|endoftext|>
+
+
 public DescribeJobRequest(String vaultName, String jobId, String vaultName2, String jobId2) {setVaultName(vaultName);setJobId(jobId);setVaultName2(vaultName2);setJobId2(jobId2);}
 public EscherRecord getEscherRecord(int index){return escherRecords.get(index);}
 public GetApisResult executeGetApis(GetApisRequest request) {
-<|endoftext|>
+
 public void setTrackingRefUpdate(TrackingRefUpdate trackingRefUpdate) {this.trackingRefUpdate = trackingRefUpdate;}
 public void print(char c) {print(String.valueOf(c));}
 public void setChild(QueryNode child) {getChildren().set(0, child);}
@@ -92,9 +92,9 @@ public void filter(File file) {
 public AreaRecord() {
 public GetThumbnailRequest(String photoId) {super("CloudPhoto", "2017-07-11", "GetThumbnail", "cloudphoto");setPhotoId(photoId);}
 public DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest request) {
-<|endoftext|>
+
 public OrdRange getOrdRange(String dim, String prefix) {return prefixToOrdRange.get(dim).get(prefix);}
 public String toString() {String symbol = "";if (startIndex >= 0 && startIndex < getInputStream().size()) {symbol = getInputStream().getText(Interval.of(startIndex,startIndex));symbol = Utils.escapeWhitespace(symbol, false);}return String.format(Locale.getDefault(), "%s('%s')", LexerNoViableAltException.class.getSimpleName(), symbol);}
 public E peekFirst() {return peekFirstImpl();}
-<|endoftext|>
+
 public NumberFormatIndexRecord copy() {

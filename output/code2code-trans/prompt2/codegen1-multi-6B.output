@@ -32,7 +32,7 @@ public HSSFPolygon createPolygon(HSSFChildAnchor anchor, HSSFAnchor.AnchorType t
 
 @Override
 // This code is written in Java. Reproduce the same exact code in C#.
-
+<|endoftext|>
 public ByteBuffer putInt(int index, int value) {throw new ReadOnlyBufferException();}
 public Object[][] getValues2d() {return _arrayValues;}
 private GetIceServerConfigResult executeGetIceServerConfig(GetIceServerConfigRequest request) {

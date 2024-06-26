@@ -1,0 +1,100 @@
+public void serialize(LittleEndianOutput out) {out.writeShort(field_1_vcenter);}
+
+
+public void setObjectId(ObjectId objectId) {this.objectId = objectId;}
+public static DeleteDomainEntryResult executeDeleteDomainEntry(DeleteDomainEntryRequest request) {
+public void setTermOffsets(int termCount, long[] termOffsets) {
+
+public POIFSFileSystem(boolean create) {this(create, true);}
+
+public SubmoduleAddCommand setPath(Path path) {this.path = path;return this;}
+public ListIngestionsResult executeListIngestions(ListIngestionsRequest listIngestionsRequest) {
+public QueryParserTokenManager(CharStream stream){
+public static GetShardIteratorResult executeGetShardIterator(GetShardIteratorRequest getShardIteratorRequest) {
+
+
+public void setOptRecord(EscherOptRecord optRecord) {_optRecord = optRecord;}
+
+public OpenNLPSentenceBreakIterator(NLPSentenceDetectorOp sentenceOp, String language) {this.sentenceOp = sentenceOp;}
+public void print(Object obj) {write(obj!= null? obj.toString() : String.valueOf((Object) null));}
+public NotImplementedFunctionException(String functionName, NotImplementedException cause, String message) {super(functionName, cause, message);this.functionName = functionName;}
+public V next() {return super.nextEntry().getValue();}
+public final void readBytes(byte[] b) throws IOException {readBytes(b, 0, b.length);}
+public TagQueueResult tagQueue(TagQueueRequest request, AsyncHandler<TagQueueRequest, TagQueueResult> asyncHandler) {request = beforeClientExecution(request);
+public void remove(int index) {throw new UnsupportedOperationException();}
+public void executeModifyCacheSubnetGroup(ModifyCacheSubnetGroupRequest request) {
+public void setParams(String language, String country, String variant) {super.setParams(language, country, variant);this.language = language;this.country = country;this.variant = variant;}
+public static DeleteDocumentationVersionResult executeDeleteDocumentationVersion(DeleteDocumentationVersionRequest request) {
+public int hashCode() {int hash = 0; for (int i = length - 1; i >= 0; i--) {hash = hash * 31 + components[i].hashCode();}}
+public static GetInstanceAccessDetailsResult executeGetInstanceAccessDetails(GetInstanceAccessDetailsRequest request) {
+
+public int getSheetIndex(String sheetName) {return getBoundSheetRec(sheetName).getSheetIndex();}
+public GetDashboardResult executeGetDashboard(GetDashboardRequest request) {
+public static AssociateSigninDelegateGroupsWithAccountResult executeAssociateSigninDelegateGroupsWithAccount(AssociateSigninDelegateGroupsWithAccountRequest request) {
+
+
+public ByteBuffer putInt(int index, int value) {throw new ReadOnlyBufferException();}
+
+public GetIceServerConfigResult executeGetIceServerConfig(GetIceServerConfigRequest getIceServerConfigRequest) {
+public String getValueAsString() {return value;}
+public String toString() {return "ToChildBlockJoinQuery ("+parentQuery.toString()+")";}
+public final void decRef() {
+public UpdateConfigurationSetSendingEnabledResult executeUpdateConfigurationSetSendingEnabled(UpdateConfigurationSetSendingEnabledRequest updateConfigurationSetSendingEnabledRequest) {
+public int getNextXBATChainOffset() {return getXBATEntriesPerBlock() * LittleEndianConsts.INT_SIZE;}
+
+
+
+public void setProgressMonitor(ProgressMonitor pm, int max) {
+public void reset(String filename) {if (!first()) {ptr = 0;if (!eof())parseEntry();}}
+public E previous() {if (iterator.previousIndex() >= start) {return iterator.previous();}throw new NoSuchElementException();}
+public String getNewSuffix() {return this.newSuffix;}
+public int indexOfValue(int value) {for (int i = 0; i < mSize; i++)if (mValues[i] == value)return i;return -1;}
+
+public static GetGatewayResponsesResult executeGetGatewayResponses(GetGatewayResponsesRequest request) {
+public void setPosition(long pos) {currentBlockIndex = (int) (pos >> blockBits);currentBlock = blocks[currentBlockIndex];currentBlockUpto = (int) (pos & blockMask);}
+public int read() {int c = read(0);if (c == -1) throw new RuntimeException("Read past end of file.");return c;}
+public BootstrapActionDetail(BootstrapActionConfig bootstrapActionConfig, String version) {setBootstrapActionConfig(bootstrapActionConfig);setVersion(version);}
+
+public int lastIndexOf(String string, int start) {
+public boolean add(E object, int index) {return addImpl(object, index);}
+public ConfigSnapshot unsetSection(ConfigSnapshot src, String section, String subsection) {
+public final String getTagName(String ns) {return ns+":"+tagName;}
+public void addSubRecord(SubRecord element) {subrecords.add(element);}
+public boolean removeAll(Collection c) {synchronized (mutex) {return delegate().removeAll(c);}}
+public DoubleMetaphoneFilter create(TokenStream input, int maxCodeLength, boolean inject) {return new DoubleMetaphoneFilter(input, maxCodeLength, inject);}
+public long inCoreLength() {
+public void setValue(int newValue) {value = newValue;}
+
+public int get(int i, int j) {if (count <= i || count <= j)throw new ArrayIndexOutOfBoundsException(i,j);return entries[i][j];}
+
+public void setDeltaBaseAsOffset(boolean deltaBaseAsOffset) {this.deltaBaseAsOffset = deltaBaseAsOffset;}
+
+public static MergeShardsResult executeMergeShards(MergeShardsRequest request) {
+public static AllocateHostedConnectionResult executeAllocateHostedConnection(AllocateHostedConnectionRequest request) {
+public int getEndIndex() {return end;}
+public static final WeightedTerm[] getTerms(Query query, boolean sort){
+public ByteBuffer compact(int start, int end) {throw new ReadOnlyBufferException();}
+
+public String getPath() throws IllegalArgumentException {String s = getHost();if (s == null) throw new IllegalArgumentException();return s;}
+public static DescribeNotebookInstanceLifecycleConfigResult executeDescribeNotebookInstanceLifecycleConfig(DescribeNotebookInstanceLifecycleConfigRequest request) {
+public String getAccessKeyID() {return this.accessKeyID;}
+
+public static DescribeVoicesResult executeDescribeVoices(DescribeVoicesRequest request) {
+public ListMonitoringExecutionsResult executeListMonitoringExecutions(ListMonitoringExecutionsRequest request) {
+
+public EscherRecord getEscherRecord(int index, int offset){return escherRecords.get(index).getEscherRecord(offset);}
+public GetApisResult executeGetApis(GetApisRequest request) {
+public static DeleteSmsChannelResult executeDeleteSmsChannel(DeleteSmsChannelRequest request) {
+public void setTrackingRefUpdate(TrackingRefUpdate trackingRefUpdate) {this.trackingRefUpdate = trackingRefUpdate;}
+public void print(char c) {print(String.valueOf(c));}
+public QueryNode getChild(int i) {return getChildren().get(i);}
+public boolean accept(File file) {
+public AreaRecord(short formatFlags) {field_1_formatFlags            = formatFlags;}
+public GetThumbnailRequest(String photoId) {super("CloudPhoto", "2017-07-11", "GetThumbnail", "cloudphoto");setPhotoId(photoId);setProtocol(ProtocolType.HTTPS);}
+public static DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest request) {
+public PutVoiceConnectorStreamingConfigurationResult executePutVoiceConnectorStreamingConfiguration(PutVoiceConnectorStreamingConfigurationRequest request) {
+public OrdRange getOrdRange(String dim, String prefix) {
+
+public E peekFirst() {return peekFirstImpl();}
+public static CreateWorkspacesResult executeCreateWorkspaces(CreateWorkspacesRequest createWorkspacesRequest) {
+public NumberFormatIndexRecord copy() {

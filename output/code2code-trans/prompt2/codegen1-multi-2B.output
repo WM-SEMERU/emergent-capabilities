@@ -74,7 +74,7 @@ public void setDeltaBaseAsOffset(boolean deltaBaseAsOffset) {this.deltaBaseAsOff
 public int getEndIndex() {return end;}
 public static final WeightedTerm[] getTerms(Query query, boolean useWeights){
 public ByteBuffer put(byte x) {throw new ReadOnlyBufferException();}
-
+<|endoftext|>
 public String getPath() {return path;}
 }
 public String getAccessKey() {return this.accessKey;}

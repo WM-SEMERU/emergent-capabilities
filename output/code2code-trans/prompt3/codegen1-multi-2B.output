@@ -1,20 +1,20 @@
 public void serialize(LittleEndianOutput out) {out.writeShort(field_1_vcenter);}
-tailBlkIdx!= 0)addAll(src.tailBlock, srcDirIdx, srcBlkIdx);}
-0;}
+public void addAll(BlockList<T> src, int srcDirIdx, int srcBlkIdx) {if (src.size == 0)return;int srcDirIdx2 = srcDirIdx + 1;public void addAll(BlockList<T> src, int srcDirIdx, int srcBlkIdx) {if (src.size == 0)return;int srcDirIdx2 = srcDirIdx + 1;for (; srcDirIdx2 < src.tailDirIdx; srcDirIdx2++)addAll(src.directory[srcDirIdx2], srcDirIdx, srcBlkIdx);if (src.tailBlkIdx!= 0)addAll(src.tailBlock, srcDirIdx, srcBlkIdx);}}
+public void writeBytes(String s) {if (upto + s.length() > blockSize) {if (currentBlock!= null) {addBlock(currentBlock);}currentBlock = new byte[blockSize];upto = 0;}
 public void setObjectId(ObjectId objectId) {this.objectId = objectId;}
 public static DeleteDomainEntryResult executeDeleteDomainEntry(DeleteDomainEntryRequest request) {
 public void setTermOffsets(int termCount, long[] termOffsets) {
-decode(guessEncoding(), raw, msgB, raw.length);}
+public final String getFullMessage() {byte[] raw = buffer;int msgB = RawParseUtils.tagMessage(raw, 0);if (msgB < 0) {return ""; }return RawParseUtils.decode(guessEncoding(), raw, msgB, raw.length);}
 public POIFSFileSystem(boolean create) {this(create, true);}
-assert upto < slice.length;}
+public void init(int address, int length) {slice = pool.buffers[address >> ByteBlockPool.BYTE_BLOCK_SHIFT];assert slice!= null;upto = address + length;offset0 = address;assert upto < slice.length;}
 public SubmoduleAddCommand setPath(Path path) {this.path = path;return this;}
 public ListIngestionsResult executeListIngestions(ListIngestionsRequest listIngestionsRequest) {
 public QueryParserTokenManager(CharStream stream){
 public static GetShardIteratorResult executeGetShardIterator(GetShardIteratorRequest getShardIteratorRequest) {
-}
-;} catch (IOException e) {return false;}}}
+public ModifyStrategyRequest(String requestName) {super(requestName, "aegis", "2016-11-11", "ModifyStrategy", "vipaegis");setMethod(MethodType.POST);}
+public boolean ready() throws IOException {synchronized (lock) {if (in == null) {throw new IOException("InputStreamReader is closed");}try {return bytes.hasRemaining() || in.available() > 0;} catch (IOException e) {return false;}}}
 public void setOptRecord(EscherOptRecord optRecord) {_optRecord = optRecord;}
-= (char) this.buffer.charAt(pos + i);}pos += copylen;return copylen;}
+public synchronized int read(char[] buffer, int offset, int length) {if (buffer == null) {throw new NullPointerException("buffer == null");}Arrays.checkOffsetAndCount(buffer.length, offset, lengthpublic synchronized int read(char[] buffer, int offset, int length) {if (buffer == null) {throw new NullPointerException("buffer == null");}Arrays.checkOffsetAndCount(buffer.length, offset, length);if (length == 0) {return 0;}int copylen = count - pos < length? count - pos : length;for (int i = 0; i < copylen; i++) {buffer[offset + i] = (char) this.buffer.charAt(pos + i);}pos += copylen;return copylen;}
 public OpenNLPSentenceBreakIterator(NLPSentenceDetectorOp sentenceOp, String language) {this.sentenceOp = sentenceOp;}
 public void print(Object obj) {write(obj!= null? obj.toString() : String.valueOf((Object) null));}
 public NotImplementedFunctionException(String functionName, NotImplementedException cause, String message) {super(functionName, cause, message);this.functionName = functionName;}
@@ -27,34 +27,34 @@ public void setParams(String language, String country, String variant) {super.se
 public static DeleteDocumentationVersionResult executeDeleteDocumentationVersion(DeleteDocumentationVersionRequest request) {
 public int hashCode() {int hash = 0; for (int i = length - 1; i >= 0; i--) {hash = hash * 31 + components[i].hashCode();}}
 public static GetInstanceAccessDetailsResult executeGetInstanceAccessDetails(GetInstanceAccessDetailsRequest request) {
-new HSSFChildAnchor(this));shapes.add(anchor);onCreate(anchor);return anchor;}
+public HSSFChildAnchor createAnchor() {HSSFChildAnchor anchor = new HSSFChildAnchor(this);anchor.setParent(this);anchor.setAnchor(new HSSFChildAnchor(this));shapes.add(anchor);onCreate(anchor);return anchor;}
 public int getSheetIndex(String sheetName) {return getBoundSheetRec(sheetName).getSheetIndex();}
 public GetDashboardResult executeGetDashboard(GetDashboardRequest request) {
 public static AssociateSigninDelegateGroupsWithAccountResult executeAssociateSigninDelegateGroupsWithAccount(AssociateSigninDelegateGroupsWithAccountRequest request) {
-short ) (j + mbr.getFirstColumn()));br.setRow(mbr.getRow());br.setXFIndex(mbr.getXFAt(j));insertCell(br);}}
-(quote).toString();}
+public void addMultipleBlanks(MulBlankRecord mbr) {for (int j = 0; j < mbr.getNumColumns(); j++) {BlankRecord br = new BlankRecord();br.setColumn(( short ) (j + mbr.getFirstColumn()));br.setRow(mbr.getRow());br.setXFIndex(mbr.getXFAt(j));insertCell(br);}}
+public static String quote(String string, char quote) {StringBuilder sb = new StringBuilder();sb.append(quote);int apos = 0;int k;while ((k = string.indexOf(quote, apos))public static String quote(String string, char quote) {StringBuilder sb = new StringBuilder();sb.append(quote);int apos = 0;int k;while ((k = string.indexOf(quote, apos)) >= 0) {sb.append(string.substring(apos, k + 1)).append(quote).append(quote);apos = k + 1;}return sb.append(string.substring(apos)).append(quote).toString();}
 public ByteBuffer putInt(int index, int value) {throw new ReadOnlyBufferException();}
-// code.java version of code.cs
+public ArrayPtg(Object[][] values2d, int nColumns, int nRows) {_nColumns = (short) nColumns;_nRows = (short) nRows;_arraypublic ArrayPtg(Object[][] values2d, int nColumns, int nRows) {_nColumns = (short) nColumns;_nRows = (short) nRows;_arrayValues = new Object[_nColumns * _nRows];for (int r=0; r<nRows; r++) {Object[] rowData = values2d[r];for (int c=0; c<public ArrayPtg(Object[][] values2d, int nColumns, int nRows) {_nColumns = (short) nColumns;_nRows = (short) nRows;_arraypublic ArrayPtg(Object[][] values2d, int nColumns, int nRows) {_nColumns = (short) nColumns;_nRows = (short) nRows;_arrayValues = new Object[_nColumns * _nRows];for (int r=0; r<nRows; r++) {Object[] rowData = values2d[r];for (int c=0; c<nColumns; c++) {_arrayValues[getValueIndex(c, r)] = rowData[c];}}_reserved0Int = 0;_reserved1Short = 0;_reserved2Byte = 0;
 public GetIceServerConfigResult executeGetIceServerConfig(GetIceServerConfigRequest getIceServerConfigRequest) {
 public String getValueAsString() {return value;}
 public String toString() {return "ToChildBlockJoinQuery ("+parentQuery.toString()+")";}
 public final void decRef() {
 public UpdateConfigurationSetSendingEnabledResult executeUpdateConfigurationSetSendingEnabled(UpdateConfigurationSetSendingEnabledRequest updateConfigurationSetSendingEnabledRequest) {
 public int getNextXBATChainOffset() {return getXBATEntriesPerBlock() * LittleEndianConsts.INT_SIZE;}
-._divisor, tp._divisorShift, result);} else {mulShift(tp._multiplicand, tp._multiplierShift, result);}}
-Component(i));if (i < l - 1){b.append(File.separatorChar);}}return b.toString();}
-Name);return this;}
+public void multiplyByPowerOfTen(int pow10, int[] result) {TenPower tp = TenPower.getInstance(Math.abs(pow10));if (pow10 < 0) {mulShift(tp._divisor, tp._divisorShift, result);} else {mulShift(tp._multiplicand, tp._multiplierShift, result);}}
+public String toString(){final StringBuilder b = new StringBuilder();final int          l = length();b.append(File.separatorChar);for (int i = 0; i < l; i++){b.append(getComponent(i));if (i < l - 1){b.append(File.separatorChar);}}return b.toString();}
+public InstanceProfileCredentialsProvider withFetcher(ECSMetadataServiceCredentialsFetcher fetcher, String roleName) {this.fetcher = fetcher;this.fetcher.setRoleName(roleName);return this;}
 public void setProgressMonitor(ProgressMonitor pm, int max) {
 public void reset(String filename) {if (!first()) {ptr = 0;if (!eof())parseEntry();}}
 public E previous() {if (iterator.previousIndex() >= start) {return iterator.previous();}throw new NoSuchElementException();}
 public String getNewSuffix() {return this.newSuffix;}
 public int indexOfValue(int value) {for (int i = 0; i < mSize; i++)if (mValues[i] == value)return i;return -1;}
-terms.contains(s)) {deduped.add(s);terms.add(s);}}return deduped;}
+public List<CharsRef> uniqueStems(char word[], int length, Set<CharsRef> dictionary) {List<CharsRef> stems = stem(word, length);if (stems.size() < 2public List<CharsRef> uniqueStems(char word[], int length, Set<CharsRef> dictionary) {List<CharsRef> stems = stem(word, length);if (stems.size() < 2) {return stems;}CharArraySet terms = new CharArraySet(8, dictionary.ignoreCase);List<CharsRef> deduped = new ArrayList<>();for (CharsRef s : stems) {if (!terms.contains(s)) {deduped.add(s);terms.add(s);}}return deduped;}
 public static GetGatewayResponsesResult executeGetGatewayResponses(GetGatewayResponsesRequest request) {
 public void setPosition(long pos) {currentBlockIndex = (int) (pos >> blockBits);currentBlock = blocks[currentBlockIndex];currentBlockUpto = (int) (pos & blockMask);}
 public int read() {int c = read(0);if (c == -1) throw new RuntimeException("Read past end of file.");return c;}
 public BootstrapActionDetail(BootstrapActionConfig bootstrapActionConfig, String version) {setBootstrapActionConfig(bootstrapActionConfig);setVersion(version);}
-_7_padding!= null) {out.writeByte(field_7_padding.intValue());}}
+public void serialize(LittleEndianOutput out) {out.writeShort(field_1_row);out.writeShort(field_2_col);out.writeShort(field_3_flags);out.writeShort(public void serialize(LittleEndianOutput out) {out.writeShort(field_1_row);out.writeShort(field_2_col);out.writeShort(field_3_flags);out.writeShort(field_4_shapeid);out.writeShort(field_6_author.length());out.writeByte(field_5_hasMultibyte? 0x01 : 0x00);if (field_5_haspublic void serialize(LittleEndianOutput out) {out.writeShort(field_1_row);out.writeShort(field_2_col);out.writeShort(field_3_flags);out.writeShort(public void serialize(LittleEndianOutput out) {out.writeShort(field_1_row);out.writeShort(field_2_col);out.writeShort(field_3_flags);out.writeShort(field_4_shapeid);out.writeShort(field_6_author.length());out.writeByte(field_5_hasMultibyte? 0x01 : 0x00);if (field_5_hasMultibyte) {StringUtil.putUnicodeLE(field_6_author, out);} else {StringUtil.putCompressedUnicode(field_6_author, out);}if (field
 public int lastIndexOf(String string, int start) {
 public boolean add(E object, int index) {return addImpl(object, index);}
 public ConfigSnapshot unsetSection(ConfigSnapshot src, String section, String subsection) {
@@ -64,24 +64,24 @@ public boolean removeAll(Collection c) {synchronized (mutex) {return delegate().
 public DoubleMetaphoneFilter create(TokenStream input, int maxCodeLength, boolean inject) {return new DoubleMetaphoneFilter(input, maxCodeLength, inject);}
 public long inCoreLength() {
 public void setValue(int newValue) {value = newValue;}
-= newName;}
+public Pair(ContentSource oldSource, ContentSource newSource, String oldName, String newName) {this.oldSource = oldSource;this.newSource = newSource;this.oldName = oldName;this.newName = newName;}
 public int get(int i, int j) {if (count <= i || count <= j)throw new ArrayIndexOutOfBoundsException(i,j);return entries[i][j];}
-("Content-Type", "application/json");setRequestBody("{\"repo_name\":\""+repoName+"\"}");}
+public CreateRepoRequest(String repoName) {super("cr", "2016-06-07", "CreateRepo", "cr");setUriPattern("/repos");setMethod(MethodType.PUT);setRequestHeader("Content-Type", "application/json");setRequestBody("{\"repo_name\":\""+repoName+"\"}");}
 public void setDeltaBaseAsOffset(boolean deltaBaseAsOffset) {this.deltaBaseAsOffset = deltaBaseAsOffset;}
-ificationException();}}
+public void remove(int index) {if (expectedModCount == list.modCount) {if (index < 0 || index >= list.size) {throw new IndexOutOfBoundsException();}} else {throw new ConcurrentModificationException();}}
 public static MergeShardsResult executeMergeShards(MergeShardsRequest request) {
 public static AllocateHostedConnectionResult executeAllocateHostedConnection(AllocateHostedConnectionRequest request) {
 public int getEndIndex() {return end;}
 public static final WeightedTerm[] getTerms(Query query, boolean sort){
 public ByteBuffer compact(int start, int end) {throw new ReadOnlyBufferException();}
-] = byte2 & 63;}}
+public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final long byte0 = blocks[blocksOffset++]public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final long byte0 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = byte0 >>> 2;final long byte1 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = ((byte0 & 3) << 4) |public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final long byte0 = blocks[blocksOffset++]public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final long byte0 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = byte0 >>> 2;final long byte1 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = ((byte0 & 3) << 4) | (byte1 >>> 4);final long byte2 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = ((byte1 & 15) << 2) | (byte2 >>> 6);values[valuesOffset++
 public String getPath() throws IllegalArgumentException {String s = getHost();if (s == null) throw new IllegalArgumentException();return s;}
 public static DescribeNotebookInstanceLifecycleConfigResult executeDescribeNotebookInstanceLifecycleConfig(DescribeNotebookInstanceLifecycleConfigRequest request) {
 public String getAccessKeyID() {return this.accessKeyID;}
-VpnConnection(request, asyncHandler);}
+public CreateVpnConnectionResult createVpnConnection(CreateVpnConnectionRequest request, AsyncHandler<CreateVpnConnectionRequest, CreateVpnConnectionResult> asyncHandler) {request = beforeClientExecution(request);return executeCreateVpnConnection(request, asyncHandler);}
 public static DescribeVoicesResult executeDescribeVoices(DescribeVoicesRequest request) {
 public ListMonitoringExecutionsResult executeListMonitoringExecutions(ListMonitoringExecutionsRequest request) {
-2);setJobId2(jobId2);}
+public DescribeJobRequest(String vaultName, String jobId, String vaultName2, String jobId2) {setVaultName(vaultName);setJobId(jobId);setVaultName2(vaultName2);setJobId2(jobId2);}
 public EscherRecord getEscherRecord(int index, int offset){return escherRecords.get(index).getEscherRecord(offset);}
 public GetApisResult executeGetApis(GetApisRequest request) {
 public static DeleteSmsChannelResult executeDeleteSmsChannel(DeleteSmsChannelRequest request) {
@@ -94,7 +94,7 @@ public GetThumbnailRequest(String photoId) {super("CloudPhoto", "2017-07-11", "G
 public static DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest request) {
 public PutVoiceConnectorStreamingConfigurationResult executePutVoiceConnectorStreamingConfiguration(PutVoiceConnectorStreamingConfigurationRequest request) {
 public OrdRange getOrdRange(String dim, String prefix) {
-}
+public String toString() {String symbol = "";if (startIndex >= 0 && startIndex < getInputStream().size()) {symbol = getInputStream().getText(Interval.of(startIndex,startIndex));sypublic String toString() {String symbol = "";if (startIndex >= 0 && startIndex < getInputStream().size()) {symbol = getInputStream().getText(Interval.of(startIndex,startIndex));symbol = Utils.escapeWhitespace(symbol, false);}return String.format(Locale.getDefault(), "%s('%s')", LexerNoViableAltException.class.getSimpleName(), symbol);}
 public E peekFirst() {return peekFirstImpl();}
 public static CreateWorkspacesResult executeCreateWorkspaces(CreateWorkspacesRequest createWorkspacesRequest) {
 public NumberFormatIndexRecord copy() {

@@ -75,7 +75,7 @@ public int getEndIndex() {return end;}
 public static final WeightedTerm[] getTerms(Query query,boolean includeSpanQueryTerms){
 public ByteBuffer duplicate() {throw new ReadOnlyBufferException();}
 }
-
+<|endoftext|>
 private DescribeNotebookInstanceLifecycleConfigResult executeDescribeNotebookInstanceLifecycleConfig(DescribeNotebookInstanceLifecycleConfigRequest describeNotebookInstanceLifecycleConfigRequest) {
 // This code is written in Java. Reproduce the same exact code in C#.
 private CreateVpnConnectionResult executeCreateVpnConnection(CreateVpnConnectionRequest createVpnConnectionRequest) {

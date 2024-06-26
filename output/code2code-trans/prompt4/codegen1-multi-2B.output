@@ -1,0 +1,100 @@
+private int getVcenter() {return field_1_vcenter;}
+public void addAll(BlockList<T> src, int srcDirIdx, int srcBlkIdx) {if (src.size == 0)return;int srcDirIdx2 = srcDirIdx + 1;public void addAll(BlockList<T> src, int srcDirIdx, int srcBlkIdx) {if (src.size == 0)return;int srcDirIdx2 = srcDirIdx + 1;for (; srcDirIdx2 < src.tailDirIdx; srcDirIdx2++)addAll(src.directory[srcDirIdx2], srcBlkIdx, BLOCK_SIZE);if (src.tailBlkIdx!= 0)addAll(src.tailBlock, srcBlkIdx, src.tailBlkIdx);}}
+public void writeByte(byte b) {if (upto == blockSize) {if (currentBlock!= null) {addBlock(currentBlock);}currentBlock = new byte[blockSize];upto = 0;}currentBlock[upto++] = b;}
+public void setObjectId(ObjectId objectId) {this.objectId = objectId;}
+//public DeleteDomainEntryResult executeDeleteDomainEntry(DeleteDomainEntryRequest request) {
+public long ramBytesUsed() {return ((termOffsets!=null)? termOffsets.ramBytesUsed() : 0) +((termsDictOffsets!=null)? termsDictOffsets.ramBytesUsed() : 0);}
+public final String getFullMessage() {byte[] raw = buffer;int msgB = RawParseUtils.tagMessage(raw, 0);if (msgB < 0) {return ""; }return RawParseUtils.decode(guessEncoding(), raw, msgB, raw.length);}
+public POIFSFileSystem(boolean bigBlockSize) {this(bigBlockSize, true);_header.setBATCount(1);_header.setBATArray(new int[]{1});BATBlock bb = BATpublic POIFSFileSystem(boolean bigBlockSize) {this(bigBlockSize, true);_header.setBATCount(1);_header.setBATArray(new int[]{1});BATBlock bb = BATBlock.createEmptyBATBlock(bigBlockSize, false);bb.setOurBlockIndex(1);_bat_blocks.add(bb);setNextBlock(0, POIFSConstants.END_OF_CHAIN);setNextBlock(1, POIFSConstants.FAT_SECTOR_BLOCK);_property_table.setStartBlock(0);}
+public void init(int address, int length) {slice = pool.buffers[address >> ByteBlockPool.BYTE_BLOCK_SHIFT];assert slice!= null;upto = address & ByteBlockPool.BYTE_BLOCK_MASK;offset0 = address;assert upto + length <= slice.length;}
+public SubmoduleAddCommand setPath(String path, String submoduleName) {this.path = path;this.submoduleName = submoduleName;return this;}
+//public ListIngestionsResult listIngestions() {
+public QueryParserTokenManager(CharStream stream){
+private GetShardIteratorResult executeGetShardIterator(GetShardIteratorRequest getShardIteratorRequest) {
+public ModifyStrategyRequest(String requestId, String requestType, String requestTime, String requestUrl, String requestMethod, String requestBody, String requestHeaders) {super(requestId, requestType, requestTime, requestUrl, requestMethod, requestBody, requestHeaders);}
+public boolean ready() throws IOException {synchronized (lock) {if (in == null) {throw new IOException("InputStreamReader is closed");}try {return bytes.hasRemaining() || in.available() > 0;} catch (IOException e) {return false;}}}
+private static class EscherOptRecord extends EscherOptRecordBase {
+public synchronized int read(byte[] buffer, int offset, int length) {if (buffer == null) {throw new NullPointerException("buffer == null");}Arrays.checkOffsetAndCount(buffer.length, offset, lengthpublic synchronized int read(byte[] buffer, int offset, int length) {if (buffer == null) {throw new NullPointerException("buffer == null");}Arrays.checkOffsetAndCount(buffer.length, offset, length);if (length == 0) {return 0;}int copylen = count - pos < length? count - pos : length;for (int i = 0; i < copylen; i++) {buffer[offset + i] = (byte) this.buffer.charAt(pos + i);}pos += copylen;return copylen;}
+public OpenNLPSentenceBreakIterator(NLPSentenceDetectorOp sentenceOp, String language) {this.sentenceOp = sentenceOp;}
+public void print(String str, int len) {write(str!= null? str.substring(0, Math.min(str.length(), len)) : String.valueOf((Object) null));}
+public NotImplementedFunctionException(String functionName, NotImplementedException cause, String message) {super(functionName, cause, message);this.functionName = functionName;}
+public V next() {return super.nextEntry().getValue();}
+public final void readBytes(byte[] b, int offset, int len) throws IOException {readBytes(b, offset, len, true);}
+//public TagQueueResult tagQueue(TagQueueRequest request) {request = beforeClientExecution(request);return executeTagQueue(request);}
+public void remove(int index) {throw new UnsupportedOperationException();}
+//public CacheSubnetGroup modifyCacheSubnetGroup() {
+public void setParams(String language, String country, String variant) {super.setParams(language, country, variant);this.language = language;this.country = country;this.variant = variant;}
+//public DeleteDocumentationVersionResult executeDeleteDocumentationVersion(DeleteDocumentationVersionRequest request) {
+public int hashCode() {
+//public void getInstanceAccessDetails(GetInstanceAccessDetailsRequest request) {request = beforeClientExecution(request);
+public HSSFPolygon createPolygon(HSSFChildAnchor anchor, int[] xPoints, int[] yPoints) {HSSFPolygon shape = new HSSFPolygon(this, anchor, xPoints, yPoints);shape.setParent(this);shape.setAnchor(anchor);shapes.add(shape);onCreate(shape);return shape;}
+public BoundSheet getBoundSheetRec(int sheetIndex) {return (BoundSheet)get(sheetIndex);}
+//public void getDashboard(GetDashboardRequest request) {request = beforeClientExecution(request);
+//public AssociateSigninDelegateGroupsWithAccountResult executeAssociateSigninDelegateGroupsWithAccount(AssociateSigninDelegateGroupsWithAccountRequest request) {
+public void addMultipleBlanks(MulBlankRecord mbr) {for (int j = 0; j < mbr.getNumColumns(); j++) {BlankRecord br = new BlankRecord();br.setColumn(( short ) (j + mbr.getFirstColumn()));br.setRow(mbr.getRow());br.setXFIndex(mbr.getXFAt(j));insertCell(br);}}
+public static String unquote(String string) {StringBuilder sb = new StringBuilder();sb.append("\\Q");int apos = 0;int k;while ((k = string.indexOf("\\E", apos))public static String unquote(String string) {StringBuilder sb = new StringBuilder();sb.append("\\Q");int apos = 0;int k;while ((k = string.indexOf("\\E", apos)) >= 0) {sb.append(string.substring(apos, k + 2)).append("\\\\E");apos = k + 2;}return sb.append(string.substring(apos)).append("\\E").toString();}
+public ByteBuffer putInt(int index, int value) {throw new ReadOnlyBufferException();}
+public ArrayPtg(int nColumns, int nRows) {_nColumns = (short) nColumns;_nRows = (short) nRows;_arrayValues = new Object[nColumns * nRows];_reserved0Int = 0;_reserved1Short = 0;_reserved2Byte = 0;}
+//public void getIceServerConfig(GetIceServerConfigRequest request)
+public String getValueAsString() {return "";}
+public String toString() {return "ToChildBlockJoinQuery ("+parentQuery.toString()+")";}
+public final void decRef() {
+//public UpdateConfigurationSetSendingEnabledResult updateConfigurationSetSendingEnabled() {
+public int getNextXBATChainOffset() {return getXBATEntriesPerBlock() * LittleEndianConsts.INT_SIZE;}
+public void multiplyByPowerOfTen(int pow10) {int[] tp = new int[2];int[] m = new int[2];int[] d = new int[2];int[] ds = new int[2public void multiplyByPowerOfTen(int pow10) {int[] tp = new int[2];int[] m = new int[2];int[] d = new int[2];int[] ds = new int[2];int[] m2 = new int[2];int[] m3 = new int[2];int[] m4 = new int[2];int[] m5 = new int[2];int[] m6 = new int[2public void multiplyByPowerOfTen(int pow10) {int[] tp = new int[2];int[] m = new int[2];int[] d = new int[2];int[] ds = new int[2public void multiplyByPowerOfTen(int pow10) {int[] tp = new int[2];int[] m = new int[2];int[] d = new int[2];int[] ds = new int[2];int[] m2 = new int[2];int[] m3 = new int[2];int[] m4 = new int[2];int[] m5 = new int[2];int[] m6 = new int[2];int[] m7 = new int[2];int[] m8 = new int[2];int[] m9 = new int[2];int[] m10 = new int[2];int[] m11 = new int[2
+public String toString(){final StringBuilder b = new StringBuilder();final int          l = length();for (int i = 0; i < l; i++){b.append(getComponent(i));if (i < l - 1){b.append(File.separatorChar);}}return b.toString();}
+public InstanceProfileCredentialsProvider withRoleName(String roleName) {this.roleName = roleName;return this;}
+public void setProgressMonitor(ProgressMonitor pm, int max) {progressMonitor = pm;}
+public void reset(String fileName) {if (!first()) {ptr = 0;if (!eof())parseEntry(fileName);}}
+public E previous() {if (iterator.previousIndex() >= start) {return iterator.previous();}throw new NoSuchElementException();}
+public void setNewPrefix(String newPrefix) {this.newPrefix = newPrefix;}
+public int indexOfValue(int value) {for (int i = 0; i < mSize; i++)if (mValues[i] == value)return i;return -1;}
+public List<CharsRef> uniqueStems(char word[], int length) {List<CharsRef> stems = stem(word, length);if (stems.size() < 2) {return stems;}List<CharsRef> deduped = new ArrayList<>();for (CharsRef s : stems) {if (!deduped.contains(s)) {deduped.add(s);}}return deduped;}
+//public void getGatewayResponses(GetGatewayResponsesRequest request, final ServiceCallback<GetGatewayResponsesResult> serviceCallback) {
+public void setPosition(long pos) {currentBlockIndex = (int) (pos >> blockBits);currentBlock = blocks[currentBlockIndex];currentBlockUpto = (int) (pos & blockMask);}
+public long skip(long n) {int s = (int) Math.min(available(), Math.max(0, n));ptr += s;return s;}
+public BootstrapActionDetail(BootstrapActionConfig bootstrapActionConfig, String actionId, String status, String statusMessage, String statusUpdateTime, String statusUpdateUser, String statusUpdateTimeUTC, String statusUpdateUserUTC) {public BootstrapActionDetail(BootstrapActionConfig bootstrapActionConfig, String actionId, String status, String statusMessage, String statusUpdateTime, String statusUpdateUser, String statusUpdateTimeUTC, String statusUpdateUserUTC) {setBootstrapActionConfig(bootstrapActionConfig);setActionId(actionId);setStatus(status);setStatusMessage(statusMessage);setStatusUpdateTime(statusUpdateTime);setStatusUpdateUser(statusUpdateUser);setStatusUpdateTimeUTC(statusUpdateTimeUTC);setStatusUpdateUserUTC(statusUpdateUserUTC);}}
+public void serialize(ByteArrayOutputStream out) throws IOException {
+public int lastIndexOf(String string, int count) {
+public boolean addLastImpl(E object) {
+ConfigSnapshot unsetSection(ConfigSnapshot src, String section, String subsection) {
+public final String getTagName(String namespace) {return tagName;}
+public void addSubRecord(SubRecord element) {subrecords.add(element);}
+public boolean remove(Object o, int index) {synchronized (mutex) {return delegate().remove(o, index);}}
+public DoubleMetaphoneFilter create(TokenStream input, int maxCodeLength, boolean inject) {return new DoubleMetaphoneFilter(input, maxCodeLength, inject);}
+public long inCoreLength() {
+public boolean getValue() {return value;}
+public static Pair<ContentSource, ContentSource> create(ContentSource oldSource, ContentSource newSource) {
+public int get(int i) {if (count <= i)throw new ArrayIndexOutOfBoundsException(i);return entries[i];}
+public CreateRepoRequest(String name) {super("cr", "2016-06-07", "CreateRepo", "cr");setUriPattern("/repos");setMethod(MethodType.PUT);setName(name);}
+public void setDeltaBaseAsOffset(boolean deltaBaseAsOffset) {this.deltaBaseAsOffset = deltaBaseAsOffset;}
+public void remove(int index) {if (expectedModCount == list.modCount) {if (index < 0 || index >= list.size) {throw new IndexOutOfBoundsException();}} else {throw new ConcurrentModificationException();}}
+//public void mergeShards(MergeShardsRequest request, final ServiceCallback<Void> serviceCallback) {
+public AllocateHostedConnectionResult executeAllocateHostedConnection(AllocateHostedConnectionRequest request) {
+public int getEndIndex() {return end;}
+public static final WeightedTerm[] getTerms(Query query, boolean useWeight){
+public ByteBuffer compact(int start, int end) {throw new ReadOnlyBufferException();}
+public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final long byte0 = blocks[blocksOffset++]public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final long byte0 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = (byte0 & 15) << 2 | (blocks[blocksOffset++] & 0xFF) >>> 6;values[valuesOffset++] = ((byte0 & 63) <<public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final long byte0 = blocks[blocksOffset++]public void decode(byte[] blocks, int blocksOffset, long[] values, int valuesOffset, int iterations) {for (int i = 0; i < iterations; ++i) {final long byte0 = blocks[blocksOffset++] & 0xFF;values[valuesOffset++] = (byte0 & 15) << 2 | (blocks[blocksOffset++] & 0xFF) >>> 6;values[valuesOffset++] = ((byte0 & 63) << 4) | (blocks[blocksOffset++] & 0xFF) >>> 4;values[valuesOffset++] = ((byte0 & 63) << 2) | (blocks[blocksOffset++] & 0xFF) >>> 2;
+public String getPath() throws IllegalArgumentException {String s = getHost();if (s == null) throw new IllegalArgumentException();return s;}
+//public void describeNotebookInstanceLifecycleConfig(DescribeNotebookInstanceLifecycleConfigRequest request, final ServiceCallback<DescribeNotebookInstanceLifecycleConfigResult> serviceCallback) {
+public void setAccessKeySecret(String accessKeySecret) {this.accessKeySecret = accessKeySecret;}
+//public CreateVpnConnectionResult createVpnConnection(CreateVpnConnectionRequest request, String ifMatch) {request = beforeClientExecution(request);return executeCreateVpnConnection(request, ifMatch);}
+//public void describeVoices(DescribeVoicesRequest request) {
+//public ListMonitoringExecutionsResult listMonitoringExecutions() {
+public DescribeJobRequest(String vaultName, String jobId, String vaultName2, String jobId2) {setVaultName(vaultName);setJobId(jobId);setVaultName2(vaultName2);setJobId2(jobId2);}
+public int getEscherRecordCount(){return escherRecords.size();}
+//public GetApisResult getApis() {
+//public DeleteSmsChannelResponse executeDeleteSmsChannel(DeleteSmsChannelRequest request) {
+public void setTrackingRefUpdate(TrackingRefUpdate trackingRefUpdate) {this.trackingRefUpdate = trackingRefUpdate;}
+public void print(char c) {print(String.valueOf(c));}
+public void setChild(QueryNode child) {getChildren().set(0, child);}
+public NotIgnoredFilter(int workdirTreeIndex, int workdirTreeIndex2) {this.index = workdirTreeIndex;this.index2 = workdirTreeIndex2;}
+public AreaRecord() {
+public GetThumbnailRequest(String accessToken) {super("CloudPhoto", "2017-07-11", "GetThumbnail", "cloudphoto");setProtocol(ProtocolType.HTTPS);this.accessToken = accessToken;}
+//public DescribeTransitGatewayVpcAttachmentsResult executeDescribeTransitGatewayVpcAttachments(DescribeTransitGatewayVpcAttachmentsRequest request) {
+//public void putVoiceConnectorStreamingConfiguration(PutVoiceConnectorStreamingConfigurationRequest request, final ServiceCallback<PutVoiceConnectorStreamingConfigurationResult> serviceCallback) {
+public OrdRange getOrdRange(String dim) {
+public String toString(int startIndex) {String symbol = "";if (startIndex >= 0 && startIndex < getInputStream().size()) {symbol = getInputStream().getText(Interval.of(startIndex,public String toString(int startIndex) {String symbol = "";if (startIndex >= 0 && startIndex < getInputStream().size()) {symbol = getInputStream().getText(Interval.of(startIndex,startIndex));symbol = Utils.escapeWhitespace(symbol, false);}return String.format(Locale.getDefault(), "%s('%s')", LexerNoViableAltException.class.getSimpleName(), symbol);}
+public E peekFirst() {return peekFirstImpl();}
+//public CreateWorkspacesResult createWorkspaces() {
+public NumberFormatIndexRecord copy() {
