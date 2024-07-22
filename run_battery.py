@@ -569,19 +569,23 @@ class BatteryRunner:
         xlabel="Levenshtein Distance",
         ylabel=None,
         title=None,
+        axes=None,
     ):
         if colors is None:
             BASE_COLORS = sample_cmap("viridis", count=4, lower=0, upper=0.9)
         else:
             BASE_COLORS = colors
-        
-        height = 2
-        width = 2
-        fig, axes = plt.subplots(
-            height, width,
-            figsize=(10, 10)
-            #, sharex=True, sharey=True
-        )
+
+        if axes is None:
+            height = 1
+            width = 4
+            fig, axes = plt.subplots(
+                height, width,
+                figsize=(13, 4)
+                #, sharex=True, sharey=True
+            )
+        else:
+            fig = None
         
         for idx, (model_key, target_data) in enumerate(plot_data[series_name].items()):
             ax = index_axis(axes, idx)
@@ -613,20 +617,53 @@ class BatteryRunner:
                 ax.spines["top"].set_visible(False)
                 ax.spines["right"].set_visible(False)
             
-            ax.legend()
-            print(f"{series_name} & {model_key} & {linreg.slope:.5f} & {linreg.rvalue:.5f} \\\\")
-            ax.set_xlabel(f"{model_key}; $m={linreg.slope:.3f}$, $R^2={linreg.rvalue**2:.3f}$")
+            #ax.legend()
+            print(f"{metric.simplename} & {series_name} & {model_key} & {linreg.slope:.5f} & {linreg.intercept:.5f} & {linreg.stderr:.5f} & {linreg.rvalue:.5f} \\\\")
+            #ax.set_xlabel(f"{model_key}; $m={linreg.slope:.3f}$, $R^2={linreg.rvalue**2:.3f}$")
+            ax.set_title(model_key)
+            if fig is None:
+                ax.set_xlabel(xlabel)
+                if idx == 0:
+                    ax.set_ylabel(ylabel)
+
 
             if center_axis:
                 ax.xaxis.set_label_coords(x=0.5, y=0)
         
-        # hack to get labels properly aligned around the entire graph
-        fig.add_subplot(111, frameon=False)
-        plt.tick_params(labelcolor="none", which="both", top=False, bottom=False, left=False, right=False)
-        plt.xlabel(xlabel, labelpad=20)
-        plt.ylabel(ylabel)
-        plt.suptitle(title)
-        plt.tight_layout()
+        if fig is not None:
+            # hack to get labels properly aligned around the entire graph
+            fig.add_subplot(111, frameon=False)
+            plt.tick_params(labelcolor="none", which="both", top=False, bottom=False, left=False, right=False)
+            plt.xlabel(xlabel, labelpad=20)
+            plt.ylabel(ylabel)
+            plt.suptitle(title)
+            plt.tight_layout()
+
+        if save:
+            plt.savefig(save, bbox_inches="tight")
+
+        if fig is not None:
+            plt.show()
+
+    def render_all_perturbations_relative(self, metric, title, save=None):
+        fig = plt.figure(figsize=(12, 12), constrained_layout=True)
+        fig.suptitle(title, fontsize=20, fontweight="bold")
+
+        subfigs = fig.subfigures(nrows=len(self.prompt_family_answers), ncols=1, wspace=0.0, hspace=0.1)
+        for idx, family_answers in enumerate(self.prompt_family_answers):
+            subfig = subfigs[idx]
+            series_name = f"prompt{idx}"
+            subfig.suptitle(series_name, fontsize=18, fontfamily="monospace")
+            
+            axes = subfig.subplots(nrows=1, ncols=4)
+            self.render_perturbations_relative(
+                metric,
+                series_name=series_name,
+                axes=axes,
+                ylabel=f"{metric.name} improvement",
+            )
+        
+        #plt.tight_layout()
 
         if save:
             plt.savefig(save, bbox_inches="tight")
@@ -650,7 +687,16 @@ class BatteryRunner:
         )
 
 
-    def render_perturbations_relative(self, metric, plot_data=None, series_name="prompt0", save=None, colors=None):
+    def render_perturbations_relative(
+        self,
+        metric,
+        plot_data=None,
+        series_name="prompt0",
+        save=None,
+        colors=None,
+        axes=None,
+        ylabel=None,
+    ):
         if plot_data is None:
             plot_data = self.calculate_perturbations(metric)
 
@@ -663,8 +709,9 @@ class BatteryRunner:
             y_target="diff_ys",
             ylim=(-1, 1),
             center_axis=True,
-            ylabel=f"Improvement {metric.name} between base and Perturbation",
+            ylabel=ylabel or f"Improvement {metric.name} between base and Perturbation",
             title=f"{series_name}: Change in {metric.name} after Perturbation vs Levenshtein Distance",
+            axes=axes,
         )
 
     
@@ -727,6 +774,39 @@ class BatteryRunner:
         
         return by_prompt
 
+
+    def multi_bootstrap(
+        self,
+        metrics,
+        title,
+        sample_size,
+        iterations,
+        seed,
+        use_cache=True,
+        save=None,
+    ):
+        yss = []
+        for metric in metrics:
+            boot = self.calculate_bootstrap_metric(
+                metric,
+                sample_size=sample_size,
+                iterations=iterations,
+                use_cache=use_cache,
+                seed=seed,
+            )
+            yss.append(boot)
+
+        self.renderer = OutputRenderer(baseline=None)
+        
+        self.renderer.render_multi(
+            yss=yss,
+            metrics=[ metric.name for metric in metrics ],
+            subtitles=[ metric.simplename for metric in metrics ],
+            dims=(1, len(metrics)),
+            title=title,
+            save=save,
+        )
+        
     
     def free(self):
         pass
