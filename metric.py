@@ -65,8 +65,10 @@ class Metric:
         return Metric.Directory[shortname]
 
 ExactMatch = Metric(
-    name="Accuracy% (Exact Match)",
-    simplename="Accuracy%",
+    #name="Accuracy% (Exact Match)",
+    #simplename="Accuracy%",
+    name="Exact Match",
+    simplename="Exact Match",
     shortname="em",
     latex_name="EM",
     grade_single = lambda truth, answer: truth == answer,
